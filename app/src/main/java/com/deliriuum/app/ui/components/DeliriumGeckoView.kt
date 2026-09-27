@@ -4,6 +4,10 @@ import android.content.Intent
 import android.util.Log
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import com.deliriuum.app.data.DeliriumGeckoRuntime
@@ -15,14 +19,122 @@ import org.mozilla.geckoview.GeckoSession
 import org.mozilla.geckoview.GeckoSessionSettings
 import org.mozilla.geckoview.GeckoView
 import org.mozilla.geckoview.WebExtension
+import org.mozilla.geckoview.WebRequestError
 import com.deliriuum.app.data.PrivacyAuditManager
+
+/**
+ * État de navigation exposé à l'interface Compose du navigateur.
+ *
+ * DeliriumGeckoView reste responsable de la GeckoSession ; l'Activity
+ * n'a donc pas besoin de manipuler directement GeckoView. Elle dispose
+ * seulement de commandes sûres et d'un état observable.
+ */
+class GeckoBrowserNavigationState {
+
+    var canGoBack by mutableStateOf(false)
+        private set
+
+    var canGoForward by mutableStateOf(false)
+        private set
+
+    var isLoading by mutableStateOf(false)
+        private set
+
+    var currentUrl by mutableStateOf<String?>(null)
+        private set
+
+    var currentTitle by mutableStateOf("")
+        private set
+
+    private var session: GeckoSession? = null
+
+    fun goBack() {
+        if (canGoBack) {
+            session?.goBack()
+        }
+    }
+
+    fun goForward() {
+        if (canGoForward) {
+            session?.goForward()
+        }
+    }
+
+    fun reload() {
+        session?.reload()
+    }
+
+    fun stop() {
+        session?.stop()
+    }
+
+    internal fun attach(
+        session: GeckoSession,
+        initialUrl: String
+    ) {
+        this.session = session
+        canGoBack = false
+        canGoForward = false
+        isLoading = false
+        currentUrl = initialUrl
+        currentTitle = ""
+    }
+
+    internal fun updateCanGoBack(value: Boolean) {
+        canGoBack = value
+    }
+
+    internal fun updateCanGoForward(value: Boolean) {
+        canGoForward = value
+    }
+
+    internal fun updateLoading(value: Boolean) {
+        isLoading = value
+    }
+
+    internal fun updateUrl(value: String?) {
+        if (!value.isNullOrBlank()) {
+            currentUrl = value
+        }
+    }
+
+    internal fun updateTitle(value: String?) {
+        currentTitle = value?.trim().orEmpty()
+    }
+}
 
 @Composable
 fun DeliriumGeckoView(
     url: String,
     modifier: Modifier = Modifier,
-    privateSession: Boolean = false
+    privateSession: Boolean = false,
+    navigationState: GeckoBrowserNavigationState? = null,
+
+    /*
+     * Appelé lorsque Gecko renonce à charger la page.
+     *
+     * Sans ce signal, un site injoignable laissait une page
+     * blanche : l'utilisateur ne pouvait pas distinguer un site
+     * hors service d'une faute de frappe ou d'une panne réseau.
+     */
+    onLoadError: (Int) -> Unit = {}
 ) {
+
+    /*
+     * La factory ne s'exécute qu'une fois, alors que la lambda
+     * peut changer à chaque recomposition. rememberUpdatedState
+     * garantit que la vue appelle toujours la version courante.
+     */
+    val currentOnLoadError =
+        rememberUpdatedState(
+            onLoadError
+        )
+
+    val currentNavigationState =
+        rememberUpdatedState(
+            navigationState
+        )
+
 
     AndroidView(
         modifier =
@@ -70,6 +182,14 @@ fun DeliriumGeckoView(
             val session =
                 GeckoSession(
                     settings
+                )
+
+
+            currentNavigationState
+                .value
+                ?.attach(
+                    session = session,
+                    initialUrl = url
                 )
 
 
@@ -199,20 +319,12 @@ fun DeliriumGeckoView(
                                     payload
                                         .toString()
                         )
+
                         PrivacyAuditManager
                             .shared
                             .updateFromProbe(
                                 payload
                             )
-
-                        /*
-                         * ETAPE SUIVANTE :
-                         *
-                         * PrivacyAuditManager.shared
-                         *     .updateFromProbe(
-                         *         payload
-                         *     )
-                         */
 
 
                         return null
@@ -228,6 +340,30 @@ fun DeliriumGeckoView(
                 object :
                     GeckoSession
                     .NavigationDelegate {
+
+
+                    override fun onCanGoBack(
+                        session: GeckoSession,
+                        canGoBack: Boolean
+                    ) {
+                        currentNavigationState
+                            .value
+                            ?.updateCanGoBack(
+                                canGoBack
+                            )
+                    }
+
+
+                    override fun onCanGoForward(
+                        session: GeckoSession,
+                        canGoForward: Boolean
+                    ) {
+                        currentNavigationState
+                            .value
+                            ?.updateCanGoForward(
+                                canGoForward
+                            )
+                    }
 
 
                     override fun onNewSession(
@@ -292,12 +428,127 @@ fun DeliriumGeckoView(
                                 popupSession
                             )
                     }
+
+
+                    /*
+                     * Échec de chargement.
+                     *
+                     * Renvoyer null laisse Gecko afficher sa propre
+                     * page d'erreur, illisible et hors charte. On
+                     * renvoie donc une page vide et on remonte le
+                     * code à l'interface, qui affiche un écran
+                     * compréhensible avec Réessayer et Rechercher.
+                     */
+                    override fun onLoadError(
+                        session:
+                        GeckoSession,
+
+                        uri:
+                        String?,
+
+                        error:
+                        WebRequestError
+                    ): GeckoResult<String>? {
+
+
+                        Log.w(
+                            "DeliriumGecko",
+                            "Chargement échoué uri=$uri " +
+                                    "category=${error.category} " +
+                                    "code=${error.code}"
+                        )
+
+
+                        currentNavigationState
+                            .value
+                            ?.updateLoading(
+                                false
+                            )
+
+
+                        currentOnLoadError
+                            .value
+                            .invoke(
+                                error.code
+                            )
+
+
+                        return GeckoResult
+                            .fromValue(
+                                "about:blank"
+                            )
+                    }
+                }
+
+
+            // ====================================================
+            // PROGRESS + PAGE METADATA
+            // ====================================================
+
+            val progressDelegate =
+                object :
+                    GeckoSession
+                    .ProgressDelegate {
+
+                    override fun onPageStart(
+                        session: GeckoSession,
+                        url: String
+                    ) {
+                        currentNavigationState
+                            .value
+                            ?.updateUrl(
+                                url
+                            )
+
+                        currentNavigationState
+                            .value
+                            ?.updateLoading(
+                                true
+                            )
+                    }
+
+                    override fun onPageStop(
+                        session: GeckoSession,
+                        success: Boolean
+                    ) {
+                        currentNavigationState
+                            .value
+                            ?.updateLoading(
+                                false
+                            )
+                    }
+                }
+
+
+            val contentDelegate =
+                object :
+                    GeckoSession
+                    .ContentDelegate {
+
+                    override fun onTitleChange(
+                        session: GeckoSession,
+                        title: String?
+                    ) {
+                        currentNavigationState
+                            .value
+                            ?.updateTitle(
+                                title
+                            )
+                    }
                 }
 
 
             session
                 .navigationDelegate =
                 navigationDelegate
+
+            session
+                .progressDelegate =
+                progressDelegate
+
+            session
+                .contentDelegate =
+                contentDelegate
 
 
             // ====================================================

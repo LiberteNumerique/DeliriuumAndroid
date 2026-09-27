@@ -7,6 +7,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -30,6 +32,7 @@ import com.deliriuum.app.R
 fun WelcomeScreen(onContinueClick: () -> Unit) {
     val context = LocalContext.current
     val density = LocalDensity.current
+    val scrollState = rememberScrollState()
 
     // --- ANIMATION DU LOGO (.easeInOut de 1.6s comme sur iOS) ---
     val infiniteTransition = rememberInfiniteTransition(label = "logoPulse")
@@ -61,36 +64,52 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                 .background(
                     Brush.radialGradient(
                         colors = listOf(
-                            Color(0xFF005973), // Color(red: 0.0, green: 0.35, blue: 0.45)
-                            Color(0x8C2E1459), // Color(red: 0.18, green: 0.08, blue: 0.35).opacity(0.55)
+                            Color(0xFF005973),
+                            Color(0x8C2E1459),
                             Color.Transparent
                         ),
                         center = androidx.compose.ui.geometry.Offset(
                             x = screenWidthPx * 0.5f,
-                            y = screenHeightPx * 0.35f // Centré exactement à y: 0.35 comme défini sur ton iOS
+                            y = screenHeightPx * 0.35f
                         ),
                         radius = endRadiusPx
                     )
                 )
         )
 
-        // --- ARBORESCENCE DE L'INTERFACE ---
+        /*
+         * Toute la vue est désormais scrollable.
+         *
+         * heightIn(min = maxHeight) permet de conserver une mise en page
+         * proche de la version d'origine lorsque tout tient sur l'écran.
+         * Sur un petit écran, avec une police agrandie ou un affichage zoomé,
+         * la colonne grandit naturellement et l'utilisateur peut faire défiler
+         * jusqu'aux boutons "Continuer" et "En savoir plus".
+         */
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .heightIn(min = maxHeight)
+                .verticalScroll(scrollState)
                 .statusBarsPadding()
-                .navigationBarsPadding(),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .navigationBarsPadding()
+                .padding(top = 18.dp, bottom = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Spacer(modifier = Modifier.weight(1f))
+            // Remplace l'ancien Spacer(weight = 1f), incompatible avec
+            // une mise en page réellement scrollable.
+            Spacer(modifier = Modifier.height(12.dp))
 
             // VStack principal (spacing: 24)
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(24.dp),
-                modifier = Modifier.wrapContentHeight()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
             ) {
-                // Image Logo + Animation de pulsation de l'opacité/scale
+                // Image Logo + Animation de pulsation
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "delirium_logo",
@@ -113,18 +132,22 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                             text = "BIEN PLUS QU'UN SIMPLE VPN",
                             color = Color.Cyan,
                             fontSize = 14.sp,
-                            fontWeight = FontWeight.Black, // .heavy
-                            fontFamily = FontFamily.Monospace, // .monospaced
-                            letterSpacing = 1.5.sp
+                            fontWeight = FontWeight.Black,
+                            fontFamily = FontFamily.Monospace,
+                            letterSpacing = 1.5.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(horizontal = 18.dp)
                         )
 
                         Text(
                             text = "L'APP POUR SURVIVRE EN DELIRISTAN",
-                            color = Color(0xFFC08CFF), // Color(red: 0.75, green: 0.55, blue: 1.0)
+                            color = Color(0xFFC08CFF),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Black,
                             fontFamily = FontFamily.Monospace,
-                            letterSpacing = 1.5.sp
+                            letterSpacing = 1.5.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(horizontal = 18.dp)
                         )
                     }
 
@@ -132,9 +155,11 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                         text = "DELIRIUUM",
                         color = Color.White,
                         fontSize = 40.sp,
-                        fontWeight = FontWeight.Black, // .black
+                        fontWeight = FontWeight.Black,
                         letterSpacing = 3.sp,
-                        fontFamily = FontFamily.SansSerif // Équivalent visuel du .rounded lourd
+                        fontFamily = FontFamily.SansSerif,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 18.dp)
                     )
 
                     // VStack (spacing: 2)
@@ -146,8 +171,10 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                             text = "Ta vie privée",
                             color = Color.White,
                             fontSize = 22.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
                         )
+
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(6.dp),
                             verticalAlignment = Alignment.CenterVertically
@@ -158,9 +185,10 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.Bold
                             )
+
                             Text(
                                 text = "à vendre.",
-                                color = Color(0xFFFFC033), // Color(red: 1.0, green: 0.75, blue: 0.2)
+                                color = Color(0xFFFFC033),
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.Black
                             )
@@ -180,14 +208,16 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                 )
             }
 
-            Spacer(modifier = Modifier.weight(1f))
+            // Espace souple entre le contenu et les actions.
+            // Contrairement à weight(), il ne bloque jamais le scroll.
+            Spacer(modifier = Modifier.height(28.dp))
 
-            // --- SECTION BOUTONS (padding horizontal: 28, bottom: 40) ---
+            // --- SECTION BOUTONS ---
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 28.dp)
-                    .padding(bottom = 40.dp),
+                    .padding(bottom = 32.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
                 // Bouton Continuer (LinearGradient de .cyan à .mint)
@@ -202,7 +232,6 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                         .background(buttonGradient, RoundedCornerShape(16.dp))
                         .clickable {
                             onContinueClick()
-                            Unit // Sécurité anti-bug d'interopérabilité (Void vs Unit)
                         },
                     contentAlignment = Alignment.Center
                 ) {
@@ -219,16 +248,21 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(48.dp)
-                        .background(Color.Cyan.copy(alpha = 0.08f), RoundedCornerShape(16.dp))
+                        .background(
+                            Color.Cyan.copy(alpha = 0.08f),
+                            RoundedCornerShape(16.dp)
+                        )
                         .border(
                             width = 1.5.dp,
                             color = Color.Cyan.copy(alpha = 0.4f),
                             shape = RoundedCornerShape(16.dp)
                         )
                         .clickable {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://deliriuum.com"))
+                            val intent = Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("https://deliriuum.com")
+                            )
                             context.startActivity(intent)
-                            Unit // Sécurité
                         },
                     contentAlignment = Alignment.Center
                 ) {
@@ -242,6 +276,7 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold
                         )
+
                         Text(
                             text = "↗",
                             color = Color.Cyan,

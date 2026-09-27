@@ -189,6 +189,22 @@ fun AccountScreen(
                             Arrangement.spacedBy(12.dp)
                     ) {
 
+                        Text(
+                            text = "Changer mon mot de passe",
+                            color = Color.White,
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Text(
+                            text = "Pour des raisons de sécurité, Deliriuum t'envoie un lien à l'adresse de ton compte. Ce lien permet de choisir un nouveau mot de passe sans exposer l'ancien.",
+                            color = Color.White.copy(alpha = 0.68f),
+                            fontSize = 13.sp,
+                            lineHeight = 19.sp,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
                         DarkTextField(
                             value = resetEmail,
                             onValueChange = {
@@ -226,7 +242,7 @@ fun AccountScreen(
 
                         GradientButton(
                             text =
-                                "Envoyer le lien",
+                                "Envoyer le lien sécurisé",
                             enabled =
                                 resetEmail.isNotBlank() &&
                                         !isSendingReset,
@@ -281,7 +297,7 @@ fun AccountScreen(
 
                 OutlineButton(
                     text =
-                        "🔑  Réinitialiser mon mot de passe",
+                        "🔑  Changer mon mot de passe",
                     color =
                         Color.Cyan
                 ) {

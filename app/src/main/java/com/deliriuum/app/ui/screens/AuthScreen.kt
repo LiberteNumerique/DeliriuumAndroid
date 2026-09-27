@@ -22,8 +22,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.deliriuum.app.data.APIClient
 import com.deliriuum.app.data.AuthManager
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Composable
 fun AuthScreen(
@@ -39,6 +42,13 @@ fun AuthScreen(
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var isRegisterMode by remember { mutableStateOf(false) }
+
+    // Mot de passe oublié — parité iOS
+    var showForgotPassword by remember { mutableStateOf(false) }
+    var resetEmail by remember { mutableStateOf("") }
+    var resetMessage by remember { mutableStateOf<String?>(null) }
+    var resetError by remember { mutableStateOf<String?>(null) }
+    var isSendingReset by remember { mutableStateOf(false) }
 
     // Règle de validation de mot de passe (Synchronisé iOS / Backend)
     val hasMinLength = password.length >= 12
@@ -89,6 +99,7 @@ fun AuthScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
+                .imePadding()
                 .padding(horizontal = 24.dp)
                 .padding(top = 60.dp, bottom = 40.dp),
             verticalArrangement = Arrangement.spacedBy(28.dp),
@@ -162,6 +173,164 @@ fun AuthScreen(
                             Text("Retour à la connexion", color = Color.White.copy(alpha = 0.5f), fontSize = 13.sp)
                         }
                     }
+                } else if (showForgotPassword) {
+                    // --- MOT DE PASSE OUBLIÉ ---
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            text = "🔑",
+                            fontSize = 38.sp
+                        )
+
+                        Text(
+                            text = "Mot de passe oublié ?",
+                            color = Color.White,
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+                        Text(
+                            text = "Indique l'adresse e-mail de ton compte. Tu recevras un lien sécurisé pour choisir un nouveau mot de passe.",
+                            color = Color.White.copy(alpha = 0.72f),
+                            fontSize = 13.sp,
+                            lineHeight = 19.sp,
+                            textAlign = TextAlign.Center
+                        )
+
+                        OutlinedTextField(
+                            value = resetEmail,
+                            onValueChange = {
+                                resetEmail = it
+                                resetMessage = null
+                                resetError = null
+                            },
+                            placeholder = {
+                                Text(
+                                    "Email",
+                                    color = Color.White.copy(alpha = 0.4f)
+                                )
+                            },
+                            keyboardOptions =
+                                KeyboardOptions(
+                                    keyboardType = KeyboardType.Email
+                                ),
+                            singleLine = true,
+                            colors =
+                                OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = Color.Transparent,
+                                    unfocusedBorderColor = Color.Transparent,
+                                    focusedContainerColor = Color.White.copy(alpha = 0.08f),
+                                    unfocusedContainerColor = Color.White.copy(alpha = 0.08f),
+                                    focusedTextColor = Color.White,
+                                    unfocusedTextColor = Color.White,
+                                    cursorColor = Color.Cyan
+                                ),
+                            shape = RoundedCornerShape(14.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        resetMessage?.let { message ->
+                            Text(
+                                text = message,
+                                color = Color(0xFF66E6B3),
+                                fontSize = 13.sp,
+                                lineHeight = 18.sp,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+
+                        resetError?.let { error ->
+                            Text(
+                                text = error,
+                                color = Color.Red.copy(alpha = 0.9f),
+                                fontSize = 13.sp,
+                                lineHeight = 18.sp,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+
+                        val canSendReset =
+                            resetEmail.trim().isNotEmpty() &&
+                                    !isSendingReset
+
+                        Box(
+                            modifier =
+                                Modifier
+                                    .fillMaxWidth()
+                                    .height(48.dp)
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            listOf(
+                                                Color.Cyan,
+                                                Color(0xFF00E676)
+                                            )
+                                        ),
+                                        RoundedCornerShape(16.dp)
+                                    )
+                                    .clickable(
+                                        enabled = canSendReset
+                                    ) {
+                                        scope.launch {
+                                            isSendingReset = true
+                                            resetMessage = null
+                                            resetError = null
+
+                                            try {
+                                                resetMessage =
+                                                    withContext(Dispatchers.IO) {
+                                                        APIClient.shared
+                                                            .forgotPassword(
+                                                                resetEmail.trim()
+                                                            )
+                                                    }
+                                            } catch (e: Exception) {
+                                                resetError =
+                                                    e.localizedMessage
+                                                        ?: "Impossible d'envoyer le lien."
+                                            } finally {
+                                                isSendingReset = false
+                                            }
+                                        }
+                                    },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            if (isSendingReset) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(20.dp),
+                                    color = Color.Black,
+                                    strokeWidth = 2.dp
+                                )
+                            } else {
+                                Text(
+                                    text = "Envoyer le lien",
+                                    color = Color.Black.copy(
+                                        alpha = if (canSendReset) 1f else 0.45f
+                                    ),
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        }
+
+                        Text(
+                            text = "Retour à la connexion",
+                            color = Color.White.copy(alpha = 0.55f),
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier =
+                                Modifier
+                                    .clickable(enabled = !isSendingReset) {
+                                        showForgotPassword = false
+                                        resetMessage = null
+                                        resetError = null
+                                    }
+                                    .padding(vertical = 4.dp)
+                        )
+                    }
+
                 } else {
                     // --- MODE S'INSCRIRE / SE CONNECTER ---
                     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -176,9 +345,11 @@ fun AuthScreen(
                         ) {
                             ModeButton(title = "Connexion", isSelected = !isRegisterMode, modifier = Modifier.weight(1f)) {
                                 isRegisterMode = false
+                                showForgotPassword = false
                             }
                             ModeButton(title = "S'inscrire", isSelected = isRegisterMode, modifier = Modifier.weight(1f)) {
                                 isRegisterMode = true
+                                showForgotPassword = false
                             }
                         }
 
@@ -219,6 +390,33 @@ fun AuthScreen(
                             shape = RoundedCornerShape(14.dp),
                             modifier = Modifier.fillMaxWidth()
                         )
+
+                        if (!isRegisterMode) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.End
+                            ) {
+                                Text(
+                                    text = "Mot de passe oublié ?",
+                                    color = Color.Cyan.copy(alpha = 0.90f),
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    modifier =
+                                        Modifier
+                                            .clickable(enabled = !authManager.isLoading) {
+                                                resetEmail = email.trim()
+                                                resetMessage = null
+                                                resetError = null
+                                                showForgotPassword = true
+                                            }
+                                            .padding(
+                                                start = 8.dp,
+                                                top = 2.dp,
+                                                bottom = 2.dp
+                                            )
+                                )
+                            }
+                        }
 
                         // Validation visuelle temps réel (Inscription uniquement)
                         if (isRegisterMode) {

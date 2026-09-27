@@ -1,11 +1,14 @@
 package com.deliriuum.app.ui.screens
 
 import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,15 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import android.net.Uri
-import com.deliriuum.app.data.AuthManager
-import com.deliriuum.app.data.TunnelManager
 
 @Composable
 fun SupportIntroScreen(
     onContinue: () -> Unit
 ) {
     val context = LocalContext.current
+    val scrollState = rememberScrollState()
 
     Box(
         modifier = Modifier
@@ -42,14 +43,16 @@ fun SupportIntroScreen(
                     radius = 1100f
                 )
             )
-            .padding(horizontal = 26.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 90.dp, bottom = 34.dp)
+                .verticalScroll(scrollState)
                 .statusBarsPadding()
-                .navigationBarsPadding(),
+                .navigationBarsPadding()
+                .imePadding()
+                .padding(horizontal = 26.dp)
+                .padding(top = 40.dp, bottom = 40.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -117,7 +120,7 @@ fun SupportIntroScreen(
                 )
             }
 
-            Spacer(Modifier.weight(1f))
+            Spacer(Modifier.height(40.dp))
 
             Text(
                 text = "La vie privée n'est pas un luxe.\nC'est un droit.",
@@ -136,61 +139,23 @@ fun SupportIntroScreen(
                     .height(58.dp)
                     .background(
                         Brush.horizontalGradient(
-                            listOf(Color(0xFFFFC633), Color(0xFFFFA626))
+                            listOf(
+                                Color(0xFFFFC633),
+                                Color(0xFFFFA626)
+                            )
                         ),
                         RoundedCornerShape(18.dp)
                     )
                     .clickable {
+                        val url = "https://deliriuum.com/soutenir.html"
 
-                        val authManager =
-                            AuthManager.shared
-
-                        val tunnelManager =
-                            TunnelManager.shared
-
-                        val url =
-                            "https://deliriuum.com/soutenir.html"
-
-                        if (
-                            authManager.isLoggedIn &&
-                            tunnelManager.isProtected
-                        ) {
-
-                            val intent =
-                                Intent(
-                                    context,
-                                    GeckoBrowserActivity::class.java
-                                ).apply {
-
-                                    putExtra(
-                                        "url",
-                                        url
-                                    )
-
-                                    putExtra(
-                                        "title",
-                                        "Soutenir Deliriuum"
-                                    )
-                                }
-
-                            context.startActivity(
-                                intent
+                        val intent =
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse(url)
                             )
 
-                        } else {
-
-                            val intent =
-                                Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse(
-                                        url
-                                    )
-                                )
-
-                            context.startActivity(
-                                intent
-                            )
-                        }
+                        context.startActivity(intent)
                     },
                 contentAlignment = Alignment.Center
             ) {
@@ -213,7 +178,9 @@ fun SupportIntroScreen(
                         Color(0xFFFFC633).copy(alpha = 0.65f),
                         RoundedCornerShape(18.dp)
                     )
-                    .clickable { onContinue() },
+                    .clickable {
+                        onContinue()
+                    },
                 contentAlignment = Alignment.Center
             ) {
                 Text(
@@ -223,6 +190,8 @@ fun SupportIntroScreen(
                     fontWeight = FontWeight.Bold
                 )
             }
+
+            Spacer(Modifier.height(16.dp))
         }
     }
 }

@@ -1,0 +1,6 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="/*&#10; * Deliriuum — Client Android&#10; * Copyright (C) 2026 Alliance pour les Libertés Numériques&#10; *&#10; * Ce programme est un logiciel libre : vous pouvez le redistribuer&#10; * et/ou le modifier selon les termes de la GNU General Public License&#10; * telle que publiée par la Free Software Foundation, soit la version 3&#10; * de la licence, soit (à votre choix) toute version ultérieure.&#10; *&#10; * Ce programme est distribué dans l'espoir qu'il sera utile, mais SANS&#10; * AUCUNE GARANTIE, sans même la garantie implicite de QUALITÉ MARCHANDE&#10; * ou d'ADÉQUATION À UN USAGE PARTICULIER. Voir la GNU General Public&#10; * License pour plus de détails.&#10; *&#10; * Vous devriez avoir reçu une copie de la GNU General Public License&#10; * avec ce programme. Si ce n'est pas le cas, voir&#10; * &lt;https://www.gnu.org/licenses/&gt;.&#10; */ " />
+    <option name="myName" value="GPLv3-ALN" />
+  </copyright>
+</component>

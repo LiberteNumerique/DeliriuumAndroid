@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.deliriuum.app.R
 import com.deliriuum.app.data.AuthManager
-import com.deliriuum.app.ui.screens.GeckoBrowserActivity
 
 @Composable
 fun SideMenuLayout(
@@ -68,7 +67,9 @@ fun SideMenuLayout(
                     .width(menuWidth)
                     .fillMaxHeight()
             ) {
-                BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                BoxWithConstraints(
+                    modifier = Modifier.fillMaxSize()
+                ) {
                     val widthPx = with(density) { maxWidth.toPx() }
 
                     Box(
@@ -85,7 +86,9 @@ fun SideMenuLayout(
                                         x = widthPx * 0.3f,
                                         y = widthPx * 0.1f
                                     ),
-                                    radius = with(density) { 300.dp.toPx() }
+                                    radius = with(density) {
+                                        300.dp.toPx()
+                                    }
                                 )
                             )
                     )
@@ -163,18 +166,21 @@ fun SideMenuLayout(
                             iconColor = Color(0xFFFFC107)
                         ) {
                             onClose()
-                            val intent = Intent(
-                                context,
-                                GeckoBrowserActivity::class.java
-                            ).apply {
-                                putExtra("url", "https://deliriuum.com/soutenir.html")
-                                putExtra("title", "Soutenir Deliriuum")
-                            }
+
+                            val intent =
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse(
+                                        "https://deliriuum.com/soutenir.html"
+                                    )
+                                )
 
                             context.startActivity(intent)
                         }
 
-                        Spacer(modifier = Modifier.weight(1f))
+                        Spacer(
+                            modifier = Modifier.weight(1f)
+                        )
 
                         if (authManager.isLoggedIn) {
                             HorizontalDivider(
@@ -196,7 +202,9 @@ fun SideMenuLayout(
                         modifier = Modifier
                             .fillMaxHeight()
                             .width(1.dp)
-                            .background(Color.White.copy(alpha = 0.08f))
+                            .background(
+                                Color.White.copy(alpha = 0.08f)
+                            )
                             .align(Alignment.CenterEnd)
                     )
                 }
@@ -216,7 +224,9 @@ private fun MenuItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable {
+                onClick()
+            }
             .padding(vertical = 13.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(14.dp)

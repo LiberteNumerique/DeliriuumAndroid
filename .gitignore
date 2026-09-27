@@ -18,3 +18,8 @@ keystore.properties
 *.keystore
 /app/build/
 /app/release/
+key.properties
+*.jks
+
+keystore.properties
+*.jks

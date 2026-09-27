@@ -47,9 +47,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.zIndex
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.deliriuum.app.R
 import com.deliriuum.app.data.AuthManager
 import com.deliriuum.app.data.HomePrivacyAuditContract
@@ -80,7 +77,6 @@ fun HomeView(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val tunnelManager = TunnelManager.shared
-    val lifecycleOwner = LocalLifecycleOwner.current
 
     val privacyAuditManager = PrivacyAuditManager.shared
     val privacyAuditState = privacyAuditManager.state
@@ -156,47 +152,6 @@ fun HomeView(
 
     LaunchedEffect(shortcutSpaces) {
         shortcutStore.save(shortcutSpaces)
-    }
-
-
-    /*
-     * GeckoBrowserActivity écrit directement dans le même stockage local
-     * lorsque l'utilisateur choisit « Ajouter ».
-     *
-     * Au retour sur Home, on recharge donc les espaces afin que le nouveau
-     * raccourci apparaisse immédiatement sans redémarrer l'application.
-     */
-    DisposableEffect(
-        lifecycleOwner,
-        shortcutStore
-    ) {
-        val observer =
-            LifecycleEventObserver {
-                    _,
-                    event ->
-
-                if (
-                    event ==
-                    Lifecycle.Event.ON_RESUME
-                ) {
-                    shortcutSpaces =
-                        shortcutStore.load()
-                }
-            }
-
-        lifecycleOwner
-            .lifecycle
-            .addObserver(
-                observer
-            )
-
-        onDispose {
-            lifecycleOwner
-                .lifecycle
-                .removeObserver(
-                    observer
-                )
-        }
     }
 
     /*
@@ -4251,7 +4206,7 @@ private fun PrivacyAuditCard(
                 } else {
                     if (auditReady) {
                         "Mesure réalisée avant activation de Deliriuum : " +
-                                "voici ce que les sites que vous consultez peuvent observer dans l’environnement standard."
+                                "voici ce qu’un site peut observer dans l’environnement standard."
                     } else {
                         "Deliriuum mesure automatiquement l’environnement avant " +
                                 "d’activer la protection. Aucune action n’est demandée."
@@ -4427,11 +4382,9 @@ private fun PrivacyAuditCard(
                     .forEach { check ->
 
                         FullAuditDetailRowAndroid(
-                            id =
-                                check.id,
-                            fallbackTitle =
+                            title =
                                 check.title,
-                            technicalDetail =
+                            detail =
                                 check.detail,
                             status =
                                 check.status
@@ -4447,9 +4400,9 @@ private fun PrivacyAuditCard(
         if (
             auditReady &&
             (
-                    auditState.exposedCount > 0 ||
-                            auditState.partialCount > 0
-                    )
+                auditState.exposedCount > 0 ||
+                auditState.partialCount > 0
+            )
         ) {
 
             Column(
@@ -4524,26 +4477,13 @@ private fun PrivacyAuditCard(
 
 @Composable
 private fun FullAuditDetailRowAndroid(
-    id: String,
-    fallbackTitle: String,
-    technicalDetail: String,
+    title: String,
+    detail: String,
     status: PrivacyCheckStatus
 ) {
     val color =
         auditStatusColor(
             status
-        )
-
-    val pedagogy =
-        auditPedagogy(
-            id = id,
-            fallbackTitle = fallbackTitle
-        )
-
-    val resultText =
-        pedagogicalAuditResult(
-            id = id,
-            status = status
         )
 
     val icon =
@@ -4572,165 +4512,109 @@ private fun FullAuditDetailRowAndroid(
                 "Partiel"
 
             PrivacyCheckStatus.EXPOSED ->
-                "Visible"
+                "Observable"
 
             PrivacyCheckStatus.NOT_TESTED ->
-                "Non vérifié"
+                "Non testé"
         }
 
-    Column(
+    Row(
         modifier =
             Modifier
                 .fillMaxWidth()
                 .background(
                     color.copy(alpha = 0.055f),
-                    RoundedCornerShape(17.dp)
+                    RoundedCornerShape(15.dp)
                 )
                 .border(
                     1.dp,
-                    color.copy(alpha = 0.16f),
-                    RoundedCornerShape(17.dp)
+                    color.copy(alpha = 0.14f),
+                    RoundedCornerShape(15.dp)
                 )
-                .padding(
-                    horizontal = 14.dp,
-                    vertical = 13.dp
-                ),
-        verticalArrangement =
-            Arrangement.spacedBy(10.dp)
+                .padding(12.dp),
+        verticalAlignment =
+            Alignment.Top,
+        horizontalArrangement =
+            Arrangement.spacedBy(11.dp)
     ) {
 
-        // --------------------------------------------------------
-        // Titre + statut
-        // --------------------------------------------------------
-
-        Row(
+        Box(
             modifier =
-                Modifier.fillMaxWidth(),
-            verticalAlignment =
-                Alignment.CenterVertically,
-            horizontalArrangement =
-                Arrangement.spacedBy(10.dp)
+                Modifier
+                    .size(32.dp)
+                    .background(
+                        color.copy(alpha = 0.13f),
+                        CircleShape
+                    ),
+            contentAlignment =
+                Alignment.Center
         ) {
 
-            Box(
-                modifier =
-                    Modifier
-                        .size(32.dp)
-                        .background(
-                            color.copy(alpha = 0.13f),
-                            CircleShape
-                        ),
-                contentAlignment =
-                    Alignment.Center
-            ) {
-
-                Text(
-                    text = icon,
-                    color = color,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Black
-                )
-            }
-
             Text(
-                text = pedagogy.title,
-                modifier =
-                    Modifier.weight(1f),
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Bold,
-                color =
-                    Color.White.copy(alpha = 0.94f)
+                text = icon,
+                color = color,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Black
             )
-
-            Box(
-                modifier =
-                    Modifier
-                        .background(
-                            color.copy(alpha = 0.10f),
-                            RoundedCornerShape(50)
-                        )
-                        .padding(
-                            horizontal = 8.dp,
-                            vertical = 4.dp
-                        )
-            ) {
-
-                Text(
-                    text = statusLabel,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Black,
-                    color = color
-                )
-            }
         }
-
-        // --------------------------------------------------------
-        // Explication pédagogique
-        // --------------------------------------------------------
-
-        Text(
-            text = pedagogy.explanation,
-            fontSize = 12.sp,
-            color =
-                Color.White.copy(alpha = 0.70f),
-            lineHeight = 18.sp
-        )
-
-        // --------------------------------------------------------
-        // Résultat compréhensible
-        // --------------------------------------------------------
 
         Column(
             modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .background(
-                        Color.Black.copy(alpha = 0.16f),
-                        RoundedCornerShape(12.dp)
-                    )
-                    .padding(11.dp),
+                Modifier.weight(1f),
             verticalArrangement =
                 Arrangement.spacedBy(5.dp)
         ) {
 
-            Text(
-                text = "RÉSULTAT SUR VOTRE APPAREIL",
-                fontSize = 8.sp,
-                fontWeight = FontWeight.Black,
-                color =
-                    color.copy(alpha = 0.95f)
-            )
-
-            Text(
-                text = resultText,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Medium,
-                color =
-                    Color.White.copy(alpha = 0.88f),
-                lineHeight = 16.sp
-            )
-
-            /*
-             * On conserve la mesure brute sous le résultat pédagogique.
-             * Elle reste utile pour la transparence, sans obliger
-             * l'utilisateur à comprendre le jargon pour saisir le verdict.
-             */
-            if (
-                technicalDetail.isNotBlank()
+            Row(
+                modifier =
+                    Modifier.fillMaxWidth(),
+                verticalAlignment =
+                    Alignment.CenterVertically
             ) {
 
                 Text(
-                    text =
-                        "Mesure : $technicalDetail",
-                    fontSize = 10.sp,
+                    text = title,
+                    modifier =
+                        Modifier.weight(1f),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
                     color =
-                        Color.White.copy(alpha = 0.45f),
-                    lineHeight = 15.sp
+                        Color.White.copy(alpha = 0.78f)
                 )
+
+                Box(
+                    modifier =
+                        Modifier
+                            .background(
+                                color.copy(alpha = 0.10f),
+                                RoundedCornerShape(50)
+                            )
+                            .padding(
+                                horizontal = 8.dp,
+                                vertical = 4.dp
+                            )
+                ) {
+
+                    Text(
+                        text = statusLabel,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Black,
+                        color = color
+                    )
+                }
             }
+
+            Text(
+                text = detail,
+                fontSize = 12.sp,
+                color =
+                    Color.White.copy(alpha = 0.62f),
+                lineHeight = 17.sp
+            )
         }
     }
 }
+
 
 private fun auditStatusColor(
     status: PrivacyCheckStatus
@@ -4806,392 +4690,136 @@ private fun AuditCounter(
 // IMPORTANT AUDIT CHECK
 // ================================================================
 
-private data class AuditPedagogy(
-    val title: String,
-    val explanation: String
-)
-
-
-private fun auditPedagogy(
+@Composable
+private fun ImportantAuditCheck(
+    auditState: PrivacyAuditState,
+    enabled: Boolean = true,
     id: String,
     fallbackTitle: String
-): AuditPedagogy {
+) {
+    val check =
+        if (enabled) {
+            auditState.checks.firstOrNull {
+                it.id == id
+            }
+        } else {
+            null
+        }
 
-    return when (id) {
-
-        "vpn_tunnel" ->
-            AuditPedagogy(
-                title =
-                    "Adresse IP et tunnel VPN",
-                explanation =
-                    "Votre adresse IP publique est normalement visible par les sites que vous consultez. " +
-                            "Elle peut indiquer votre fournisseur d’accès et donner une approximation de votre localisation. " +
-                            "Le tunnel VPN sert à faire sortir votre trafic par l’infrastructure Deliriuum au lieu de votre connexion habituelle."
-            )
-
-        "tunnel_reachability" ->
-            AuditPedagogy(
-                title =
-                    "Connexion réellement protégée",
-                explanation =
-                    "Afficher « connecté » ne suffit pas : il faut aussi vérifier que le trafic Internet passe réellement par le tunnel. " +
-                            "Ce contrôle confirme que le chemin réseau protégé fonctionne effectivement."
-            )
-
-        "network_information" ->
-            AuditPedagogy(
-                title =
-                    "Type de connexion",
-                explanation =
-                    "Votre navigateur peut parfois indiquer aux sites que vous consultez si vous utilisez du Wi‑Fi, un réseau mobile ou certaines caractéristiques de votre connexion. " +
-                            "Ces informations ne vous identifient pas seules, mais elles ajoutent des indices à votre empreinte numérique."
-            )
-
-        "webgl" ->
-            AuditPedagogy(
-                title =
-                    "Carte graphique",
-                explanation =
-                    "Les pages Web peuvent demander à votre appareil d’effectuer des calculs graphiques avec WebGL. " +
-                            "Le fabricant, le modèle ou le comportement de la puce graphique peuvent alors devenir des éléments distinctifs utilisés pour reconnaître un appareil."
-            )
-
-        "fonts" ->
-            AuditPedagogy(
-                title =
-                    "Polices disponibles",
-                explanation =
-                    "Les sites peuvent tester quelles polices de caractères sont disponibles dans votre navigateur. " +
-                            "La combinaison obtenue varie selon le système et l’appareil et peut donc compléter une empreinte numérique."
-            )
-
-        "media_devices" ->
-            AuditPedagogy(
-                title =
-                    "Micro et caméra",
-                explanation =
-                    "Même sans enregistrer votre voix ni votre image, le navigateur peut parfois révéler des informations sur les microphones, caméras ou autres périphériques présents. " +
-                            "Leur nombre, leur nom ou leurs identifiants peuvent devenir des indices supplémentaires."
-            )
-
-        "webrtc" ->
-            AuditPedagogy(
-                title =
-                    "Fuites réseau WebRTC",
-                explanation =
-                    "WebRTC est la technologie utilisée par de nombreux sites pour les appels audio et vidéo en direct. " +
-                            "Pour établir ces communications, le navigateur peut échanger des informations réseau. " +
-                            "Si elles sont trop précises, elles peuvent aider les sites que vous consultez à obtenir des informations supplémentaires sur votre connexion réelle malgré un VPN."
-            )
-
-        "dpr_consistency" ->
-            AuditPedagogy(
-                title =
-                    "Écran et densité de pixels",
-                explanation =
-                    "Les sites peuvent mesurer la taille logique de l’écran et sa densité de pixels. " +
-                            "Ces valeurs permettent de distinguer certaines familles d’appareils et peuvent être combinées avec d’autres caractéristiques pour affiner une empreinte."
-            )
-
-        "timezone_consistency" ->
-            AuditPedagogy(
-                title =
-                    "Localisation par fuseau horaire",
-                explanation =
-                    "Le fuseau horaire de votre navigateur donne un indice sur l’endroit où vous vous trouvez. " +
-                            "S’il indique votre zone réelle alors que votre adresse IP sort dans un autre pays, les sites que vous consultez peuvent repérer cette incohérence et en déduire l’usage d’un VPN."
-            )
-
-        "canvas" ->
-            AuditPedagogy(
-                title =
-                    "Empreinte graphique Canvas",
-                explanation =
-                    "Les sites que vous consultez peuvent demander au navigateur de dessiner une image invisible puis analyser le résultat. " +
-                            "De minuscules différences liées au matériel, au système et au moteur graphique peuvent produire une signature suffisamment stable pour participer au fingerprinting."
-            )
-
-        "audio" ->
-            AuditPedagogy(
-                title =
-                    "Empreinte audio",
-                explanation =
-                    "Le navigateur peut traiter un signal audio sans utiliser votre microphone. " +
-                            "De petites différences de calcul liées au matériel et au logiciel peuvent être mesurées et devenir un indice supplémentaire pour reconnaître votre appareil."
-            )
-
-        "platform" ->
-            AuditPedagogy(
-                title =
-                    "Système et architecture",
-                explanation =
-                    "Le navigateur peut révéler des informations générales sur la plateforme sur laquelle il fonctionne. " +
-                            "Ces données sont assez larges prises séparément, mais deviennent plus utiles au fingerprinting lorsqu’elles sont croisées avec d’autres indices."
-            )
-
-        "hardware_concurrency" ->
-            AuditPedagogy(
-                title =
-                    "Nombre de cœurs du processeur",
-                explanation =
-                    "Une page Web peut demander combien de cœurs logiques votre navigateur met à sa disposition. " +
-                            "Cette valeur donne une indication sur la puissance et la catégorie de l’appareil et peut contribuer à le différencier."
-            )
-
-        "max_touch_points" ->
-            AuditPedagogy(
-                title =
-                    "Caractéristiques tactiles",
-                explanation =
-                    "Le navigateur peut indiquer combien de points de contact tactiles l’appareil sait gérer simultanément. " +
-                            "Cette caractéristique aide les sites que vous consultez à mieux décrire le type de téléphone ou de tablette utilisé."
-            )
-
-        else ->
-            AuditPedagogy(
-                title =
-                    fallbackTitle,
-                explanation =
-                    "Cette mesure vérifie une information que les pages Web peuvent observer. " +
-                            "Prise seule, elle n’identifie pas forcément votre appareil, mais elle peut devenir utile lorsqu’elle est combinée avec de nombreux autres indices."
-            )
-    }
+    AuditCheckLine(
+        title =
+            check?.title
+                ?: fallbackTitle,
+        status =
+            check?.status
+                ?: PrivacyCheckStatus.NOT_TESTED
+    )
 }
 
 
-private fun pedagogicalAuditResult(
-    id: String,
+// ================================================================
+// AUDIT CHECK LINE
+// ================================================================
+
+@Composable
+private fun AuditCheckLine(
+    title: String,
     status: PrivacyCheckStatus
-): String {
+) {
+    val color =
+        when (status) {
+            PrivacyCheckStatus.PROTECTED ->
+                Color(0xFF42E695)
 
-    return when (id) {
+            PrivacyCheckStatus.PARTIAL ->
+                Color(0xFFFFC633)
 
-        "vpn_tunnel" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Votre trafic passe par le tunnel Deliriuum : les sites ne voient plus directement l’adresse IP publique de votre connexion habituelle."
+            PrivacyCheckStatus.EXPOSED ->
+                Color(0xFFFF5A6F)
 
-                PrivacyCheckStatus.EXPOSED ->
-                    "Le tunnel Deliriuum n’est pas actif : les sites peuvent voir l’adresse IP publique de votre connexion habituelle."
+            PrivacyCheckStatus.NOT_TESTED ->
+                Color.White.copy(alpha = 0.38f)
+        }
 
-                PrivacyCheckStatus.PARTIAL ->
-                    "Le tunnel semble actif, mais cette mesure ne permet pas de confirmer complètement que tout le trafic est protégé."
+    val icon =
+        when (status) {
+            PrivacyCheckStatus.PROTECTED ->
+                "✓"
 
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Le passage du trafic par le tunnel n’a pas pu être vérifié."
-            }
+            PrivacyCheckStatus.PARTIAL ->
+                "◐"
 
-        "tunnel_reachability" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Deliriuum a confirmé que le tunnel permet réellement d’atteindre Internet. La protection n’est donc pas seulement affichée comme active : le chemin réseau fonctionne."
+            PrivacyCheckStatus.EXPOSED ->
+                "!"
 
-                PrivacyCheckStatus.EXPOSED ->
-                    "Le tunnel ne fournit pas actuellement un chemin réseau utilisable vers Internet."
+            PrivacyCheckStatus.NOT_TESTED ->
+                "—"
+        }
 
-                PrivacyCheckStatus.PARTIAL ->
-                    "La connexion au tunnel existe, mais son fonctionnement réel n’a pas pu être confirmé complètement."
+    val statusLabel =
+        when (status) {
+            PrivacyCheckStatus.PROTECTED ->
+                "Protégé"
 
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Ce contrôle n’a pas encore pu vérifier le chemin réseau protégé."
-            }
+            PrivacyCheckStatus.PARTIAL ->
+                "Partiel"
 
-        "network_information" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Les sites que vous consultez n’ont pas accès aux informations détaillant le type ou les caractéristiques de votre connexion réseau."
+            PrivacyCheckStatus.EXPOSED ->
+                "Observable"
 
-                PrivacyCheckStatus.EXPOSED ->
-                    "Des informations sur votre connexion restent accessibles à la page Web et peuvent enrichir votre empreinte."
+            PrivacyCheckStatus.NOT_TESTED ->
+                "Non testé"
+        }
 
-                PrivacyCheckStatus.PARTIAL ->
-                    "Une partie des informations réseau est masquée, mais la protection n’est pas complète."
+    Row(
+        modifier =
+            Modifier.fillMaxWidth(),
+        verticalAlignment =
+            Alignment.CenterVertically
+    ) {
+        Box(
+            modifier =
+                Modifier
+                    .size(25.dp)
+                    .background(
+                        color.copy(alpha = 0.12f),
+                        CircleShape
+                    ),
+            contentAlignment =
+                Alignment.Center
+        ) {
+            Text(
+                text = icon,
+                color = color,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Black
+            )
+        }
 
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition des informations réseau n’a pas pu être vérifiée."
-            }
+        Spacer(
+            modifier =
+                Modifier.width(9.dp)
+        )
 
-        "webgl" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Les informations graphiques les plus identifiantes, comme le fabricant ou le modèle précis du matériel, ne sont pas révélées aux sites que vous consultez."
+        Text(
+            text = title,
+            color =
+                Color.White.copy(alpha = 0.78f),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Medium,
+            modifier =
+                Modifier.weight(1f)
+        )
 
-                PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent encore obtenir des informations suffisamment précises sur votre environnement graphique pour contribuer à votre empreinte."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "Certaines informations graphiques sont limitées, mais ce test ne permet pas de considérer la protection comme complète."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition des informations graphiques n’a pas pu être mesurée."
-            }
-
-        "fonts" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Le nombre de polices que les sites que vous consultez parviennent à distinguer est limité, ce qui réduit l’intérêt de ce signal pour reconnaître votre appareil."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent distinguer suffisamment de polices pour utiliser cette combinaison comme un indice supplémentaire."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "La détection des polices est limitée, mais elle n’est pas complètement neutralisée."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "La détection des polices n’a pas pu être mesurée."
-            }
-
-        "media_devices" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Les sites que vous consultez ne reçoivent pas les noms ni les identifiants permettant de caractériser précisément vos microphones, caméras ou autres périphériques."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Certaines informations sur vos périphériques restent accessibles et peuvent ajouter des indices à votre empreinte."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "L’accès aux informations sur les périphériques est limité, mais le test ne permet pas de conclure à une protection complète."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition des informations sur le micro, la caméra et les périphériques n’a pas pu être vérifiée."
-            }
-
-        "webrtc" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Le test WebRTC n’a révélé aucune information réseau exploitable permettant de contourner la protection du tunnel."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "WebRTC a révélé des informations réseau. Elles peuvent fournir aux sites que vous consultez des indices supplémentaires sur votre connexion réelle."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "WebRTC est limité, mais le test ne permet pas de garantir qu’aucune information réseau supplémentaire ne soit exposée."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Le comportement de WebRTC n’a pas pu être vérifié."
-            }
-
-        "dpr_consistency" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Les différentes mesures de densité d’écran racontent une histoire cohérente et ne créent pas d’incohérence supplémentaire facile à exploiter."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Les caractéristiques d’affichage restent directement observables et peuvent servir d’indice pour distinguer votre appareil."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "Le test ne peut pas confirmer complètement la cohérence des informations d’écran. Cela ne signifie pas nécessairement une fuite, mais le résultat reste incomplet."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Les caractéristiques d’affichage n’ont pas pu être vérifiées."
-            }
-
-        "timezone_consistency" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Le fuseau horaire visible par les sites que vous consultez est cohérent avec la localisation de sortie du VPN. Votre fuseau réel ne crée donc pas ici de contradiction évidente."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Le fuseau horaire visible ne correspond pas à la sortie VPN. Cette différence peut donner au site un indice sur votre localisation réelle ou sur l’usage d’un VPN."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "Le fuseau horaire a été observé, mais Deliriuum ne dispose pas de suffisamment d’informations pour confirmer sa cohérence avec la sortie VPN."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Le fuseau horaire visible par les sites n’a pas pu être mesuré."
-            }
-
-        "canvas" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Le test ne met pas en évidence de signature Canvas exploitable de manière évidente."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Le rendu Canvas fournit une signature stable qui peut devenir un élément de fingerprinting."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "Le Canvas fournit une mesure stable, mais ce test seul ne permet pas de déterminer si cette signature suffit réellement à vous distinguer."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "L’empreinte Canvas n’a pas pu être mesurée."
-            }
-
-        "audio" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Le test audio ne met pas en évidence de caractéristique exploitable de manière évidente pour distinguer votre appareil."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Des caractéristiques audio suffisamment précises restent visibles et peuvent participer à votre empreinte."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "Certaines caractéristiques du traitement audio restent mesurables. Le test ne suffit toutefois pas à déterminer à lui seul si elles permettent de vous reconnaître."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "L’empreinte audio n’a pas pu être mesurée."
-            }
-
-        "platform" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "La plateforme précise n’est pas directement révélée aux sites que vous consultez."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Le navigateur révèle encore une information générale sur votre système. Elle est peu discriminante seule, mais peut compléter d’autres indices."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "Une information générale sur la plateforme reste disponible, mais elle est limitée."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition de la plateforme n’a pas pu être vérifiée."
-            }
-
-        "hardware_concurrency" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Le nombre précis de cœurs logiques n’est pas exposé comme caractéristique distinctive."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent connaître le nombre de cœurs logiques déclaré par votre navigateur et l’utiliser comme un indice supplémentaire sur votre appareil."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "La valeur liée au processeur est partiellement limitée, sans être totalement masquée."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Le nombre de cœurs visible par les sites n’a pas pu être vérifié."
-            }
-
-        "max_touch_points" ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "La capacité tactile précise n’est pas exposée comme caractéristique distinctive."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent connaître la capacité tactile déclarée par l’appareil. Cette donnée aide à préciser le type de terminal utilisé."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "L’information tactile est limitée, mais reste partiellement observable."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Les caractéristiques tactiles n’ont pas pu être vérifiées."
-            }
-
-        else ->
-            when (status) {
-                PrivacyCheckStatus.PROTECTED ->
-                    "Ce contrôle indique que l’information testée est correctement limitée."
-
-                PrivacyCheckStatus.EXPOSED ->
-                    "Cette information reste visible par les pages Web et peut être combinée avec d’autres indices."
-
-                PrivacyCheckStatus.PARTIAL ->
-                    "La protection est incomplète ou le test ne permet pas de conclure avec suffisamment de certitude."
-
-                PrivacyCheckStatus.NOT_TESTED ->
-                    "Cette caractéristique n’a pas pu être vérifiée."
-            }
+        Text(
+            text = statusLabel,
+            color = color,
+            fontSize = 10.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
+
 // ================================================================
 // ICON BUTTON
 // ================================================================
