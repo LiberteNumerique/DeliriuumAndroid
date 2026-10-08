@@ -1,0 +1,3033 @@
+{
+  "locale": "lt",
+  "resources": {
+    "about_a_propos": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e5e154d07b357cc405581b61ceb49823970eff8139816268451a2946741abf54",
+      "translation": {
+        "value": "Apie"
+      }
+    },
+    "about_acces": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2398f6bdf8df1e7ae45fdd30bb98d205e507ac833089f29f42c51956fec66a54",
+      "translation": {
+        "value": "Prieiga"
+      }
+    },
+    "about_bien_plus_qu_un_simple_vpn": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a4da56dfa165a52360fee6ae3f5ea2170c819aa4af12d602edfe81afa49a700b",
+      "translation": {
+        "value": "DAUGIAU NEI TIK VPN"
+      }
+    },
+    "about_canvas_webgl": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3157538d7e6d92b23648de30cf2758a041f5a0f2917f717a1cafac7fb5803820",
+      "translation": {
+        "value": "Canvas ir WebGL"
+      }
+    },
+    "about_ce_que_deep_shield_reduit_ou_bloque": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3ce6c59d58317cd345b6889a7d53225859b86d9e623e6f6fac85195f4b85cd1a",
+      "translation": {
+        "value": "Ką Deep Shield sumažina arba blokuoja"
+      }
+    },
+    "about_ce_que_deliriuum_ne_pretend_pas_faire": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ebc3246f5ebae2c906a6604f37bc3a2487054e1da0b81bc311e67ffaf92dae7d",
+      "translation": {
+        "value": "Ko Deliriuum nesiekia daryti"
+      }
+    },
+    "about_coherence_geographique": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2e7feda9db39f6304cbb473fa150cf8c9a3738455cd1d05238b672c219086626",
+      "translation": {
+        "value": "Geografinis nuoseklumas"
+      }
+    },
+    "about_deep_shield": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4516b54b6d4f4c85702ec5ebfacd9f68c15440658d7dfac9747261bc53596025",
+      "translation": {
+        "value": "Deep Shield"
+      }
+    },
+    "about_deep_shield_reduit_les_informations_graphiques_exploitab": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "23d6740568fe72825b901a22311a87d2dcd1ca220bc89935267f2a55dc06b405",
+      "translation": {
+        "value": "Deep Shield sumažina grafinę informaciją, kurią galima panaudoti pirštų atspaudui sukurti. Jautrus WebGL atvaizdavimas paslepiamas, o Canvas taikomos Gecko apsaugos nuo pirštų atspaudų."
+      }
+    },
+    "about_deliriuum_est_gratuit_et_ne_repose_pas_sur_la_revente_de": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "bfb60fcd37553e647fb414bf29e5f29b4d1f34aeaaf3de33d34fb0c77012471a",
+      "translation": {
+        "value": "Deliriuum yra nemokama ir nesiremia duomenų perpardavimu. Projektą finansuoja bendruomenės aukos, o norint naudotis programėle aukoti neprivaloma."
+      }
+    },
+    "about_deliriuum_reduit_le_pistage_et_certaines_possibilites_de": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4e93124679fc4bd1f10ced37a01721cb7a4ea32cd39c22c60cd42ee6c21a8bb7",
+      "translation": {
+        "value": "Deliriuum sumažina sekimą ir tam tikras susiejimo galimybes, tačiau jokia naršyklė negali garantuoti visiško anonimiškumo. Jei prisijungiate prie asmeninės paskyros, atitinkama paslauga ir toliau jus atpažins pagal šią paskyrą. Tam tikros naršyklės, tinklo protokolo ar sistemos savybės taip pat gali likti matomos."
+      }
+    },
+    "about_deliriuum_reunit_dans_une_meme_application_un_tunnel_vpn": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "309b5ee7a7e8b3a7cb2f6395a8615e5252605ac4d62c3f0f9d2756c6c0174d87",
+      "translation": {
+        "value": "Deliriuum vienoje programėlėje sujungia VPN tunelį, GeckoView naršyklę, apsaugotą naudojant Deep Shield, paieškos sistemą, tiesioginį naršymą internete ir prieigą prie pagrindinių socialinių tinklų."
+      }
+    },
+    "about_deliriuum_s_appuie_sur_les_mecanismes_anti_fingerprintin": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8d7969f000f2b9c67285a2366e576c995ff53e365d6db057c8ae26c826bfe1bd",
+      "translation": {
+        "value": "Deliriuum remiasi Gecko apsaugos nuo pirštų atspaudų nustatymo mechanizmais ir prideda specialų nuoseklumo sluoksnį savo VPN aplinkai."
+      }
+    },
+    "about_dns_route_avec_la_connexion_vpn": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a0e7a9fd7e12b455aae5cf186db95cfd845f8ef60b578d3882bacfdddcbba723",
+      "translation": {
+        "value": "DNS nukreipiamas per VPN ryšį"
+      }
+    },
+    "about_donnee_revendue": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "67128e9ddc3f8fe97f0f48cfc1f48459e95651316d79732dd13c6bb7c1349aad",
+      "translation": {
+        "value": "Perparduodami duomenys"
+      }
+    },
+    "about_empreinte_audio_reduite": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "83e281342a38a1173161fcb2dd2391ea66d606b32d191b5f115d2637b67e3b48",
+      "translation": {
+        "value": "Sumažintas garso pirštų atspaudas"
+      }
+    },
+    "about_exposition_des_identifiants_de_peripheriques_media": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "cf7e45f76b3011cf923de73baa2e8e9ab7626670e1f1909e800b8e97a90fe220",
+      "translation": {
+        "value": "Medijos įrenginių identifikatorių atskleidimas"
+      }
+    },
+    "about_exposition_directe_de_l_adresse_ip_habituelle_dans_la_na": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "596f8b4c64143c2fb161d24f6a44916fbf3e00458d685227381446460367d9ca",
+      "translation": {
+        "value": "Tiesioginis įprasto IP adreso atskleidimas naršant su apsauga"
+      }
+    },
+    "about_faire_un_don": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "61989025dd3b837e41a92aa68b2627ccd3b6b5047ef39920b59389972baf8467",
+      "translation": {
+        "value": "Paaukoti  ➔"
+      }
+    },
+    "about_fuite_webrtc_de_candidats_reseau": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "256dcaa1c678aaf3caa357cc1645c6b0569ad248cbb311759a42d8e72446bd8f",
+      "translation": {
+        "value": "WebRTC tinklo kandidatų nutekėjimas"
+      }
+    },
+    "about_geckoview_inaccessible_hors_protection": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0ad0b41e5cd4592befad36d83b7dbf3dd2b576dafd01cbd0eafe734cc859cc8a",
+      "translation": {
+        "value": "GeckoView nepasiekiama be apsaugos"
+      }
+    },
+    "about_identification_precise_du_gpu_via_webgl": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f625a9519dad767c43d22d5921d08ee1070826f6f509afd649975c01a1580bb7",
+      "translation": {
+        "value": "Tikslus GPU identifikavimas naudojant WebGL"
+      }
+    },
+    "about_incoherence_evidente_entre_ip_vpn_et_fuseau_horaire": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9c85dae29edb3d118474ffe8da097a630d085e57b78e282ae7f654b3b78289af",
+      "translation": {
+        "value": "Akivaizdus VPN IP adreso ir laiko juostos neatitikimas"
+      }
+    },
+    "about_informations_reseau_reduites": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "12454ba00c8d18354557b1264bcc8e539130d514ba4cfca45db6ae6388d68177",
+      "translation": {
+        "value": "Sumažinta tinklo informacija"
+      }
+    },
+    "about_inventaire_detaille_des_polices_disponibles": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a84532d4cfba35cc443dfef0ee6d3748c4f1f6109fb8d3b7dcfc51191409bc50",
+      "translation": {
+        "value": "Išsamus prieinamų šriftų sąrašas"
+      }
+    },
+    "about_ipv4_et_ipv6_pris_en_charge": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4ccb34dff413d4316e821d986c8f628092e9bdc2b47b927b074c393697499b46",
+      "translation": {
+        "value": "Palaikomi IPv4 ir IPv6"
+      }
+    },
+    "about_l_api_network_information_n_est_pas_exposee_au_contenu_w": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "11aad932ac7a66af0619ff923a462298e38d0bcccc606b064b95aab13f2b61ab",
+      "translation": {
+        "value": "Network Information API žiniatinklio turiniui neatskleidžiama, todėl tiesiogiai neatskleidžiamas ryšio tipas, delsa ar numatomas greitis."
+      }
+    },
+    "about_l_app_pour_survivre_au_deliristan": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "24b01cb813a92d1caf764c0018c413b8c4bd42b878667bb5a8d880159eb7018b",
+      "translation": {
+        "value": "PROGRAMĖLĖ, PADEDANTI IŠGYVENTI DELIRISTANE"
+      }
+    },
+    "about_l_ensemble_de_polices_detectables_par_les_pages_est_fort": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f9adade9ddf410417082a6c23d43361560da36d45a4961bb31bfa3190814b530",
+      "translation": {
+        "value": "Puslapiams aptinkamų šriftų rinkinys gerokai sumažintas, todėl sumažėja įprastas įrenginio identifikavimo šaltinis."
+      }
+    },
+    "about_le_navigateur_adapte_certaines_informations_notamment_le": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "986ae5d648f65df24bd64263d014025a099fd22fcb38bfef40fe767f4c8f0f70",
+      "translation": {
+        "value": "Naršyklė pritaiko tam tikrą informaciją, ypač laiko juostą, pagal VPN išėjimo profilį, kad būtų išvengta akivaizdžių matomo IP adreso ir naršyklės aplinkos neatitikimų."
+      }
+    },
+    "about_le_projet_vit_grace_a_vous": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "52a375e840b4e31e5fc3cdbe76578057b3e8d0b7fbfeb0d35a1048d74e24d8f8",
+      "translation": {
+        "value": "Projektas gyvuoja jūsų dėka"
+      }
+    },
+    "about_le_vpn_agit_sur_votre_adresse_ip_deep_shield_agit_sur_le": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "40b566e390713ae91f0787ba88cd1399c3534d003140643091fbd1cdba737f17",
+      "translation": {
+        "value": "VPN veikia jūsų IP adresą. Deep Shield veikia informaciją, kurią tinklalapiai gali panaudoti jūsų įrenginiui atskirti: grafiką, garsą, šriftus, įrenginius, tinklą ir aplinką."
+      }
+    },
+    "about_les_candidats_reseau_webrtc_susceptibles_de_reveler_des": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b2bba3d8506ce6751f2610dda5b9bb8974eccfd7e8615abe9dbec8a302ece8f9",
+      "translation": {
+        "value": "Tinklo WebRTC kandidatai, galintys atskleisti informaciją apie vietinį tinklą, blokuojami arba gerokai apribojami."
+      }
+    },
+    "about_les_informations_exposees_par_audiocontext_sont_normalis": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "149e2b4bc14fc927ed71028edea1b1d2c965c5ed0dd560d2331b07ac65925b6c",
+      "translation": {
+        "value": "AudioContext atskleidžiama informacija normalizuojama, kad būtų sumažinti skirtumai, susiję su garso įranga."
+      }
+    },
+    "about_les_libelles_et_identifiants_de_micro_et_camera_ne_sont": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d05edbbcc8800c2d25212b7ae0b1e3bfe2fa542474552186cf8a7dd14e00c90b",
+      "translation": {
+        "value": "Mikrofono ir kameros pavadinimai bei identifikatoriai puslapiams neatskleidžiami, kol nesuteiktas leidimas, todėl sumažėja pirštų atspaudams nustatyti prieinama informacija."
+      }
+    },
+    "about_logo_deliriuum": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "eeb2906145752b6fe3b3943385f01cb75b1379de0182f8d6786c2fec66bbcfea",
+      "translation": {
+        "value": "Deliriuum logotipas"
+      }
+    },
+    "about_lorsque_la_protection_est_active_la_connexion_passe_par": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1429311999e247cbaa7aecad4c130636a8404c93a4831a0fd8eeafc3e5874bac",
+      "translation": {
+        "value": "Kai apsauga aktyvi, ryšys perduodamas per WireGuard tunelį. Svetainės mato išėjimo serverio IP adresą, o ne įprastą viešąjį jūsų ryšio IP adresą."
+      }
+    },
+    "about_navigation_deliriuum_suspendue_si_le_tunnel_est_perdu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6c8a564f290d962081de2467ce03b469be9fe82b30c16951be295015af06cee7",
+      "translation": {
+        "value": "Naršymas naudojant Deliriuum sustabdomas praradus tunelį"
+      }
+    },
+    "about_navigation_par_adresse": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c93fc132b5f4829a5a75d4529f3964fde3734af55534da79bf48de2f4d5ddf38",
+      "translation": {
+        "value": "Naršymas pagal adresą"
+      }
+    },
+    "about_peripheriques_media": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "23a9fe8c0164b69c5455010e98faa7fc0364f31243113cf773284ae85437d7f7",
+      "translation": {
+        "value": "Medijos įrenginiai"
+      }
+    },
+    "about_polices_limitees": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "299470fc161d6223473465fb465196aacd59d9343332c0f7a931745317855198",
+      "translation": {
+        "value": "Riboti šriftai"
+      }
+    },
+    "about_protection_de_navigation": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "12bab6d44811dc8b4cf3efad32270ce78c46e24e747f136859caca9d244924b6",
+      "translation": {
+        "value": "Naršymo apsauga"
+      }
+    },
+    "about_protections_natives_gecko": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "7d2267babcbe04ccfae54752cdc0ccdb803fb35a5f8a6dc15a4510510e310cb2",
+      "translation": {
+        "value": "Integruotos Gecko apsaugos"
+      }
+    },
+    "about_recherche_web_integree": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6fa6a0dfdc2b94fada2129c95d7499606ed2cabf5880f0721bf856ee82a4290d",
+      "translation": {
+        "value": "Integruota žiniatinklio paieška"
+      }
+    },
+    "about_reseaux_sociaux_dans_le_navigateur_protege": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1713e902fd758110e4e91cc6c350a49a7fc39dac9b925d8d2ffa73a928e90e24",
+      "translation": {
+        "value": "Socialiniai tinklai apsaugotoje naršyklėje"
+      }
+    },
+    "about_si_le_tunnel_devient_indisponible_deliriuum_suspend_auto": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9756e4119501179d88dd3715716f18fbb8a637eff9e9328566d4c1ad4344d9b1",
+      "translation": {
+        "value": "Jei tunelis tampa nepasiekiamas, Deliriuum automatiškai sustabdo integruotą naršyklę, paiešką ir prieigą prie žiniatinklio. Kitos telefono programėlės ir jų interneto prieiga nėra blokuojamos."
+      }
+    },
+    "about_text": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "178eb2cfd2836c129a6d5ca4fba7228007f24c353980e69142f161fb3f5307b8",
+      "translation": {
+        "value": "✓  %1$s"
+      }
+    },
+    "about_un_espace_web_protege": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e1f97c8969320818d79ac4ee61c966ebbcbe58a823c5b8691a2563f09181a994",
+      "translation": {
+        "value": "Apsaugota žiniatinklio erdvė"
+      }
+    },
+    "about_un_tunnel_vpn_pour_masquer_votre_adresse_ip_un_navigateu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "df67d7d3ba725901b277a19efaa2c4f29c9bb7beaf97ff91d584ea7a44c6ff17",
+      "translation": {
+        "value": "VPN tunelis jūsų IP adresui paslėpti. Apsaugota naršyklė jūsų skaitmeniniam pėdsakui sumažinti."
+      }
+    },
+    "about_watchdog_reseau_actif": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "75ea902c84baf8c1a920e66801494df3891545088b2d79420bc83089b655add5",
+      "translation": {
+        "value": "Aktyvi tinklo stebėsena"
+      }
+    },
+    "about_webrtc_limite": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "be43ad03b12359db674c41d3b49d4c1a88c0b9b9928e10224811e662edbdbffd",
+      "translation": {
+        "value": "Ribotas WebRTC"
+      }
+    },
+    "account_annuler": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5f593fbec8d6fcd0b4bc5f2e550011188e89184c8cc8b76288d7533e99b54a32",
+      "translation": {
+        "value": "Atšaukti"
+      }
+    },
+    "account_cette_action_est_definitive_confirme_avec_ton_mot_de_pas": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f232570e9f9d5460fa79c27bf9d321c4d7dabc5eddb4b41d149b4d0723d50736",
+      "translation": {
+        "value": "Šis veiksmas yra negrįžtamas. Patvirtink jį savo slaptažodžiu."
+      }
+    },
+    "account_changer_mon_mot_de_passe": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3888b24dad4bdecf4bb58c4206b4451e7a1c56a7bfd1b255c12c29ce7307f7d0",
+      "translation": {
+        "value": "Pakeisti slaptažodį"
+      }
+    },
+    "account_changer_mon_mot_de_passe_c550fb1": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a46770c5a66e00eed238f4205d8ef65d08654a0c68bf3ce56eab487333ee856d",
+      "translation": {
+        "value": "🔑  Pakeisti slaptažodį"
+      }
+    },
+    "account_chargement_du_compte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e1164f3c9b5433c3265524ff70fbeeb64ea97da42dbd68e51946175abe552228",
+      "translation": {
+        "value": "Įkeliama paskyra…"
+      }
+    },
+    "account_compte_verifie": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "dd49d708dd5a1630167a3eb15504c2e2f8b2c39d92edad4b0a52aa2c6c6400a2",
+      "translation": {
+        "value": "✅ Paskyra patvirtinta"
+      }
+    },
+    "account_envoyer_le_lien_securise": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "82cb849211e4aea16dd4b466ede9753b4b60d6feaae489c336c32242f125e5be",
+      "translation": {
+        "value": "Siųsti saugią nuorodą"
+      }
+    },
+    "account_erreur_inconnue": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "72b5ef53edfd17ba698d3b0b9e65ea9d427a1bc93de2d21f1cdfe2ca49716f0d",
+      "translation": {
+        "value": "Nežinoma klaida."
+      }
+    },
+    "account_impossible_de_contacter_le_serveur": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2b918c1ec865faf27465565ce5eca0e047a7759a2637ad559cfed8c10a113c63",
+      "translation": {
+        "value": "Nepavyksta susisiekti su serveriu."
+      }
+    },
+    "account_mot_de_passe": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "20f319c08d6f395b028ddea9301f7e555fabc232e9a1ec4a87d8b00c54c5a002",
+      "translation": {
+        "value": "Slaptažodis"
+      }
+    },
+    "account_non_connecte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a0f6bfaa73cf95fa7eb8669c004f82a85cf25e21d96a23e782083d28f884b8a2",
+      "translation": {
+        "value": "Neprisijungta"
+      }
+    },
+    "account_pour_des_raisons_de_securite_deliriuum_t_envoie_un_lien": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b73edf3053aa09fa8add946bf23e5093264f0801632dab67db660c7af5cda932",
+      "translation": {
+        "value": "Saugumo sumetimais Deliriuum siunčia tau nuorodą į tavo paskyros adresą. Naudodamasis šia nuoroda gali pasirinkti naują slaptažodį neatskleisdamas senojo."
+      }
+    },
+    "account_profil_indisponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f8a416cedceb51d8be5c85db57e30052543f39ac9918af4c5fac2da5bfbf83fa",
+      "translation": {
+        "value": "Profilis nepasiekiamas"
+      }
+    },
+    "account_reessayer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fd27b9cbf6e9b6c69106022c87bcf695cce31b4e2df078bfad0c5de56c8f085b",
+      "translation": {
+        "value": "↻  Bandyti dar kartą"
+      }
+    },
+    "account_supporter_du_projet": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5f3a6d3b601442cfa4d3557a381e1ad09e8211429946c72308623743b44d8154",
+      "translation": {
+        "value": "💚 Paremti projektą"
+      }
+    },
+    "account_supprimer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9b7854a21397fd2bed008b6580863fd6d025ab80673ad242d0e44d00c62f8c92",
+      "translation": {
+        "value": "Ištrinti"
+      }
+    },
+    "account_supprimer_mon_compte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "01508582462ad642a1fd7b49c6c8bcec03ac9ef15b3cdfbe62082956451d2272",
+      "translation": {
+        "value": "🗑️  Ištrinti paskyrą"
+      }
+    },
+    "account_verification_en_attente": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "aaf3c2306dcdf6742655b66081054127e19fa5ae1c8cf3334db1fcf9f19a0184",
+      "translation": {
+        "value": "⏳ Laukiama patvirtinimo"
+      }
+    },
+    "api_client_could_not_read_the_server_response": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e780f8a959e2273081b858362c345acf97a8821e2d06d54f6461e9fcf10e786d",
+      "translation": {
+        "value": "Nepavyko perskaityti serverio atsako."
+      }
+    },
+    "api_client_invalid_url": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2af38001bc499e9188b2176488f791f656346eb25394c04e3426d21a228b8d46",
+      "translation": {
+        "value": "Neteisingas URL."
+      }
+    },
+    "api_client_network_failure": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0c7c3afbe79e7db90857620fe2948f369aea8ea1e2f4e83e11f1f32f6da54f24",
+      "translation": {
+        "value": "Tinklo triktis: %1$s"
+      }
+    },
+    "api_client_server_error": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9c29c2099d7a417549347aab0c5e7601e4fc3cd4dfcff4787768657d00437b3f",
+      "translation": {
+        "value": "Serverio klaida (%1$s)."
+      }
+    },
+    "api_client_session_expired_please_log_in_again": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "124003f2386aeab5f9792b4cf1a692d066d6e2c34d3fe81ceceae440bc9e2e59",
+      "translation": {
+        "value": "Sesija baigėsi, prisijunkite dar kartą."
+      }
+    },
+    "app_name": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "83d1ecf329bd2e0d1e6c69bf6560b03f6716dd4ba7b54179bc842db3dd07dcfb",
+      "translation": {
+        "value": "Deliriuum"
+      }
+    },
+    "auth_confirmer_le_mot_de_passe": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "df67e852379973da84c99623e06a3867e695a726dac574fd73566071985770e9",
+      "translation": {
+        "value": "Patvirtink slaptažodį"
+      }
+    },
+    "auth_connexion": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "04c3df8bad62de112ebc3c55ea0046ba952e3256f8f8fbb1d9026728e106a6bb",
+      "translation": {
+        "value": "Prisijungti"
+      }
+    },
+    "auth_envoyer_le_lien": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d57a419a1ecd92942d6d1ea874256441d3163bebe91c09b8b257bae1986cabbc",
+      "translation": {
+        "value": "Siųsti nuorodą"
+      }
+    },
+    "auth_fallback_email_address": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3c3b07be19e6e92c2ed411c8b21ae6944ddf942bb6ac7f8b64f41c2a4bc84a34",
+      "translation": {
+        "value": "tavo adresas"
+      }
+    },
+    "auth_impossible_d_envoyer_le_lien": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "084ff8e75bff0c35245341d8f95f3717e88cd76bb4ecbfdd7b95952dd5d5eb3f",
+      "translation": {
+        "value": "Nepavyksta išsiųsti nuorodos."
+      }
+    },
+    "auth_indique_l_adresse_e_mail_de_ton_compte_tu_recevras_un_li": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5d4e085487741101b0c9d19056df2a6df027b83795b739422638cfd93799adba",
+      "translation": {
+        "value": "Įvesk savo paskyros el. pašto adresą. Gausi saugią nuorodą naujam slaptažodžiui pasirinkti."
+      }
+    },
+    "auth_les_deux_mots_de_passe_correspondent": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ccb8a7b465255ca341055a1bff0cf3523e21eb359de9e88b18ec98bb400b2012",
+      "translation": {
+        "value": "Abu slaptažodžiai sutampa"
+      }
+    },
+    "auth_manager_connexion_impossible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "bf9045bb16f22720ddfe3c7e6832d7a3abc2f8bbd3d5ff157dc10f33b9166c1a",
+      "translation": {
+        "value": "Nepavyko prisijungti."
+      }
+    },
+    "auth_manager_impossible_d_actualiser_le_compte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fd0fb1a075af12f4511b96f15accc4d18d99c2628197a1cac408faf2500cd30a",
+      "translation": {
+        "value": "Nepavyko atnaujinti paskyros."
+      }
+    },
+    "auth_manager_impossible_de_creer_le_compte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8b5f18d792dc5dbf0c2169e89908a8ccc9f0509dfed6fe2ed299c772cb3d41fc",
+      "translation": {
+        "value": "Nepavyko sukurti paskyros."
+      }
+    },
+    "auth_manager_impossible_de_renvoyer_l_email": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "10dbe201e5bacaf118d580e6a5e8cb2112a0deaefbbca8e5e157a3f65946e31b",
+      "translation": {
+        "value": "Nepavyko išsiųsti el. laiško dar kartą."
+      }
+    },
+    "auth_manager_service_temporairement_indisponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d1ae46c5813a2711fe47445b5203f7046d1d5bde12faf8e6764cb1518aab28f8",
+      "translation": {
+        "value": "Paslauga laikinai nepasiekiama."
+      }
+    },
+    "auth_mot_de_passe_oublie": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d9b68ee394ac3a9015bdc02f841b6b309603b3b77ae0ef05a56db26b6f4ab584",
+      "translation": {
+        "value": "Pamiršai slaptažodį?"
+      }
+    },
+    "auth_on_en_a_besoin_pour_creer_ton_tunnel_securise_personnel": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4b9265a0f31589860d4888eaf1cba2629c3e8454ef0a9f44de027ef253dc97c5",
+      "translation": {
+        "value": "Jos reikia tavo asmeniniam saugiam tuneliui sukurti — kaip rakto, kuris atrakina tik tavo duris. Daugiau nieko neprašome."
+      }
+    },
+    "auth_renvoyer_le_lien": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3952ac9717735fd48f9458dd9b7c85b41ed3ffebb04183b8bd08f46c17336a14",
+      "translation": {
+        "value": "Siųsti nuorodą dar kartą"
+      }
+    },
+    "auth_retour_a_la_connexion": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "20627add791b1f927a01537f0b53ed2291c8113f32e72f8787b856f610200c8d",
+      "translation": {
+        "value": "Grįžti į prisijungimą"
+      }
+    },
+    "auth_s_inscrire": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0b780d340b4cc1bfad3aa24cd0a37d620d55187d3389526d6d373a30401e8d82",
+      "translation": {
+        "value": "Registruotis"
+      }
+    },
+    "auth_text_12_caracteres_minimum": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f1a2f73a334538ace7e07af8e3d528e993b659b4ee8dd3678f91c4495d39fcbb",
+      "translation": {
+        "value": "Mažiausiai 12 simbolių"
+      }
+    },
+    "auth_un_chiffre": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "628b752a1871b7afc2113ac658d6d7eefa860d5032b332f190f1300198fa9dcc",
+      "translation": {
+        "value": "Vienas skaitmuo"
+      }
+    },
+    "auth_un_compte_pour_activer_ta_protection": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8065d4018080dce1f729617f242c1d2c4da799b791922671a650378e7ced1dfb",
+      "translation": {
+        "value": "Paskyra tavo apsaugai suaktyvinti"
+      }
+    },
+    "auth_un_lien_de_confirmation_a_ete_envoye_a_clique_le_puis_re": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "775472f831b7fad951ff6ea5992b68acf9286889e0ff18381a15ddd18b2946f9",
+      "translation": {
+        "value": "Patvirtinimo nuoroda išsiųsta adresu %1$s. Spustelėk ją, tada grįžk čia prisijungti."
+      }
+    },
+    "auth_un_symbole": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ad892d3b374befc01de0f8061aa1d9a2d8010cb82cbc158160a3d8a0abe21a01",
+      "translation": {
+        "value": "Vienas simbolis (!, ?, #, …)"
+      }
+    },
+    "auth_une_majuscule": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "01c89bbb1d14fad12d98711e2e07b9e34a4ae4ce48081f9dd1bd10b15399d811",
+      "translation": {
+        "value": "Viena didžioji raidė"
+      }
+    },
+    "auth_verifie_ta_boite_mail": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9ba7052204d6381ae9211f265590ad53ec84184e6a46db7f83fdb91befca07da",
+      "translation": {
+        "value": "Patikrink savo el. paštą"
+      }
+    },
+    "browser_a_refuse_la_connexion_le_site_est_peut_etre_hors_service": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9ca25ea68f8379196cc4dac00a0d78c19270ced6b939f842bcc7d54170284789",
+      "translation": {
+        "value": "%1$s atsisakė prisijungti. Svetainė gali neveikti."
+      }
+    },
+    "browser_adresse_incorrecte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f4ed1f0cb2a4ec5520a9021d9b9e30500bf96ef501f2e9f3c197c192abda2818",
+      "translation": {
+        "value": "Neteisingas adresas"
+      }
+    },
+    "browser_ajoute": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2763e81f6deda903100252a7ae6d9b1668afa7f09c66ec0c304fdeb8f8e335ba",
+      "translation": {
+        "value": "Pridėta"
+      }
+    },
+    "browser_ajouter": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b2c6cf808ba1cfaf1e511c1eaac0a52137822d17d329a29f76d41b264ba69ba0",
+      "translation": {
+        "value": "Pridėti"
+      }
+    },
+    "browser_aucun_espace_disponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c373f0844b98762f3a94e14089aad38fc08ae34b1319746c53112201a439895d",
+      "translation": {
+        "value": "Nėra laisvų erdvių"
+      }
+    },
+    "browser_aucune_connexion": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f417d339e70389cd47c590c8d13496ac0e2047dd4cce05ce839a88beafc2d30f",
+      "translation": {
+        "value": "Nėra ryšio"
+      }
+    },
+    "browser_cette_adresse_n_est_pas_valide_tu_peux_lancer_une_recher": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a0c7824129384910088ef4d7facafba41bc6a7acb96dfb31b56b003edf629e1d",
+      "translation": {
+        "value": "Šis adresas negalioja. Vietoj to gali pradėti paiešką."
+      }
+    },
+    "browser_connexion_interrompue": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6c61d0f043ffc0851c7c8476d64173087fda442ce58d486e2c5b23a17df2f870",
+      "translation": {
+        "value": "Ryšys nutrauktas"
+      }
+    },
+    "browser_connexion_non_securisee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f196a60130c0260a918c89ffd964b3b39c73d0c10b405b8d71301f870e812968",
+      "translation": {
+        "value": "Nesaugus ryšys"
+      }
+    },
+    "browser_connexion_refusee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5623f191d908b4d347fdce479109d400b1651c9fc1dd2f7b0424f31b59405339",
+      "translation": {
+        "value": "Ryšys atmestas"
+      }
+    },
+    "browser_espace_personnalise": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f3c0616043b2e5381e5c6614253604520fc5f7e97fe750d304e4fc5444c3a3c8",
+      "translation": {
+        "value": "Asmeninė erdvė"
+      }
+    },
+    "browser_l_adresse_n_existe_pas_ou_comporte_une_faute_de_frappe": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "35106a3392b59749c6b0bb8159328b470d35a0e210769ce5e3f1ded1dc53dacf",
+      "translation": {
+        "value": "Adresas %1$s neegzistuoja arba jame yra rašybos klaida."
+      }
+    },
+    "browser_le_certificat_de_pose_probleme_par_precaution_la_page_n": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4affc01476e4bbb3f90fb04df89e89214fc8225b8a6320ecc32bb4fc0e1d33c1",
+      "translation": {
+        "value": "Iškilo problemų dėl %1$s sertifikato. Saugumo sumetimais puslapis nebuvo parodytas."
+      }
+    },
+    "browser_le_chargement_de_a_ete_interrompu_avant_la_fin": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a3991e824b92b009c856ceb85c2e07c3036624dc6046b8f3ef6aa9cbe5c29bde",
+      "translation": {
+        "value": "%1$s įkėlimas buvo nutrauktas nebaigus."
+      }
+    },
+    "browser_met_trop_de_temps_a_repondre_la_connexion_est_peut_etre": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "bab9f9bbc77054ed600cde6946034c3a50c0840445451e865faa408fef245ba9",
+      "translation": {
+        "value": "%1$s atsako per ilgai. Ryšys gali būti lėtas."
+      }
+    },
+    "browser_n_a_pas_pu_etre_charge": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "964213730acfaac16bf2412f606e4f751fae878f21faa3b04348675543ca1411",
+      "translation": {
+        "value": "Nepavyko įkelti %1$s."
+      }
+    },
+    "browser_navigation_suspendue": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b8b97be28edf2a4f3b90658e37b985200eec863eb7fa5dba4e802d062d1e4b14",
+      "translation": {
+        "value": "Naršymas sustabdytas"
+      }
+    },
+    "browser_page_non_affichee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9c30ef77ab9eb3cf3b818524dddf763b46f47cc7c2d5b022a241820cadce0e5e",
+      "translation": {
+        "value": "Puslapis nerodomas"
+      }
+    },
+    "browser_pas_de_reponse": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c62757ed1cad004353ceba25a39402e3bb01a858a5eaff4c95c765f3f4461690",
+      "translation": {
+        "value": "Atsako nėra"
+      }
+    },
+    "browser_rechercher_sur_duckduckgo": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a3918ce2e077d26d0dce7cbbe01852d29ca865d62814b07613328ab2da67ea27",
+      "translation": {
+        "value": "Ieškoti naudojant DuckDuckGo"
+      }
+    },
+    "browser_reessayer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "347b6050b79f8fac68ba8e99593527200909f45482a9c0fa369402a317372678",
+      "translation": {
+        "value": "Bandyti dar kartą"
+      }
+    },
+    "browser_site_introuvable": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "53f25ede1e27a3cf87c21272528edd58a2e99028ba07e572be1c6edbd4837d2a",
+      "translation": {
+        "value": "Svetainė nerasta"
+      }
+    },
+    "browser_ton_appareil_semble_hors_ligne_verifie_ton_wifi_ou_tes_d": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1e7eaa63286b4531d1dfcb458ceddc1aa5d825c7a7ad7d45e9947bde7d3c3849",
+      "translation": {
+        "value": "Atrodo, kad tavo įrenginys neprisijungęs. Patikrink „Wi‑Fi“ arba mobiliuosius duomenis."
+      }
+    },
+    "faq_comment_supprimer_mon_compte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "55e1618ae8c2a40118510e2f64e294382488af0cf191edac4f01c2bcb5f46664",
+      "translation": {
+        "value": "Kaip ištrinti savo paskyrą?"
+      }
+    },
+    "faq_deliriuum_garde_t_il_un_historique_de_ma_navigation": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3b30703653b14fc1294f96e981a4a32a70b2325096d6fd5b5de7d9f2e99c81ec",
+      "translation": {
+        "value": "Ar Deliriuum saugo mano naršymo istoriją?"
+      }
+    },
+    "faq_deliriuum_peut_il_voir_mes_mots_de_passe_des_reseaux_soc": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "124e53680a998c61a8d568ebf98ab9c19d8c9bf301653e0a71a9e40eb7c44295",
+      "translation": {
+        "value": "Ar Deliriuum gali matyti mano socialinių tinklų slaptažodžius?"
+      }
+    },
+    "faq_directement_depuis_l_app_dans_mon_compte_supprimer_mon_c": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8f5f6818d7b0a3a2e7346135b6a543b9433168a4c24f465d683a999fb08f0ad5",
+      "translation": {
+        "value": "Tiesiogiai programėlėje, skiltyje „Mano paskyra“ → „Ištrinti paskyrą“, patvirtinus slaptažodžiu. Ištrynimas įvyksta iškart ir yra negrįžtamas — visi susiję duomenys ištrinami."
+      }
+    },
+    "faq_est_ce_legal_d_utiliser_un_vpn": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a2497445099dc701593da91daf337c71e8f1ad6d1da018e49a49c858b294e3e2",
+      "translation": {
+        "value": "Ar naudoti VPN yra teisėta?"
+      }
+    },
+    "faq_le_code_source_est_il_consultable": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "81ae1e9a8b7c13aad67fa4caffc55968af113beb53d63590b6a894f3e0739cac",
+      "translation": {
+        "value": "Ar galima peržiūrėti šaltinio kodą?"
+      }
+    },
+    "faq_les_reseaux_sociaux_deviennent_inaccessibles_depuis_l_ap": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d457b4a6beea9f9b9894116a210245fbbda2eb8cf64e26895aa223ba60e76890",
+      "translation": {
+        "value": "Socialiniai tinklai programėlėje tampa nepasiekiami, kol apsauga vėl nesuaktyvinama — kad netyčia nenaršytum be apsaugos."
+      }
+    },
+    "faq_non_aucune_trace_des_sites_visites_des_horaires_de_conne": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1ad42757bfc423422e035b020c885a35a8f0ce3fe5307ef289592839d7785746",
+      "translation": {
+        "value": "Ne. Pasibaigus tavo seansui nei aplankytų svetainių, nei prisijungimo laiko, nei duomenų kiekio pėdsakai neišsaugomi."
+      }
+    },
+    "faq_non_ton_mot_de_passe_est_chiffre_en_https_directement_pa": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5e40cb28e6115926bc6a4ecef6d40bf1d786de601f96744a72d65aabac68964f",
+      "translation": {
+        "value": "Ne. Tavo slaptažodis HTTPS protokolu užšifruojamas tiesiogiai tavo įrenginyje dar prieš paliekant telefoną, tada keliauja per mūsų WireGuard tunelį ir niekada pakeliui neiššifruojamas — net mes negalime jo pasiekti. Deliriuum taiko griežtą nulinių žurnalų politiką: joks tavo naršymo pėdsakas neišsaugomas."
+      }
+    },
+    "faq_oui_en_france_et_dans_l_union_europeenne_l_utilisation_d": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "320d3ba86495c1670dfe1789b20aa17a55a6829ab0940fb23bd372e5d2debaa4",
+      "translation": {
+        "value": "Taip, Prancūzijoje ir Europos Sąjungoje VPN naudojimas yra visiškai teisėtas. Deliriuum nepadeda vykdyti jokios neteisėtos veiklos — programa skirta tavo privatumui apsaugoti, o ne įstatymams apeiti."
+      }
+    },
+    "faq_oui_le_code_de_l_application_ios_et_android_est_open_sou": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0e9d71f34d8a92e554f426d25840797562553bc635767530de09d3b7c93254d8",
+      "translation": {
+        "value": "Taip. Programos (iOS ir Android) kodas yra atvirojo kodo, platinamas pagal GPL-3.0 licenciją. Gali jį peržiūrėti, patikrinti ir net prisidėti."
+      }
+    },
+    "faq_parce_que_ta_vie_privee_ne_devrait_jamais_avoir_de_prix": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4f238f570b8ac1c69d0cadb2d9f7864a10821f951f9310f8bc7314877b1a922d",
+      "translation": {
+        "value": "Nes tavo privatumas niekada neturėtų turėti kainos. Projektas finansuojamas tik bendruomenės aukomis — jos niekada neprivalomos ir niekada neriboja naudojimo. Jokios prenumeratos, jokių laiko apribojimų, jokių duomenų perpardavimų tretiesiems asmenims."
+      }
+    },
+    "faq_pourquoi_deliriuum_est_il_gratuit": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b6f75fbff3a9976474c12a6d17f0351637818ee73f1ff59e78c02515665cc994",
+      "translation": {
+        "value": "Kodėl Deliriuum yra nemokamas?"
+      }
+    },
+    "faq_que_se_passe_t_il_si_je_desactive_la_protection": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f2ebdf099ad37401974ca7894250932b0720ab096d2949aea47b844ba6c07219",
+      "translation": {
+        "value": "Kas nutiks, jei išjungsiu apsaugą?"
+      }
+    },
+    "faq_questions_frequentes": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "59e35b6166a7e624293e85817608d8e9a3afbe1d303c486aab4dfc6659be219e",
+      "translation": {
+        "value": "DAŽNAI UŽDUODAMI KLAUSIMAI"
+      }
+    },
+    "faq_tu_te_poses_des_questions_c_est_normal": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "de2a81e6fb26c8f48184d45dd76974cd70c5f66f0bbb7fd941547612b223b3e1",
+      "translation": {
+        "value": "Kyla klausimų?\\nTai normalu."
+      }
+    },
+    "home_activation": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "31e811eba5cb33b451f1ac8e4b68b668bf954549eb2456c907a08f48579cd60b",
+      "translation": {
+        "value": "Aktyvinama…"
+      }
+    },
+    "home_active": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3e8b389bef16f29f8131e10f866d0194296c0488a6d75b68a4948681a9d97f3d",
+      "translation": {
+        "value": "Aktyvi"
+      }
+    },
+    "home_activer_la_protection": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e2657e25aff96afc599f3e17adb69fe7114a22a2c5f1848b912534c2fe0df67b",
+      "translation": {
+        "value": "Įjungti apsaugą"
+      }
+    },
+    "home_activez_la_protection_deliriuum_pour_acceder_a_la_naviga": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c527c194f91c398fdfde70bb82e4c07210d4b7a3fdd3651095b1e1f61836c2ab",
+      "translation": {
+        "value": "Įjunkite apsaugą Deliriuum, kad apsaugotoje naršyklėje galėtumėte naršyti internete ir naudotis socialiniais tinklais."
+      }
+    },
+    "home_adresse_du_site": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9d3ee158d81578ef511bb49321a4ba8c09c7374b91f8b27d3e16b20db16fb96e",
+      "translation": {
+        "value": "Svetainės adresas"
+      }
+    },
+    "home_adresse_ip_et_tunnel_vpn": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "30b23a06557098516aeb5790073424f0a5b7edfb38f3bd29c5c9d7bc9c05f662",
+      "translation": {
+        "value": "IP adresas ir VPN tunelis"
+      }
+    },
+    "home_afficher_connecte_ne_suffit_pas_il_faut_aussi_verifier_q": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d2260dbd7e065de41ad0accc1749cebb924fe53576a088075af7eb72c22d8874",
+      "translation": {
+        "value": "Vien užrašo „prisijungta“ nepakanka: taip pat reikia patikrinti, ar interneto srautas iš tikrųjų eina tuneliu. Šis patikrinimas patvirtina, kad apsaugotas tinklo kelias iš tiesų veikia."
+      }
+    },
+    "home_ajouter_un_raccourci": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6bc88de1173a212c0c5ed448c4b8908abfc325201d0e7736cb9f173a84608cbb",
+      "translation": {
+        "value": "+ Pridėti nuorodą"
+      }
+    },
+    "home_ajouter_un_raccourci_832a52b": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "03cdcaed2b1c36bdeb7f34b1dbf54cdca5d2e1b45985bac1b595227d7ec4638f",
+      "translation": {
+        "value": "Pridėti nuorodą"
+      }
+    },
+    "home_analyse_en_attente": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fc2e7b5edd2bee2720228dc31bcec14f697729d7d5184d0fdc484248b889a504",
+      "translation": {
+        "value": "Laukiama analizės"
+      }
+    },
+    "home_appui_long": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "653e2a42734db513fe235464848ffc1e6754240c83a0c056ef0a3b68fa195d82",
+      "translation": {
+        "value": "ILGAS PASPAUDIMAS"
+      }
+    },
+    "home_aucun_raccourci_dans_cet_espace": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ce7735bf56479d0cd679a5c11ffbed6f630b4c63f8fb81b5bfc0541f81eab351",
+      "translation": {
+        "value": "Šioje erdvėje nėra jokių nuorodų"
+      }
+    },
+    "home_audit_exposed_elements": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2d71700e53a3812e752994ce23de98981aca8ee02ed397c02ff4ff7e571b7e86",
+      "translation": {
+        "forms": {
+          "few": "%1$d elementai tebėra matomi.",
+          "many": "%1$d elementų tebėra matoma.",
+          "one": "%1$d elementas tebėra matomas.",
+          "other": "%1$d elemento tebėra matoma."
+        }
+      }
+    },
+    "home_audit_partial_protections": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fe61be5af7d371822dfed21d21475ba20da25ddcdfb84a3d4d4ee0419c8b6f1f",
+      "translation": {
+        "forms": {
+          "few": "%1$d apsaugos yra dalinės.",
+          "many": "%1$d apsaugų yra dalinių.",
+          "one": "%1$d apsauga yra dalinė.",
+          "other": "%1$d apsaugos yra dalinė."
+        }
+      }
+    },
+    "home_caracteristiques_tactiles": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f031681d4925138cf41b0c9f765d135290062dafc1d545643f3e7e14cecf5da9",
+      "translation": {
+        "value": "Jutiklinės savybės"
+      }
+    },
+    "home_carte_graphique": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "345e95a5f106762e42cb6daef22ff506a2f0e6ea66d6e7c6f75294cdd457b9fd",
+      "translation": {
+        "value": "Vaizdo plokštė"
+      }
+    },
+    "home_ce_controle_indique_que_l_information_testee_est_correct": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5df281621aaaa5d8d1b3ba074629692e4c4ff698d46c81e6695000b7e1138ac6",
+      "translation": {
+        "value": "Šis patikrinimas rodo, kad tikrinama informacija yra tinkamai apribota."
+      }
+    },
+    "home_ce_controle_n_a_pas_encore_pu_verifier_le_chemin_reseau": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0bf7edc20092a2e47dbfe5c6ec30434e0c29c85c9da581b9913ce4d54491cf8d",
+      "translation": {
+        "value": "Šiuo patikrinimu dar nepavyko patikrinti apsaugoto tinklo kelio."
+      }
+    },
+    "home_cela_arrive_lorsque_l_application_a_ete_fermee_sans_coup": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8c07e712b12206fffa550f26db30b10d11a73f253bcc7a62c90d5281b253c89b",
+      "translation": {
+        "value": "Taip nutinka, kai programėlė uždaroma neišjungus apsaugos. Galite uždaryti šią sesiją ir prisijungti iš naujo."
+      }
+    },
+    "home_certaines_caracteristiques_du_traitement_audio_restent_m": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "63f1ac49f18d7435a68a386371681cd58b181eab9f5fc9ffb8a8dfefd4a741e7",
+      "translation": {
+        "value": "Kai kurias garso apdorojimo savybes vis dar galima išmatuoti. Tačiau vien šio testo nepakanka nustatyti, ar pagal jas galima jus atpažinti."
+      }
+    },
+    "home_certaines_informations_graphiques_sont_limitees_mais_ce": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c2ebf78378bd1a72ac76c9d48a7fe33a18e77fbbd166ac01b6da9116e2496b18",
+      "translation": {
+        "value": "Kai kuri grafinė informacija yra apribota, tačiau šis testas neleidžia laikyti apsaugos visiška."
+      }
+    },
+    "home_certaines_informations_sur_vos_peripheriques_restent_acc": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "695c68cb4fcbaf9f1a8c7d0cb6c7d81a9a54839edbb042f526de31f1b235fde8",
+      "translation": {
+        "value": "Tam tikra informacija apie jūsų įrenginius vis dar pasiekiama ir gali papildyti jūsų skaitmeninį pėdsaką."
+      }
+    },
+    "home_cette_caracteristique_n_a_pas_pu_etre_verifiee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5aa7ef44d66bacfe3687aba33b6794504a90fdacfe075ae1d3a50e3f1130a227",
+      "translation": {
+        "value": "Nepavyko patikrinti šios savybės."
+      }
+    },
+    "home_cette_information_reste_visible_par_les_pages_web_et_peu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5498ce07fcbdc74775ad5f98f09be18baff3797cb67d7dd18fe172f79237370c",
+      "translation": {
+        "value": "Ši informacija išlieka matoma interneto puslapiams ir gali būti derinama su kitais požymiais."
+      }
+    },
+    "home_cette_mesure_verifie_une_information_que_les_pages_web_p": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9f28fc26f57a311337eaf2c99922b2bbd590a730af697c21c51c081e9d97c2a7",
+      "translation": {
+        "value": "Šiuo matavimu tikrinama informacija, kurią gali stebėti žiniatinklio puslapiai. Atskirai ji nebūtinai identifikuoja jūsų įrenginį, tačiau gali būti naudinga kartu su daugybe kitų požymių."
+      }
+    },
+    "home_comprendre_ce_que_chaque_controle_mesure": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9d045e8e6724bb74bd1e2633b09d9d1a731ce0dc0ca26a518ede6f636d2c4bfb",
+      "translation": {
+        "value": "Suprasti, ką matuoja kiekvienas valdiklis"
+      }
+    },
+    "home_connectez_vous_puis_activez_la_protection_deliriuum_pour": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0ca64842e85cc40a07b2acd6a67431c433caae41ba84aab6c63eb746a9fcab31",
+      "translation": {
+        "value": "Prisijunkite, tada įjunkite apsaugą Deliriuum, kad apsaugotoje naršyklėje galėtumėte naršyti internete ir naudotis socialiniais tinklais."
+      }
+    },
+    "home_connexion_au_tunnel": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b393f97debff230af9185cc0002f8ec50c2521ec17a24bdc5bca4d64e4fdc188",
+      "translation": {
+        "value": "Jungiamasi prie tunelio"
+      }
+    },
+    "home_connexion_reellement_protegee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "47c83e0d5cf8a2914b7616a64ecab4f969010891e5b58f3d7649387832f86fc3",
+      "translation": {
+        "value": "Ryšys iš tikrųjų apsaugotas"
+      }
+    },
+    "home_connexion_securisee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "18d7e376f6f2eb222c5a89ac54b6f882e12a8c544ae2b0bb489b77c8e8224a60",
+      "translation": {
+        "value": "Saugus ryšys…"
+      }
+    },
+    "home_creer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ba42fc8a1f1a56fdf436d3b14eceb17ecd044fe98fb528ec725cd9cf895ea17a",
+      "translation": {
+        "value": "Sukurti"
+      }
+    },
+    "home_creer_un_espace": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1f9c80f34dfbe78625e1bfb41b8bb93d867bf2576f35bd4722dbfc464e53dff2",
+      "translation": {
+        "value": "Sukurti erdvę"
+      }
+    },
+    "home_deep_shield_mesure_ce_que_les_sites_peuvent_reellement_o": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b5a5112cefffcd3a85609392c1bd537e36360d7cbdf867cd4fa99e659f7998be",
+      "translation": {
+        "value": "Deep Shield matuoja, ką svetainės iš tikrųjų gali stebėti, kai aktyvi Deliriuum apsauga."
+      }
+    },
+    "home_deep_shield_n_est_pas_encore_applique_deliriuum_mesure_a": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0fc11ec556be87972ebf2c3359735b30682d5f3a9613cefbcd0ac2502e5d4434",
+      "translation": {
+        "value": "Deep Shield dar netaikoma. Deliriuum automatiškai išmatuoja šią aplinką prieš aktyvavimą, kad būtų gautas realus atskaitos taškas."
+      }
+    },
+    "home_deliriuum_a_confirme_que_le_tunnel_permet_reellement_d_a": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "147c8794c1bac289630bf4ea5c90d9772a3ca0df5b7ff9d9f825502767c5ffa7",
+      "translation": {
+        "value": "Deliriuum patvirtino, kad tunelis iš tikrųjų leidžia pasiekti internetą. Taigi apsauga rodoma ne tik kaip aktyvi – tinklo kelias veikia."
+      }
+    },
+    "home_deliriuum_est_gratuit_grace_aux_dons": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "31cc2c8dbb013994d35b04181f03bf4d988c68192bd2764160167fd0293d64ea",
+      "translation": {
+        "value": "Deliriuum yra nemokamas dėl aukų."
+      }
+    },
+    "home_deliriuum_mesure_automatiquement_l_environnement_avant_d": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b8e7d3499b83892ddb4d72def00dcabeecfc28e76a7087130ed5231bd454d5a9",
+      "translation": {
+        "value": "Deliriuum automatiškai išmatuoja aplinką prieš aktyvuodama apsaugą. Nereikia atlikti jokių veiksmų."
+      }
+    },
+    "home_deplacer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ebbfd6f9767cbc5ab34595f198ea904119f5be979351cc8566994e0b3c8c394d",
+      "translation": {
+        "value": "PERKELTI"
+      }
+    },
+    "home_deplacer_modifier_supprimer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2025a56830a37c7d42bab1d6426130b0bbecf2de4a85fd78d90adc7230079a8f",
+      "translation": {
+        "value": "Perkelti  ·  Redaguoti  ·  Ištrinti"
+      }
+    },
+    "home_des_caracteristiques_audio_suffisamment_precises_restent": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ba27d2d684269ee037b08cabfa6095c14dcfb7498e8ae3ca80eac940bb4dd8c8",
+      "translation": {
+        "value": "Išlieka pakankamai tikslios garso savybės, kurios gali prisidėti prie jūsų piršto atspaudo."
+      }
+    },
+    "home_des_informations_sur_votre_connexion_restent_accessibles": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "542d6af4b2b67ecf567c0fb6f4e4e879e7344b742ad311ecd0f2a94ad5084747",
+      "translation": {
+        "value": "Tinklalapis vis dar gali pasiekti tam tikrą informaciją apie jūsų ryšį, kuri gali papildyti jūsų skaitmeninį pėdsaką."
+      }
+    },
+    "home_desactivation": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c9abf154412362155dd9a9455c2f6e74d050f214805af03f38b86907e6672f00",
+      "translation": {
+        "value": "Išjungiama…"
+      }
+    },
+    "home_desactiver_la_protection": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8c5a3cc6290fbea85fb524c2223127f2a82b6c31741edbbfc880b04ab211cbc4",
+      "translation": {
+        "value": "Išjungti apsaugą"
+      }
+    },
+    "home_ecran_et_densite_de_pixels": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1babd2f58f1ed1ed1243a19f0dbffb3ca2e062ae5313d9a132644e81cd8a6101",
+      "translation": {
+        "value": "Ekranas ir pikselių tankis"
+      }
+    },
+    "home_empreinte_graphique_canvas": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9a7ab11703f66ef77b449617cf2dbeb854170ee976a657b83d1728b4061c8b76",
+      "translation": {
+        "value": "Grafinis pėdsakas Canvas"
+      }
+    },
+    "home_etat_de_confidentialite": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "06a5ca1c5e8c33bd5dbbffca6f98f63f693d7456b135d1324351150e8b8b337c",
+      "translation": {
+        "value": "Privatumo būsena"
+      }
+    },
+    "home_fermer_et_me_reconnecter": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "855445e465c625e0d9741321725a87bb841f6d1a73fc486ed3081851d73e91f7",
+      "translation": {
+        "value": "Uždaryti ir prisijungti iš naujo"
+      }
+    },
+    "home_fermeture": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "43d44e521b94116c9aab5cb88f889c9abc5bd83374d562f615299d7d02d6a581",
+      "translation": {
+        "value": "Uždaroma…"
+      }
+    },
+    "home_fermeture_du_tunnel": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c4ecbba920458c2ae1ff4240918ffe75156244e9cc672acacd2155b0909811f7",
+      "translation": {
+        "value": "Tunelio uždarymas"
+      }
+    },
+    "home_fuites_reseau_webrtc": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "7340952091a9da3efbb8c595bbb33a09bdedce67f5fc823c175fa247bf8969ba",
+      "translation": {
+        "value": "Tinklo nutekėjimai WebRTC"
+      }
+    },
+    "home_icone": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "68eeb70bb2a207b2c74d124b97fee478fcb76cf806cd56838d36d63a78fd1480",
+      "translation": {
+        "value": "Piktograma"
+      }
+    },
+    "home_inactive": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2f912a8ecb277df84784736371d778109b3d5edeb9b5c171c66e3ff62305a85c",
+      "translation": {
+        "value": "Neaktyvi"
+      }
+    },
+    "home_l_acces_aux_informations_sur_les_peripheriques_est_limit": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c5f2c85dd38a186e8e0b6327fd35c7e7d397907867ea8ad07da24bdcb6b5a5ed",
+      "translation": {
+        "value": "Prieiga prie informacijos apie įrenginius yra apribota, tačiau testas neleidžia teigti, kad apsauga visiška."
+      }
+    },
+    "home_l_empreinte_audio_n_a_pas_pu_etre_mesuree": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "cbc77989a262f186079e6843c7f674301f043fca73a4448e7802c1063c3142e0",
+      "translation": {
+        "value": "Nepavyko išmatuoti garso pėdsako."
+      }
+    },
+    "home_l_empreinte_canvas_n_a_pas_pu_etre_mesuree": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f9e9bc71d92f888540185b7fe46cdb6995ae953d84ced64f0280d0500cae2c70",
+      "translation": {
+        "value": "Nepavyko išmatuoti Canvas pėdsako."
+      }
+    },
+    "home_l_espace_et_ses_raccourcis_seront_supprimes_de_cet_appar": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "58296d7350f3317cc7a691f3971a43e57e18a48ae677da312d4042c8357a6f54",
+      "translation": {
+        "value": "„%1$s“ erdvė ir jos nuorodos bus pašalintos iš šio įrenginio."
+      }
+    },
+    "home_l_exposition_de_la_plateforme_n_a_pas_pu_etre_verifiee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "69fe3573f0f606d9789a37343d308eb7277ab1de83b2773e39f7d41b5652610c",
+      "translation": {
+        "value": "Nepavyko patikrinti platformos atskleidimo."
+      }
+    },
+    "home_l_exposition_des_informations_graphiques_n_a_pas_pu_etre": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a9d744495261af63fbe6cd069952f30efc1aae3187f95e6b8b9b51d3cb21e47b",
+      "translation": {
+        "value": "Nepavyko išmatuoti grafinės informacijos atskleidimo."
+      }
+    },
+    "home_l_exposition_des_informations_reseau_n_a_pas_pu_etre_ver": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f3e9529b3d6ea90d4a8663733bfa7ccfe2265494acd47341141adcfd5acee58e",
+      "translation": {
+        "value": "Nepavyko patikrinti, kiek atskleidžiama tinklo informacija."
+      }
+    },
+    "home_l_exposition_des_informations_sur_le_micro_la_camera_et": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c3f0b33269fd17decdccb270d906789e097e5dac0cb67f8175371c8a8aad7af1",
+      "translation": {
+        "value": "Nepavyko patikrinti, kiek atskleidžiama informacija apie mikrofoną, kamerą ir įrenginius."
+      }
+    },
+    "home_l_information_tactile_est_limitee_mais_reste_partielleme": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "96a6f04755141989d8e9dcac7cc7eeb94284d5916fc056cb3d11745d3c7ecfd3",
+      "translation": {
+        "value": "Lietimo informacija yra apribota, tačiau iš dalies vis dar stebima."
+      }
+    },
+    "home_la_capacite_tactile_precise_n_est_pas_exposee_comme_cara": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d7b14d5a76a09e397c9266df697a70ae948666ed30c4eaad9f73b712b70ef91b",
+      "translation": {
+        "value": "Tikslios lietimo galimybės nėra atskleidžiamos kaip skiriamasis požymis."
+      }
+    },
+    "home_la_connexion_au_tunnel_existe_mais_son_fonctionnement_re": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "dbd40ae93977858d9c3481971719057c5ea555b8b5c5148437b9d5a1ed4fa28d",
+      "translation": {
+        "value": "Ryšys su tuneliu užmegztas, tačiau jo faktinio veikimo nepavyko visiškai patvirtinti."
+      }
+    },
+    "home_la_detection_des_polices_est_limitee_mais_elle_n_est_pas": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "41e72be0509be3260a2f9a021b28714b3d63eda2ebe53b43f163e66a3b16cfbd",
+      "translation": {
+        "value": "Šriftų aptikimas yra apribotas, tačiau nėra visiškai neutralizuotas."
+      }
+    },
+    "home_la_detection_des_polices_n_a_pas_pu_etre_mesuree": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "adc2bf053d46a44926d58bcfa6783a11dec2fae699a8317151e613f0be6cafd8",
+      "translation": {
+        "value": "Nepavyko išmatuoti šriftų aptikimo."
+      }
+    },
+    "home_la_plateforme_precise_n_est_pas_directement_revelee_aux": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8aff573f52886bc1f95307bf8ab476dadc8b09eee101a699d5a596325f14afca",
+      "translation": {
+        "value": "Tiksli platforma nėra tiesiogiai atskleidžiama jūsų lankomoms svetainėms."
+      }
+    },
+    "home_la_protection_est_incomplete_ou_le_test_ne_permet_pas_de": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b4fbfc21ac987d81681a77d2361c1b02a0135ae5225deebcb69174bc9e193aa1",
+      "translation": {
+        "value": "Apsauga nevisiška arba testas neleidžia padaryti pakankamai patikimos išvados."
+      }
+    },
+    "home_la_valeur_liee_au_processeur_est_partiellement_limitee_s": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1c0aca4e554c5c207edb518eca50a5d8efc20a029a61548aaf4d9a321bbad62c",
+      "translation": {
+        "value": "Su procesoriumi susijusi reikšmė yra iš dalies apribota, tačiau ne visiškai paslėpta."
+      }
+    },
+    "home_le_canvas_fournit_une_mesure_stable_mais_ce_test_seul_ne": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "da9dfa11c6f49a1141ffa303a61e2964f91ed8b6013080137ccfe737c8fde0d8",
+      "translation": {
+        "value": "Canvas suteikia stabilų matavimą, tačiau vien šio testo nepakanka nustatyti, ar šio parašo iš tikrųjų pakanka jus atskirti."
+      }
+    },
+    "home_le_comportement_de_webrtc_n_a_pas_pu_etre_verifie": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6d3c1c07a2cd0c086b8c552bbb5b2191dbf9dfdd408ac79386fd0a354b238393",
+      "translation": {
+        "value": "Nepavyko patikrinti WebRTC veikimo."
+      }
+    },
+    "home_le_fuseau_horaire_a_ete_observe_mais_deliriuum_ne_dispos": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f3a41aca4e41f56baf56b9cb568f7b68a8d3de71f70f6e5499045e6ae11fc7ca",
+      "translation": {
+        "value": "Laiko juosta buvo nustatyta, tačiau Deliriuum neturi pakankamai informacijos, kad patvirtintų jos atitiktį VPN išėjimo vietai."
+      }
+    },
+    "home_le_fuseau_horaire_de_votre_navigateur_donne_un_indice_su": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "11881632b37656d91b6cfcf453a1cc1827117248da6b9c3bc433fd12b0144e69",
+      "translation": {
+        "value": "Jūsų naršyklės laiko juosta suteikia užuominą apie jūsų buvimo vietą. Jei ji nurodo tikrąją jūsų zoną, o jūsų IP adresas rodo kitą šalį, lankomos svetainės gali pastebėti šį neatitikimą ir nustatyti, kad naudojate VPN."
+      }
+    },
+    "home_le_fuseau_horaire_visible_ne_correspond_pas_a_la_sortie": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0a2323e7127a54be7a4a6eb15aeb94c0e61d1dc7ee4fd75e8f40dd71370ec903",
+      "translation": {
+        "value": "Matoma laiko juosta neatitinka VPN išėjimo vietos. Šis skirtumas gali suteikti svetainei požymį apie jūsų tikrąją vietą arba VPN naudojimą."
+      }
+    },
+    "home_le_fuseau_horaire_visible_par_les_sites_n_a_pas_pu_etre": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2e3d83f99fc005fcb71377365689092806bb700aab911b2aa7027cb41cc12d24",
+      "translation": {
+        "value": "Nepavyko nustatyti svetainėms matomos laiko juostos."
+      }
+    },
+    "home_le_fuseau_horaire_visible_par_les_sites_que_vous_consult": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ead1975e626a15c9d53453d7d7112ef1d2ff86b6b9f5be51852dcaf1575a8a31",
+      "translation": {
+        "value": "Jūsų lankomoms svetainėms matoma laiko juosta dera su VPN išėjimo vieta. Todėl jūsų tikroji laiko juosta čia nesukuria akivaizdaus prieštaravimo."
+      }
+    },
+    "home_le_navigateur_peut_indiquer_combien_de_points_de_contact": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1cb993e809f98b5a18d59952a48bfdfc7136329ef6d7a68a64a9ece5d4aaeb2b",
+      "translation": {
+        "value": "Naršyklė gali nurodyti, kiek jutiklinių taškų įrenginys gali apdoroti vienu metu. Ši savybė padeda jūsų lankomoms svetainėms geriau nustatyti naudojamo telefono ar planšetės tipą."
+      }
+    },
+    "home_le_navigateur_peut_reveler_des_informations_generales_su": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b175077ea368cc7eb981579379d248654f914a7d7e6fa310597916ed69f1768e",
+      "translation": {
+        "value": "Naršyklė gali atskleisti bendrą informaciją apie platformą, kurioje veikia. Atskirai šie duomenys yra gana bendri, tačiau kartu su kitais požymiais tampa naudingesni nustatant įrenginio pėdsaką."
+      }
+    },
+    "home_le_navigateur_peut_traiter_un_signal_audio_sans_utiliser": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a48b75e6ecb703f992c27fb15697be8c46bc47231ee33650eaad0f33f90a2d2d",
+      "translation": {
+        "value": "Naršyklė gali apdoroti garso signalą nenaudodama jūsų mikrofono. Nedideli dėl aparatinės ir programinės įrangos atsirandantys skaičiavimų skirtumai gali būti išmatuoti ir tapti papildomu požymiu jūsų įrenginiui atpažinti."
+      }
+    },
+    "home_le_navigateur_revele_encore_une_information_generale_sur": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "273e61958c484c8306649cf7a9af6f345336dcf0fca5b7897702d3e663891407",
+      "translation": {
+        "value": "Naršyklė vis dar atskleidžia bendrą informaciją apie jūsų sistemą. Viena ji mažai padeda jus atskirti, tačiau gali papildyti kitus požymius."
+      }
+    },
+    "home_le_nombre_de_c_urs_visible_par_les_sites_n_a_pas_pu_etre": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f09390a2ae0df5c8fd748e471f08fdfe58bd54bdd41a4871472725fb4132a727",
+      "translation": {
+        "value": "Nepavyko patikrinti svetainėms matomo branduolių skaičiaus."
+      }
+    },
+    "home_le_nombre_de_polices_que_les_sites_que_vous_consultez_pa": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c37bbd822868c2f7ac839cacf243f41efd9842d8e02c7c33dbe938669078018c",
+      "translation": {
+        "value": "Šriftų, kuriuos jūsų lankomos svetainės gali atskirti, skaičius yra ribotas, todėl šis požymis mažiau padeda atpažinti jūsų įrenginį."
+      }
+    },
+    "home_le_nombre_precis_de_c_urs_logiques_n_est_pas_expose_comm": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "074ae930bc597a8d44eec4e7934d0fdf85623db58e7dcfced90fa54c14423993",
+      "translation": {
+        "value": "Tikslus loginių branduolių skaičius nėra atskleidžiamas kaip skiriamasis požymis."
+      }
+    },
+    "home_le_passage_du_trafic_par_le_tunnel_n_a_pas_pu_etre_verif": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2b6ad15358e0b10eb30673744e778187dd3f063adc52eb741803710472eba764",
+      "translation": {
+        "value": "Nepavyko patikrinti, ar srautas keliauja per tunelį."
+      }
+    },
+    "home_le_rendu_canvas_fournit_une_signature_stable_qui_peut_de": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "28534d26f12a3b5308e8dad335380b2cac33db8f9a367861e2f3a7ac996bd285",
+      "translation": {
+        "value": "Canvas atvaizdavimas suteikia stabilų parašą, kuris gali tapti pirštų atspaudo dalimi."
+      }
+    },
+    "home_le_test_audio_ne_met_pas_en_evidence_de_caracteristique": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3b3d07d8d18d266ba8a5349ba9d8fea0a28a7a63a701c93fb45583bbed369ea1",
+      "translation": {
+        "value": "Garso testas neatskleidžia akivaizdžiai panaudojamos savybės, pagal kurią būtų galima atskirti jūsų įrenginį."
+      }
+    },
+    "home_le_test_ne_met_pas_en_evidence_de_signature_canvas_explo": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ffb06452e2a2eb4b4590f057243e398269a6c8726dc9143e39360aa9114bfcc5",
+      "translation": {
+        "value": "Testas neatskleidžia akivaizdžiai panaudojamo Canvas parašo."
+      }
+    },
+    "home_le_test_ne_peut_pas_confirmer_completement_la_coherence": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9ec12827078cea45a877360ac9071fbea87458f69f8f1656f90d2ee203539204",
+      "translation": {
+        "value": "Testas negali visiškai patvirtinti ekrano informacijos nuoseklumo. Tai nebūtinai reiškia nuotėkį, tačiau rezultatas lieka neišsamus."
+      }
+    },
+    "home_le_test_webrtc_n_a_revele_aucune_information_reseau_expl": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "968ee1059215fbf069f8b222eba4bca38d5ccb2450e1dcaa254dc13f482901ec",
+      "translation": {
+        "value": "WebRTC testas neatskleidė jokios panaudojamos tinklo informacijos, kuri leistų apeiti tunelio apsaugą."
+      }
+    },
+    "home_le_tunnel_deliriuum_n_est_pas_actif_les_sites_peuvent_vo": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5430c88bdc5817094e2bc6efecd526064e0b3b53d0d40165d613eae4922d0e5e",
+      "translation": {
+        "value": "Deliriuum tunelis neaktyvus: svetainės gali matyti jūsų įprasto ryšio viešąjį IP adresą."
+      }
+    },
+    "home_le_tunnel_est_protege_deep_shield_mesure_maintenant_l_en": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "61f7d500c4d8c655750af99296d20f6089c1f169aa74837d95100ae90623fdde",
+      "translation": {
+        "value": "Tunelis apsaugotas. Deep Shield dabar matuoja aplinką, kuri iš tikrųjų atskleidžiama svetainėms."
+      }
+    },
+    "home_le_tunnel_ne_fournit_pas_actuellement_un_chemin_reseau_u": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ec89b0a1d3af8ce7fa5abc9c686548a91308649dd8751c4c56ebe3320e0738a4",
+      "translation": {
+        "value": "Šiuo metu tunelis nesuteikia tinkamo tinklo kelio į internetą."
+      }
+    },
+    "home_le_tunnel_semble_actif_mais_cette_mesure_ne_permet_pas_d": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c0adb052d97295719f22296f49682f0446e97b64c167ff0b132242699f5963af",
+      "translation": {
+        "value": "Atrodo, kad tunelis aktyvus, tačiau šis matavimas neleidžia visiškai patvirtinti, kad visas srautas yra apsaugotas."
+      }
+    },
+    "home_le_tunnel_wireguard_est_actif_et_le_navigateur_geckoview": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fe6cd54111001d82299ecb8c896fe9ba1365763208f506c896a29e231cee5ba6",
+      "translation": {
+        "value": "WireGuard tunelis yra aktyvus, o naršyklė GeckoView taiko Deep Shield Android apsaugas nuo kelių pirštų atspaudų formavimo ir tinklo nutekėjimo šaltinių."
+      }
+    },
+    "home_les_caracteristiques_d_affichage_n_ont_pas_pu_etre_verif": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fbd215b1ca1b5755c238612897000bd3310494240eb1432729a51ea216324314",
+      "translation": {
+        "value": "Nepavyko patikrinti ekrano savybių."
+      }
+    },
+    "home_les_caracteristiques_d_affichage_restent_directement_obs": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "cb1e82187b743071b527c6d8c2cefcb2e73274825a77917f53431d0854163a6f",
+      "translation": {
+        "value": "Ekrano savybės išlieka tiesiogiai stebimos ir gali būti naudojamos kaip požymis jūsų įrenginiui atskirti."
+      }
+    },
+    "home_les_caracteristiques_tactiles_n_ont_pas_pu_etre_verifiee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2872187f8cc77b4e4fb66ce6455cc1bde89d7cfb404f04a611a2d97a4f04e561",
+      "translation": {
+        "value": "Nepavyko patikrinti lietimo savybių."
+      }
+    },
+    "home_les_differentes_mesures_de_densite_d_ecran_racontent_une": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2b32679d984a962b6ec36a66b3502c388847639aa740c7983ece3cd615201d1b",
+      "translation": {
+        "value": "Įvairūs ekrano tankio matavimai dera tarpusavyje ir nesukuria papildamo lengvai panaudojamo neatitikimo."
+      }
+    },
+    "home_les_informations_graphiques_les_plus_identifiantes_comme": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "73855579eb76f8aa67e31c972df588a283010181b7f3e725f831d380e7666675",
+      "translation": {
+        "value": "Labiausiai identifikuojanti grafinė informacija, pavyzdžiui, tiksli aparatinės įrangos gamintojo ar modelio informacija, neatskleidžiama jūsų lankomoms svetainėms."
+      }
+    },
+    "home_les_pages_web_peuvent_demander_a_votre_appareil_d_effect": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fb1cc58e9738620f9692c7747d33f87d6ab0fcd1931f0735f3d50f3bd883a1f9",
+      "translation": {
+        "value": "Žiniatinklio puslapiai gali paprašyti jūsų įrenginio atlikti grafinius skaičiavimus naudodami WebGL. Grafikos lusto gamintojas, modelis ar veikimas gali tapti išskirtiniais požymiais, naudojamais įrenginiui atpažinti."
+      }
+    },
+    "home_les_sites_peuvent_mesurer_la_taille_logique_de_l_ecran_e": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "39239e9b9e11f689b754247dd4ab135d06382f9c0e6ee11ffb8372f5bb7be02d",
+      "translation": {
+        "value": "Svetainės gali išmatuoti loginį ekrano dydį ir pikselių tankį. Šios reikšmės padeda atskirti tam tikras įrenginių šeimas ir gali būti derinamos su kitomis savybėmis, kad pėdsakas būtų tikslesnis."
+      }
+    },
+    "home_les_sites_peuvent_tester_quelles_polices_de_caracteres_s": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fe1e948d472566f60641486e9dd60b407ac7c9c9e636d6aa26ccdc009928a68a",
+      "translation": {
+        "value": "Svetainės gali patikrinti, kokie šriftai prieinami jūsų naršyklėje. Gautas derinys priklauso nuo sistemos ir įrenginio, todėl gali papildyti skaitmeninį pėdsaką."
+      }
+    },
+    "home_les_sites_que_vous_consultez_n_ont_pas_acces_aux_informa": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "592f8d826cdc9fcf9af93482cfcdb5f9d040d2cd534a68e3f2406d9dc9f735b5",
+      "translation": {
+        "value": "Jūsų lankomos svetainės neturi prieigos prie informacijos, išsamiai apibūdinančios jūsų tinklo ryšio tipą ar savybes."
+      }
+    },
+    "home_les_sites_que_vous_consultez_ne_recoivent_pas_les_noms_n": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0689d412fb16cf12d40305540c55b8df02d89a388f77696a5ed281b30f6bce84",
+      "translation": {
+        "value": "Jūsų lankomos svetainės negauna pavadinimų ar identifikatorių, leidžiančių tiksliai apibūdinti jūsų mikrofonus, kameras ar kitus įrenginius."
+      }
+    },
+    "home_les_sites_que_vous_consultez_peuvent_connaitre_la_capaci": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "672fe914a2a519793162d6ba2c25d3d21236e19cff6783adbff1ad6acf75d8fb",
+      "translation": {
+        "value": "Jūsų lankomos svetainės gali žinoti įrenginio nurodytas lietimo galimybes. Ši informacija padeda nustatyti naudojamo įrenginio tipą."
+      }
+    },
+    "home_les_sites_que_vous_consultez_peuvent_connaitre_le_nombre": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "21da763bede8e0da2bbc3cda722ca5a402886907a257b67da3961a1117fb6813",
+      "translation": {
+        "value": "Jūsų lankomos svetainės gali žinoti naršyklės nurodytą loginių branduolių skaičių ir naudoti jį kaip papildomą požymį apie jūsų įrenginį."
+      }
+    },
+    "home_les_sites_que_vous_consultez_peuvent_demander_au_navigat": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4f71b7f78fb209a0c482cec4aa832d52cf83f3908a7a6809e52f76b405fcd247",
+      "translation": {
+        "value": "Jūsų lankomos svetainės gali paprašyti naršyklės nupiešti nematomą vaizdą ir išanalizuoti rezultatą. Dėl įrangos, sistemos ir grafikos variklio atsirandantys menkiausi skirtumai gali sukurti pakankamai stabilų požymį, kuris prisideda prie įrenginio identifikavimo pagal jo pėdsaką."
+      }
+    },
+    "home_les_sites_que_vous_consultez_peuvent_distinguer_suffisam": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b47b91b3147d8b1614d79790e3f4a9db905633a18ac90208af072d135ce460e2",
+      "translation": {
+        "value": "Jūsų lankomos svetainės gali atskirti pakankamai šriftų, kad šį derinį panaudotų kaip papildomą požymį."
+      }
+    },
+    "home_les_sites_que_vous_consultez_peuvent_encore_obtenir_des": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3b8f0d603b6c0777efffb70afd8c35b573d928b29c6bffd88c57e037baa5ff4b",
+      "translation": {
+        "value": "Jūsų lankomos svetainės vis dar gali gauti pakankamai tikslios informacijos apie jūsų grafinę aplinką, kad prisidėtų prie jūsų skaitmeninio pėdsako."
+      }
+    },
+    "home_localisation_par_fuseau_horaire": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5bea6501fcc0fdce37f183bbdf7826cd9c31a1565c0b69b0fbadb4c90e33123f",
+      "translation": {
+        "value": "Vietos nustatymas pagal laiko juostą"
+      }
+    },
+    "home_masquer_le_detail_des_protections": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3bc4741c2b9d017fd9d02ba0ff01b05836469475b16213d541b78f927fe5f9ec",
+      "translation": {
+        "value": "Slėpti išsamią apsaugų informaciją"
+      }
+    },
+    "home_meme_sans_enregistrer_votre_voix_ni_votre_image_le_navig": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "dd9463981dd8359fc45c6bdfcfe3393f43a234de73daeead7784dc31d8713778",
+      "translation": {
+        "value": "Net neįrašydama jūsų balso ar vaizdo, naršyklė kartais gali atskleisti informaciją apie esančius mikrofonus, kameras ar kitus išorinius įrenginius. Jų skaičius, pavadinimas ar identifikatoriai gali tapti papildomais požymiais."
+      }
+    },
+    "home_menu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c3ca820330eada5644bf391b65dda67e841513a3054cd6bf3ad7ab5b4d85561f",
+      "translation": {
+        "value": "Meniu"
+      }
+    },
+    "home_mes_espaces": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "27e2244942552861748e36252310973097f3acbb05396415847693195b51e1e0",
+      "translation": {
+        "value": "Mano erdvės"
+      }
+    },
+    "home_mesure": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ed4e1781bab8c28ee194965a776150c9a422fd1818f8ab2857605863a728b408",
+      "translation": {
+        "value": "Matavimas: %1$s"
+      }
+    },
+    "home_mesure_localement_par_deep_shield": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9f079b34d47646377a64e5f3126889f5a20eba5e895fed2a17f5be7edcf803b5",
+      "translation": {
+        "value": "Vietoje išmatuota naudojant Deep Shield"
+      }
+    },
+    "home_mesure_realisee_avant_activation_de_deliriuum_voici_ce_q": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "445bb011169a6c25ec7c357639fd17c4537056e1f8459cb8cf537e873dd47a25",
+      "translation": {
+        "value": "Matavimas atliktas prieš aktyvuojant Deliriuum: štai ką svetainės, kuriose lankotės, gali stebėti standartinėje aplinkoje."
+      }
+    },
+    "home_micro_et_camera": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a109ce00d81dc6b2caeb548a52623be4c531ff71a62504c3d39a08a4cf5e8c1a",
+      "translation": {
+        "value": "Mikrofonas ir kamera"
+      }
+    },
+    "home_mode_non_protege": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a736877b7f523914050117a25ddbdea91884797b9bba3a3ddc01fe472f5a32d1",
+      "translation": {
+        "value": "NEAPSAUGOTASIS REŽIMAS"
+      }
+    },
+    "home_mode_protege": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a5c92507b8d8f42056fae56a74ef00e8a737f0504c9c6cf0af1cf6041c3f5b3d",
+      "translation": {
+        "value": "APSAUGOTASIS REŽIMAS"
+      }
+    },
+    "home_modifier": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "17646faa65e232a1ba2fc17700bf9fe4d41dd70e06cbe774b19b741a583a254a",
+      "translation": {
+        "value": "Redaguoti"
+      }
+    },
+    "home_modifier_l_espace": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "070f18bc9e5a2446f4523ed73c744e753e680060a5289623c752650e912c0c0d",
+      "translation": {
+        "value": "Redaguoti erdvę"
+      }
+    },
+    "home_modifier_le_raccourci": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0b7299b77d9b3e7b7cff125066efb8329460d3109891ecf99d2513224add7728",
+      "translation": {
+        "value": "Redaguoti nuorodą"
+      }
+    },
+    "home_navigateur_deliriuum": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a0c84d4457295e6f2c521ce374ff2dd51391113fe7ad65a42c2d63895970f1fc",
+      "translation": {
+        "value": "Naršyklė Deliriuum"
+      }
+    },
+    "home_nombre_de_c_urs_du_processeur": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1705113e659420a9cafd185c8b41dc8045cc32424369c5605d3471202317be2c",
+      "translation": {
+        "value": "Procesoriaus branduolių skaičius"
+      }
+    },
+    "home_non_verifie": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "531c8b540a4eebc280893c99d4d27786b55acbf3c267d3583d854db80f38959b",
+      "translation": {
+        "value": "Nepatikrinta"
+      }
+    },
+    "home_nouveau": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "23fcfafd063781e7db0f191c2c297355fe54226622efe062144ee12bc19da26a",
+      "translation": {
+        "value": "+ Nauja"
+      }
+    },
+    "home_organise_tes_raccourcis_comme_tu_veux": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d3a0937c247f75bb2b18c799773d55b061076c747f56495ef63a66eb58817ac1",
+      "translation": {
+        "value": "Tvarkyk savo sparčiuosius klavišus kaip nori"
+      }
+    },
+    "home_partiel": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b0882426bf780d8905388be43760bee0e2f2b048bad9d25d3eeddbc283524111",
+      "translation": {
+        "value": "Dalinė"
+      }
+    },
+    "home_pas_de_score_artificiel": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8058fcfa191213e8d7dcbc54b5dee412558f60fe5cca42a7214def39d8bfa68e",
+      "translation": {
+        "value": "Jokio dirbtinio balo"
+      }
+    },
+    "home_plateformes_video_via_deliriuum_deep_shield": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d23ced07d98f5569bc6ee9563734cd7d257de279a93943a0b7227fe99200ede6",
+      "translation": {
+        "value": "Vaizdo platformos per Deliriuum + Deep Shield"
+      }
+    },
+    "home_polices_disponibles": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2806a0867efd0f1249fe78597896600e9f47cd6a031b01fa7fd792099b40ccf1",
+      "translation": {
+        "value": "Prieinami šriftai"
+      }
+    },
+    "home_pour_un_site_connu_deliriuum_utilise_son_logo_local_pour": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e7c2ced6bbbdc0c4e46f427601880e4bf295ca876bee6873d756a0b3a797e646",
+      "translation": {
+        "value": "Žinomai svetainei Deliriuum naudoja jos vietinį logotipą. Pasirinktinei nuorodai naudojamas svetainės faviconas, jei jis prieinamas."
+      }
+    },
+    "home_protection_active": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ed84f4aafccca85f48ee37148b2e142efc30c51ec86185eb3319af202bf67f60",
+      "translation": {
+        "value": "Apsauga aktyvi"
+      }
+    },
+    "home_protection_apres_inactivite": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "84c610e3b6079aaa4d7ad21269a558da86b1c16d10a13301c30d88724f5e5a51",
+      "translation": {
+        "value": "Apsauga po neveikimo"
+      }
+    },
+    "home_protection_deliriuum": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5c310ca628432cb0400c8d20d8be866b7a15aced27c62461b4b9be19775a4cd7",
+      "translation": {
+        "value": "Apsauga Deliriuum"
+      }
+    },
+    "home_protection_elevee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5e3e0c24d531121ef5da268699191b17c147b6237cadfa3c233793ea5fef79b2",
+      "translation": {
+        "value": "Aukšta apsauga"
+      }
+    },
+    "home_protection_faible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c65bef643ed341d82b2076245693f247747fca0a9bf6640962daf53bf9bb6a8f",
+      "translation": {
+        "value": "Silpna apsauga"
+      }
+    },
+    "home_protection_inactive": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c1f192ad6ef864d2775c0b698e69fe9511d904b8cc6bfb47575a479c4b804abf",
+      "translation": {
+        "value": "Apsauga neaktyvi"
+      }
+    },
+    "home_protection_renforcee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2fedf47b7627d272c0a72dabc9279e874a54c0fc179d662728089e7cfe231ed5",
+      "translation": {
+        "value": "Sustiprinta apsauga"
+      }
+    },
+    "home_protection_renforcee_de_la_navigation": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d8180a5b27d08e56571095d458b0f1ec6af8866db78bee7f3d1161de7adfae79",
+      "translation": {
+        "value": "Sustiprinta naršymo apsauga"
+      }
+    },
+    "home_protege": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f5ce712aaba67ce1a1c27291fbc17325df71848859d361d85d9f2552a7e21e9e",
+      "translation": {
+        "value": "Apsaugota"
+      }
+    },
+    "home_proteges": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8f393dcdd928598912742987393c8285c71804c039d2278c05b819ddc5c45c61",
+      "translation": {
+        "value": "Apsaugoti"
+      }
+    },
+    "home_rechercher_ou_ouvrir_un_site_avec_le_navigateur_protege": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ed8d37b818730d24c895871d109765b221479bf5e52314363daf9e9c11cf73b0",
+      "translation": {
+        "value": "Ieškoti arba atidaryti svetainę naudojant apsaugotą naršyklę"
+      }
+    },
+    "home_rechercher_ou_saisir_une_adresse": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d76f97845d6da39f9374d782b15a11917a6303dae9b5708c6f78919ffc4680db",
+      "translation": {
+        "value": "Ieškoti arba įvesti adresą"
+      }
+    },
+    "home_renommer_modifier": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ab7a7d531b84aabf091b6408077b1849a5a752f48169b90fdfd93567fff461f2",
+      "translation": {
+        "value": "Pervadinti / redaguoti"
+      }
+    },
+    "home_reseaux_sociaux_via_deliriuum_deep_shield": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2c1e8f6a4552970c9e65177487292dba9dbe67352f359ee8248db787d83657e8",
+      "translation": {
+        "value": "Socialiniai tinklai per Deliriuum + Deep Shield"
+      }
+    },
+    "home_resultat_sur_votre_appareil": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8931893dca6f8fe172d923aa6728ec1a12e757decd74741b297c3334035b94f1",
+      "translation": {
+        "value": "REZULTATAS JŪSŲ ĮRENGINYJE"
+      }
+    },
+    "home_se_reconnecter": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "48f5012444b137b407a0d5d655afe91b4dd4cc1b38e68cf3d4c9f3fd3430e042",
+      "translation": {
+        "value": "Prisijungti iš naujo"
+      }
+    },
+    "home_sera_retire_de_cet_espace": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8fe1d13d8628b2c0fdae1bd8593b254a610b17085d3dfac67aa023758af0134f",
+      "translation": {
+        "value": "„%1$s“ bus pašalinta iš šios erdvės."
+      }
+    },
+    "home_session_fermee_automatiquement": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d33804d74305644f5e8372c72cdeb9764de54eb18ec7f4ea022cb1711cac7da9",
+      "translation": {
+        "value": "Sesija uždaryta automatiškai"
+      }
+    },
+    "home_soutenir": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ec1a82dfa66509e17713871d4d9315283ed352676b7d88440ad04b8228c94a10",
+      "translation": {
+        "value": "Paremti ➔"
+      }
+    },
+    "home_supprimer_l_espace": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "57ffd8d1152a984bfd489bf9cd208b31f9192c66ddb10585fbb57951f3dadcfc",
+      "translation": {
+        "value": "Ištrinti erdvę?"
+      }
+    },
+    "home_supprimer_le_raccourci": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "aa4979baeedef3e239ef27dbf32163826089f46080cf4fd1eb1c1c5c6ddcd4fc",
+      "translation": {
+        "value": "Ištrinti nuorodą?"
+      }
+    },
+    "home_systeme_et_architecture": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "49f6cc9fd9354da5f24a5558a8544e8b501e5fe0e2507b91fbf4047e44c72d36",
+      "translation": {
+        "value": "Sistema ir architektūra"
+      }
+    },
+    "home_text": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1ad0a0e992d111beae9d84e97421d460f76628a7f7ecda07ce68ee6de504a93c",
+      "translation": {
+        "value": "✓ %1$s"
+      }
+    },
+    "home_transparence_deep_shield": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6339f32d5458f79740e2891eb16004460a20dde1e21ee026680a9bccf75c1415",
+      "translation": {
+        "value": "Deep Shield skaidrumas"
+      }
+    },
+    "home_tunnel_indisponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2fadf604817299d0595963b34218dc1cb8da8f671e8cbbce213dbe29fd122cc8",
+      "translation": {
+        "value": "Tunelis nepasiekiamas"
+      }
+    },
+    "home_type_de_connexion": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "391b25cd5f405361ee4d2a6116e80f5d2dd1c546e403877690dbfcef7af2d0b0",
+      "translation": {
+        "value": "Ryšio tipas"
+      }
+    },
+    "home_une_adresse_s_ouvre_directement_le_reste_est_recherche_s": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f6b3c515f904f2b3d7543a4a06fe1cdb7590eecac778e26b6cfaf65d0ba3b306",
+      "translation": {
+        "value": "Adresas atidaromas tiesiogiai, visa kita ieškoma naudojant DuckDuckGo."
+      }
+    },
+    "home_une_information_generale_sur_la_plateforme_reste_disponi": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "43072af905ce41767a5d6cd6f202603dd74e4e3ef110c221c9d359a4e3476093",
+      "translation": {
+        "value": "Bendroji informacija apie platformą vis dar prieinama, tačiau jos yra nedaug."
+      }
+    },
+    "home_une_page_web_peut_demander_combien_de_c_urs_logiques_vot": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c8628df4178b5269d929579c376ba67ced111a887c09148311618fa08e992d66",
+      "translation": {
+        "value": "Žiniatinklio puslapis gali paklausti, kiek loginių branduolių jūsų naršyklė gali naudoti. Ši reikšmė suteikia informacijos apie įrenginio galią ir kategoriją ir gali padėti jį atskirti."
+      }
+    },
+    "home_une_partie_des_informations_reseau_est_masquee_mais_la_p": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "522615b064d5a44d26bb4f020729748e14df1f9dcd51135ab633c829a5dfa21c",
+      "translation": {
+        "value": "Dalis tinklo informacijos yra paslėpta, tačiau apsauga nėra visiška."
+      }
+    },
+    "home_une_session_est_deja_active": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3699bb093242d252f4e46647d924d5a13a7763458247bc57e84eb12e69fa55de",
+      "translation": {
+        "value": "Sesija jau aktyvi"
+      }
+    },
+    "home_via_deliriuum": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "787232fca8035920987007c9a94c3060c6f51a7ed4ce8de7e423cdd1e0edbd35",
+      "translation": {
+        "value": "%1$s per Deliriuum"
+      }
+    },
+    "home_visible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "151b9c0d6a718589dec6778675b456c8ed4a8d57009aa5b311924795db8b4c55",
+      "translation": {
+        "value": "Matoma"
+      }
+    },
+    "home_voir_le_detail_des_protections": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "839987a04ece567fb3026585c4707efcfc7323bc53ed92d8a2ddddb0c70719b6",
+      "translation": {
+        "value": "Rodyti išsamią apsaugų informaciją"
+      }
+    },
+    "home_votre_adresse_ip_publique_est_normalement_visible_par_le": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1207ce6eae3ca854ea83dc72753913ab422069c7bd45eb3917403cc3c4ffaa82",
+      "translation": {
+        "value": "Jūsų viešasis IP adresas paprastai matomas jūsų lankomoms svetainėms. Jis gali nurodyti jūsų interneto tiekėją ir apytikslę buvimo vietą. VPN tunelis nukreipia jūsų srautą per Deliriuum infrastruktūrą, o ne per įprastą jūsų ryšį."
+      }
+    },
+    "home_votre_navigateur_peut_parfois_indiquer_aux_sites_que_vou": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0b3297dd6931d40869ce9fcfc6866c40e720ad6459c3e138da52231fd9db301f",
+      "translation": {
+        "value": "Jūsų naršyklė kartais gali nurodyti lankomoms svetainėms, ar naudojate „Wi‑Fi“, mobilųjį tinklą arba tam tikras jūsų ryšio savybes. Ši informacija pati savaime jūsų neidentifikuoja, tačiau prideda požymių prie jūsų skaitmeninio pėdsako."
+      }
+    },
+    "home_votre_session_a_ete_fermee_automatiquement_apres_30_minu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e233ebd653728c884a409c6212808feeb50b93ace822ad6c41abcc4fb5f2da85",
+      "translation": {
+        "value": "Jūsų sesija buvo automatiškai uždaryta po 30 minučių neveikimo, kad būtų apsaugotas jūsų privatumas."
+      }
+    },
+    "home_votre_trafic_n_est_pas_protege_par_deliriuum_activez_la": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fb7679453f821cae8becda58c46d9657c3672fc82297922ad270d38fbb116ad0",
+      "translation": {
+        "value": "Jūsų srautas nėra apsaugotas naudojant Deliriuum. Įjunkite apsaugą, kad atidarytumėte saugią naršyklę."
+      }
+    },
+    "home_votre_trafic_passe_par_le_tunnel_deliriuum_la_navigation": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1a3f7be00cb08a477ddf2bd0891b760ed8b2ceac67b810b2cdcd232aeb13ed40",
+      "translation": {
+        "value": "Jūsų srautas eina per tunelį Deliriuum. Integruotas naršymas gali naudoti Deep Shield."
+      }
+    },
+    "home_votre_trafic_passe_par_le_tunnel_deliriuum_les_sites_ne": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "25a86df0d38e68f9b1f638991211a2ccd576c900b964475d69dfb39bebc45123",
+      "translation": {
+        "value": "Jūsų srautas keliauja per Deliriuum tunelį: svetainės nebemato jūsų įprasto ryšio viešojo IP adreso tiesiogiai."
+      }
+    },
+    "home_webrtc_a_revele_des_informations_reseau_elles_peuvent_fo": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d422ec982477a840427d911d5b512f4a2aab60e0c9028941ca82e44b90ea50e3",
+      "translation": {
+        "value": "WebRTC atskleidė tinklo informacijos. Ji gali suteikti jūsų lankomoms svetainėms papildomų požymių apie tikrąjį jūsų ryšį."
+      }
+    },
+    "home_webrtc_est_la_technologie_utilisee_par_de_nombreux_sites": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "98a5090761a6e651f06f98bf21edb70afcaff80e82e7263289505ddf6356c24f",
+      "translation": {
+        "value": "WebRTC yra technologija, kurią daugelis svetainių naudoja tiesioginiams garso ir vaizdo skambučiams. Norėdama užmegzti tokį ryšį, naršyklė gali keistis tinklo informacija. Jei ji pernelyg tiksli, jūsų lankomos svetainės gali gauti papildomos informacijos apie tikrąjį jūsų ryšį, nepaisant VPN."
+      }
+    },
+    "home_webrtc_est_limite_mais_le_test_ne_permet_pas_de_garantir": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "30e66e79dca50492b33331c386bbdfbbc389aa4e4cc03904d11b61dcb4b48049",
+      "translation": {
+        "value": "WebRTC yra apribotas, tačiau testas neleidžia garantuoti, kad neatskleidžiama jokia papildoma tinklo informacija."
+      }
+    },
+    "language_automatic": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f7be0060f2b8cbadb48b2682875cd1dd8c2639b4614e4641c29e3d453a7f8d51",
+      "translation": {
+        "value": "Automatinė"
+      }
+    },
+    "language_dialog_title": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6b003270538ae5ea117efadbe017ef99214a677c711276ae3e1fdeaef9c7b858",
+      "translation": {
+        "value": "Programos kalba"
+      }
+    },
+    "privacy_audit_bootstrap_analyse_de_reference": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4f1faa3186664988b4001a14de80bfd3d699c55da158812303cb6faaac5a7b84",
+      "translation": {
+        "value": "Etaloninė analizė"
+      }
+    },
+    "privacy_audit_bootstrap_analyse_terminee_votre_reference_avant_est_enregistree": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0c0fa49f5163322d1bd62777372a97beffacacb79637eddfbdfe18734df804d7",
+      "translation": {
+        "value": "Analizė baigta. Jūsų „PRIEŠ“ atskaita išsaugota."
+      }
+    },
+    "privacy_audit_bootstrap_cette_etape_n_est_effectuee_qu_une_seule_fois": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "52f63fd47effa7d33ea902354e539c6fad69bda5725861a5506d9c798b9cbd60",
+      "translation": {
+        "value": "Šis etapas atliekamas tik vieną kartą."
+      }
+    },
+    "privacy_audit_bootstrap_deliriuum_effectue_les_dernieres_verifications_avant_vot": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4e51373e1f136d6af7ff770061e7fa35bd80d9fcca750a145e3924b0e1df2158",
+      "translation": {
+        "value": "Deliriuum atlieka paskutinius patikrinimus prieš jums pirmą kartą pradedant naudotis programa."
+      }
+    },
+    "privacy_audit_bootstrap_finalisation_de_votre_installation": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "59230d94ca2e3e1ae434c5e5a9293076c2f5465e3b73d77468e973105d837bce",
+      "translation": {
+        "value": "Diegimo užbaigimas"
+      }
+    },
+    "privacy_audit_bootstrap_l_analyse_de_reference_n_a_pas_pu_etre_terminee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5d5cd932f07a18814ffd9a3943fedf7c754a0872cfc8af511c2ded84febfe673",
+      "translation": {
+        "value": "Etaloninės analizės nepavyko užbaigti."
+      }
+    },
+    "privacy_audit_bootstrap_l_analyse_n_a_pas_pu_etre_terminee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "180313d1acec969e0a1f1950809d15a2b704e8285cb54e6a11b6d72cc2ec81f5",
+      "translation": {
+        "value": "Analizės nepavyko užbaigti."
+      }
+    },
+    "privacy_audit_bootstrap_le_resultat_de_cette_analyse_reste_enregistre_localement": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fde94a3f3fdc6577cef2bf287e9e1747beba5d6516ebeaa7c76ca28ede518c0d",
+      "translation": {
+        "value": "Šios analizės rezultatas išlieka išsaugotas jūsų įrenginyje."
+      }
+    },
+    "privacy_audit_bootstrap_le_resultat_de_l_analyse_n_a_pas_pu_etre_lu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ad2650cfb150dd90e6bf61b2ef097e116c98ba859e216371576585cbd3deefb0",
+      "translation": {
+        "value": "Analizės rezultato nepavyko nuskaityti."
+      }
+    },
+    "privacy_audit_bootstrap_mesure_de_votre_environnement_avant_l_activation_de_deep": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4c5d81725e0841a80c106673f1a8f176df1a97152275ccd838617b1f9ee32abc",
+      "translation": {
+        "value": "Jūsų aplinkos matavimas prieš suaktyvinant Deep Shield…"
+      }
+    },
+    "privacy_audit_canvas_distinct_renders": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "02c17498434ac5dd6ad9a53a214797af92f333679ec4dd344242c597b743fbbb",
+      "translation": {
+        "forms": {
+          "few": "%1$d atskiri atvaizdavimai buvo pastebėti. Išvada sąmoningai lieka dalinė.",
+          "many": "%1$d atskirų atvaizdavimų buvo pastebėta. Išvada sąmoningai lieka dalinė.",
+          "one": "%1$d atskiras atvaizdavimas buvo pastebėtas. Išvada sąmoningai lieka dalinė.",
+          "other": "%1$d atskirų atvaizdavimų buvo pastebėta. Išvada sąmoningai lieka dalinė."
+        }
+      }
+    },
+    "privacy_audit_fonts_detected": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "37f215631eb8cc5e883281a6343efe9e06dc98621ebd604c6d2bf866bac683de",
+      "translation": {
+        "forms": {
+          "few": "Aptikti %1$d šriftai iš %2$d patikrintų.",
+          "many": "Aptikta %1$d šriftų iš %2$d patikrintų.",
+          "one": "Aptiktas %1$d šriftas iš %2$d patikrintų.",
+          "other": "Aptikta %1$d šrifto iš %2$d patikrintų."
+        }
+      }
+    },
+    "privacy_audit_ice_candidates_observed": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3296b6fbda3c242e41cf0c7a90bd52ea6007f5aec1c03b21276314d9dfd5f2f6",
+      "translation": {
+        "forms": {
+          "few": "Buvo aptikti %1$d ICE kandidatai.",
+          "many": "Buvo aptikta %1$d ICE kandidatų.",
+          "one": "Buvo aptiktas %1$d ICE kandidatas.",
+          "other": "Buvo aptikta %1$d ICE kandidato."
+        }
+      }
+    },
+    "privacy_audit_manager_architecture_navigateur": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a9a96c43c2a229ebe9fcddb634fc251d2b722df1ee8bf28a6fb9748a160bccfe",
+      "translation": {
+        "value": "Naršyklės architektūra"
+      }
+    },
+    "privacy_audit_manager_aucun_candidat_ice_n_a_ete_expose_lors_du_test": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "71368ea3f3f85bc787e5b5d2ccd6e14a5f736a81acb9c0b016727b08c5cc8f0f",
+      "translation": {
+        "value": "Bandymo metu nebuvo atskleistas nė vienas ICE kandidatas."
+      }
+    },
+    "privacy_audit_manager_audiocontext_mesure_samplerate_baselatency_outputlatency": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2b15a7e58fd2f41ce9c91c3d8f0dc66461da3bba13137bf07042ec9d7b2b7022",
+      "translation": {
+        "value": "Išmatuotas AudioContext: sampleRate=%1$s, baseLatency=%2$s, outputLatency=%3$s. Vien šių reikšmių nepakanka visiškai apsaugai įrodyti."
+      }
+    },
+    "privacy_audit_manager_audiocontext_n_est_pas_disponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "16afdc51fd29d9a3cb7cfe95c3df2a39245f4d90ae40dcf01ef341b79981fb21",
+      "translation": {
+        "value": "AudioContext nepasiekiamas."
+      }
+    },
+    "privacy_audit_manager_canvas_differs_from_baseline": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b6bb71b17cd6de1a7a46a55083110ef9553fd0e1c37a96a0bafdb17e2dba4856",
+      "translation": {
+        "value": "Svetainei pateikiamas Canvas atvaizdas skiriasi nuo matavimo prieš suaktyvinimą, o tai patvirtina apsaugos nuo pirštų atspaudų veikimą."
+      }
+    },
+    "privacy_audit_manager_canvas_n_est_pas_disponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3c2853d1206592bd3c28a3d30149db2793e8375cabb0802f71a16e6f931fbf65",
+      "translation": {
+        "value": "Canvas nepasiekiamas."
+      }
+    },
+    "privacy_audit_manager_capacites_tactiles": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5f40512975169a7f89b14a7f7b86270e25037ea50ca5e235a9fedcc35534732a",
+      "translation": {
+        "value": "Jutiklinio ekrano galimybės"
+      }
+    },
+    "privacy_audit_manager_certains_identifiants_de_peripheriques_sont_accessibles": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1bef983e367a9bf09c6d744eb12d4b3da6ce4bee14357d15dc8451aaa4c49e06",
+      "translation": {
+        "value": "Kai kurie įrenginių identifikatoriai yra pasiekiami."
+      }
+    },
+    "privacy_audit_manager_chemin_reseau_du_tunnel": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "aa245c6a60eeb6c2bb5737c0b6eeb64092dcc1239aeb7b27b9d560517a1dda03",
+      "translation": {
+        "value": "Tunelio tinklo maršrutas"
+      }
+    },
+    "privacy_audit_manager_coherence_de_l_affichage": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "7c6ca14b1136f26818f8b4359ae2c10069b45aa80fa34e1010b37d8f47226d04",
+      "translation": {
+        "value": "Atvaizdavimo nuoseklumas"
+      }
+    },
+    "privacy_audit_manager_coherence_du_fuseau_horaire": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "eeef2b72c57fd020ab22d9201cb823085074c2c09a645b33dc2aa28fab4ad9d1",
+      "translation": {
+        "value": "Laiko juostos nuoseklumas"
+      }
+    },
+    "privacy_audit_manager_des_informations_graphiques_identifiantes_restent_visibl": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "ef9680c5e09cf1861bbeb3d326b4f77c72a8964697caa33fdf34a222bef36d26",
+      "translation": {
+        "value": "Lieka matoma identifikuojanti grafinė informacija."
+      }
+    },
+    "privacy_audit_manager_empreinte_audio": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8e75da6dd3ee991ab7fde15bc57c87044d1426229abecea6e2fa26ba6e7b22f5",
+      "translation": {
+        "value": "Garso atspaudas"
+      }
+    },
+    "privacy_audit_manager_fuseau_observe_attendu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8e26d558dcbb55aeda7a233e6f77b49fc5461e2bdfc3c96a230da9d5ff8afcac",
+      "translation": {
+        "value": "Aptikta laiko juosta: %1$s; tikėtina: %2$s."
+      }
+    },
+    "privacy_audit_manager_fuseau_observe_le_profil_de_sortie_attendu_n_est_pas_con": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "465e67b842d4a376f44951b22c8dd9a4b02c0f6cb50824607ace3c0cbc47ad5b",
+      "translation": {
+        "value": "Aptikta laiko juosta: %1$s. Tikėtinas išvesties profilis nežinomas."
+      }
+    },
+    "privacy_audit_manager_hardwareconcurrency_normalized": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "da6a2f8c3fab2dc58e3cfe01ceebe696ece80d0b8be1992b14e48071dfba1660",
+      "translation": {
+        "value": "Gecko normalizuoja pateikiamą procesorių skaičių: %1$d."
+      }
+    },
+    "privacy_audit_manager_identite_graphique_webgl": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "8c017eb1b47c8bd53f980c8201e52a98691d62bcd07e9c22aef0d0bc567e4297",
+      "translation": {
+        "value": "Grafinė tapatybė WebGL"
+      }
+    },
+    "privacy_audit_manager_informations_reseau": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "39fde59383a3fec75dced0d96d13a1287fe6f9b5193847f9928866b60f2ba9d3",
+      "translation": {
+        "value": "Tinklo informacija"
+      }
+    },
+    "privacy_audit_manager_l_api_mediadevices_n_est_pas_disponible_dans_ce_contexte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9b15cf6e33e5af028799e6875b8faf9353286297bb84ba7946c29459d7ebbf6d",
+      "translation": {
+        "value": "API MediaDevices šiame kontekste nepasiekiama."
+      }
+    },
+    "privacy_audit_manager_l_api_network_information_n_est_pas_exposee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9bbd3b7bc91c55b5856d7ab23a5223522a6d9f188859b56b2c7406a2203e8e97",
+      "translation": {
+        "value": "API „Network Information“ nėra pateikiama."
+      }
+    },
+    "privacy_audit_manager_la_coherence_dpr_css_n_a_pas_pu_etre_confirmee_completem": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "7810cc8c2105690979e56bc70526a32e101b8b63285a4f9b3fdb455441493870",
+      "translation": {
+        "value": "DPR/CSS nuoseklumo nepavyko visiškai patvirtinti."
+      }
+    },
+    "privacy_audit_manager_le_canvas_est_stable_sur_les_lectures_de_ce_test_le_hash": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d2fc72489a1a35fe6a4df6ddf661e160cfae29e5514cd98504763f00ead32eb7",
+      "translation": {
+        "value": "Canvas atliekant šio bandymo nuskaitymus išlieka stabilus. Vien pagal maišos reikšmę negalima spręsti apie apsaugą."
+      }
+    },
+    "privacy_audit_manager_le_contenu_web_peut_acceder_a_des_informations_reseau": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "fa886fe2548649a34e3a59380e26739178ff33c07b706ab8a264e8190d7dd929",
+      "translation": {
+        "value": "Žiniatinklio turinys gali pasiekti tinklo informaciją."
+      }
+    },
+    "privacy_audit_manager_le_dpr_javascript_est_coherent_avec_les_media_queries_cs": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d956ba8a2f5eb7a328a47ed309bec41a0755399f3f48cae37354006e4e1bf30d",
+      "translation": {
+        "value": "JavaScript DPR dera su CSS medijos užklausomis."
+      }
+    },
+    "privacy_audit_manager_le_fabricant_et_le_renderer_materiels_ne_sont_pas_revele": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1f653a89fd6f9274c06a658f29402db420cf9ca6a5a283a89b8b85d73b6a65ec",
+      "translation": {
+        "value": "Techninės įrangos gamintojas ir atvaizdavimo modulis neatskleidžiami."
+      }
+    },
+    "privacy_audit_manager_le_fuseau_horaire_est_coherent_avec_la_sortie_vpn": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5339a86d81950f0abb2c0266d2ca380c470d078b48167aad9f183d5d6ced7edb",
+      "translation": {
+        "value": "Laiko juosta dera su VPN išvestimi: %1$s."
+      }
+    },
+    "privacy_audit_manager_le_fuseau_horaire_n_a_pas_pu_etre_mesure": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e46534f9110f772ecf8e90e367d3c9bc6a0abbf4e30e6c068fcd533404b446e4",
+      "translation": {
+        "value": "Laiko juostos nepavyko išmatuoti."
+      }
+    },
+    "privacy_audit_manager_le_tunnel_est_deconnecte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4f0a5313b634c274b35dec25cb5b9e648b052deb06e5e2fda797bfc81e936057",
+      "translation": {
+        "value": "Tunelis atjungtas."
+      }
+    },
+    "privacy_audit_manager_le_tunnel_wireguard_est_actif": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c16f4aea836a5141f1945c9c2a7ab0ff219e7288314ed8fede6f6aecdd52e7dd",
+      "translation": {
+        "value": "Tunelis WireGuard yra aktyvus."
+      }
+    },
+    "privacy_audit_manager_le_tunnel_wireguard_n_est_pas_actif": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "998d874018f31cd25f319293842cd9a93d71c902afa3d8b31b8f9594843d4225",
+      "translation": {
+        "value": "Tunelis WireGuard nėra aktyvus."
+      }
+    },
+    "privacy_audit_manager_le_watchdog_confirme_que_le_tunnel_permet_d_atteindre_in": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b2549fac69d84ae0d5e3a817cbb4454a467ab7a8f86c3f9476f6a73e99d0e9e7",
+      "translation": {
+        "value": "Stebėjimo procesas patvirtina, kad tunelis leidžia pasiekti internetą."
+      }
+    },
+    "privacy_audit_manager_les_labels_et_identifiants_des_peripheriques_ne_sont_pas": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "dd2ee2770525a3778d536254eceafae2a63cf40a2482fd62e1589c1edf7ba945",
+      "translation": {
+        "value": "Įrenginių etiketės ir identifikatoriai neatskleidžiami."
+      }
+    },
+    "privacy_audit_manager_maxtouchpoints_normalized": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b704dc658d973e117bc382f538fcacf412a32d1a79279671fc59ba4600c69fbb",
+      "translation": {
+        "value": "Gecko normalizuoja pateikiamas lietimo galimybes: %1$d."
+      }
+    },
+    "privacy_audit_manager_mesure_incomplete": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "aef2dd3c2cc551dfae5d0d2cd38342b1374d6ee28d728c555e3eff781bb68b6f",
+      "translation": {
+        "value": "Matavimas nebaigtas."
+      }
+    },
+    "privacy_audit_manager_mesure_indisponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "df4477893cada000e2652efaf8d9b62365fd0d26b20f0557fbedb7e42d4793b6",
+      "translation": {
+        "value": "Matavimas nepasiekiamas."
+      }
+    },
+    "privacy_audit_manager_micro_camera_et_peripheriques": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e89729c6c517f1a622e93df53d5fc3cc2a429f689f1f1e06ab814feee8d6a86a",
+      "translation": {
+        "value": "Mikrofonas, kamera ir įrenginiai"
+      }
+    },
+    "privacy_audit_manager_navigator_hardwareconcurrency_reste_observable": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4f560407cd236f493fc7ddfe8df3c2893afadfb4dbf3442e79e9412b0bb8ea76",
+      "translation": {
+        "value": "navigator.hardwareConcurrency vis dar matomas: %1$s"
+      }
+    },
+    "privacy_audit_manager_navigator_maxtouchpoints_reste_observable": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1d61380ee053dc62591093760a436619b9e8547bebc4b382ebab60c6794879dd",
+      "translation": {
+        "value": "navigator.maxTouchPoints vis dar matomas: %1$s"
+      }
+    },
+    "privacy_audit_manager_navigator_platform_reste_observable": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "cc70c9a074ea89510aa1192a72ab68af0870653069c93ab134ec26cbf9522dbd",
+      "translation": {
+        "value": "navigator.platform vis dar matomas: %1$s"
+      }
+    },
+    "privacy_audit_manager_nombre_de_c_urs": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a13978eb5893e440703aa395454f608ba330167f16e49dceb205a23bcdd3b7ad",
+      "translation": {
+        "value": "Branduolių skaičius"
+      }
+    },
+    "privacy_audit_manager_platform_generic_android": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2eab1cc5bd7d66a98db096febd4a1b960c70b0f6d651d2153a2d2c74989127f3",
+      "translation": {
+        "value": "Gecko pateikia bendrinį Android profilį (%1$s), o ne tikrąją aparatinės įrangos architektūrą."
+      }
+    },
+    "privacy_audit_manager_polices_detectables": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "bcdf542d1f9419247c6fb624b0b9c1339474f804e351ef058324d513f02fe2d2",
+      "translation": {
+        "value": "Aptinkami šriftai"
+      }
+    },
+    "privacy_audit_manager_timezone_rfp_normalized": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "547cee263b4c0954f9de37ac4fb49b68f9f5c3603ff2eb613127bee179aa92bf",
+      "translation": {
+        "value": "Laiko juostą normalizuoja apsauga nuo pirštų atspaudų: %1$s."
+      }
+    },
+    "privacy_audit_manager_tunnel_vpn_wireguard": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "33463b68d519db0f77b4350c9709c8d61e8eb0dfe714ef9809b4377ce261670a",
+      "translation": {
+        "value": "VPN tunelis WireGuard"
+      }
+    },
+    "privacy_audit_manager_webgl_n_est_pas_disponible_dans_ce_contexte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2eb731f9d1a14f53bb8069e10f0b7400a36444d375d883727bd4207dfe52fa3e",
+      "translation": {
+        "value": "WebGL šiame kontekste nepasiekiamas."
+      }
+    },
+    "privacy_audit_manager_webrtc_n_est_pas_disponible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "cece6e7a2a62f5b78580a6e052fc1b22fe52c1fb143ecacd703a741086696144",
+      "translation": {
+        "value": "WebRTC nepasiekiamas."
+      }
+    },
+    "privacy_audit_manager_wireguard_est_actif_mais_le_chemin_reseau_ne_repond_plus": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "954db851cac2bab3bcd3ccfd4a100f9d293f1607db076e1b1deaf0b069091482",
+      "translation": {
+        "value": "WireGuard yra aktyvus, tačiau tinklo maršrutas nebeatsako."
+      }
+    },
+    "privacy_guide_active_systematiquement_le_tunnel_deliriuum_des_que_tu_t": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "20fd3ab82e13273ba9e63fff60d91df8fc5ec581cd9e73ed86b814ae537206f0",
+      "translation": {
+        "value": "Visada įjunkite Deliriuum tunelį, kai tik prisijungiate prie kavinės, stoties ar viešbučio tinklo. Būtent tada jūsų tinklo paketus lengviausia perimti."
+      }
+    },
+    "privacy_guide_desactive_la_localisation_precise": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6c6f6f1f55198942c52f4b7edff79562ff23deafd0db8dcfb0ca08e71a8f94c8",
+      "translation": {
+        "value": "Išjunkite tikslią vietos nustatymo funkciją"
+      }
+    },
+    "privacy_guide_evite_les_wi_fi_publics_ouverts": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4620ea3973a7bba716171d0463805a6918e058eea4206d467f1a0baa281bef02",
+      "translation": {
+        "value": "Venkite atvirų viešųjų Wi-Fi tinklų"
+      }
+    },
+    "privacy_guide_limite_le_suivi_publicitaire": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e1852291b8570fd71dd3f635299b62a73e869f2044c1041d8d6ffb04ad3e2abc",
+      "translation": {
+        "value": "Apribokite reklaminį sekimą"
+      }
+    },
+    "privacy_guide_masque_le_contenu_sur_l_ecran_verrouille": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5b4c67d217dbf7adc01b8c657d4c97b13fa4f404299d3a9c0092dd44d7bad1b5",
+      "translation": {
+        "value": "Slėpkite turinį užrakintame ekrane"
+      }
+    },
+    "privacy_guide_parametres_notifications_notifications_sur_l_ecran_verro": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0b34439b5add0d2e0710df0429c86e67c42416d80d062993222f6d5832f8fd2e",
+      "translation": {
+        "value": "Nustatymai → Pranešimai → Pranešimai užrakintame ekrane: pasirinkite „Slėpti jautrų turinį“, kad smalsūs žvilgsniai nepamatytų jūsų dviejų dalių autentifikavimo SMS žinučių."
+      }
+    },
+    "privacy_guide_parametres_securite_et_confidentialite_confidentialite_a": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6024254b0210e8c9cf33b0f873b7d29319d9cfb8d63445ba96cc9df2c120d29a",
+      "translation": {
+        "value": "Nustatymai → Saugumas ir privatumas → Privatumas → Kiti privatumo nustatymai → Skelbimai: spustelėkite „Pašalinti reklamavimo ID“."
+      }
+    },
+    "privacy_guide_parametres_securite_et_confidentialite_confidentialite_g": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "31c22e1706f7ea04b4bed30c2300346fe8b8fbd332c309787587d88e6f34dc18",
+      "translation": {
+        "value": "Nustatymai → Saugumas ir privatumas → Privatumas → Leidimų tvarkyklė → Vietovė: pašalinkite prieigą arba išjunkite parinktį „Naudoti tikslią vietovę“ nebūtinoms programėlėms."
+      }
+    },
+    "privacy_guide_passe_regulierement_en_revue_le_gestionnaire_d_autorisat": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b8c76e5c32d13ba978fbb665edd46c934ef88324455e690ee446ec7f4250ed66",
+      "translation": {
+        "value": "Reguliariai peržiūrėkite leidimų tvarkyklę, kad užblokuotumėte fone veikiančias programėles, kurios neturi jokios priežasties jūsų klausytis ar filmuoti."
+      }
+    },
+    "privacy_guide_quelques_reglages_simples_pour_reprendre_le_controle_de": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "c7b23da09c7a03e7d221dee6e32e6aa99769911c39162df35c9dd93fb650de05",
+      "translation": {
+        "value": "Keli paprasti nustatymai, padėsiantys susigrąžinti privatumo kontrolę sistemoje Android, papildantys Deliriuum."
+      }
+    },
+    "privacy_guide_un_gestionnaire_robuste_comme_google_password_manager_bi": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4e39999ce28d7d775fb9ff774b1e14c8f7b756fd3ce38f16a9187bb5ce9b90f9",
+      "translation": {
+        "value": "Patikima slaptažodžių tvarkyklė, pvz., Google Password Manager, Bitwarden ar Dashlane, padės išvengti didžiausios klaidos: to paties slaptažodžio naudojimo el. paštui ir kitoms paskyroms."
+      }
+    },
+    "privacy_guide_utilise_des_cles_uniques": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9344a73ffdd329fd769273b3d8f50ac566dac08093da75393cba22a2f1de6047",
+      "translation": {
+        "value": "Naudokite unikalius slaptažodžius"
+      }
+    },
+    "privacy_guide_verifie_la_camera_et_le_micro": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "045dc1bc777e7919b88e23ebaf6b8633d59f9f8abb7b6c1e0ba3f3c456e4adb7",
+      "translation": {
+        "value": "Patikrinkite kamerą ir mikrofoną"
+      }
+    },
+    "shortcut_space_social": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "eb0d8ece8024bf8436bb9245fc5a713343ed081900748fee4b0ff6964830631c",
+      "translation": {
+        "value": "Socialiniai tinklai"
+      }
+    },
+    "shortcut_space_video": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "dcaed424fc17b471b510d14683933b6f2c148903079be1709b1888c8e6c47f6b",
+      "translation": {
+        "value": "Vaizdo įrašai"
+      }
+    },
+    "side_menu_a_propos_de_deliriuum": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1554bbe7d8404520f59bcd7e2c045e33fcf49a69574804df8e7e9251355de709",
+      "translation": {
+        "value": "Apie Deliriuum"
+      }
+    },
+    "side_menu_deliriuum_logo": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a9681626f1f0ebc81650fcac2c7c5a7ceb3aa1f00aad1a54aed4df35e5bd9ae2",
+      "translation": {
+        "value": "Deliriuum logotipas"
+      }
+    },
+    "side_menu_guide_d_hygiene_numerique": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "e1a8c5701c5b46d8729c022f4268a05240f0d0ae5162a722fcf0f1f876442f5b",
+      "translation": {
+        "value": "Skaitmeninės higienos vadovas"
+      }
+    },
+    "side_menu_langue": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5a1610aa6ecb0ac786af8efa46372a56f720e0b02ed2b95a3b5c8ba4604aaaef",
+      "translation": {
+        "value": "Kalba"
+      }
+    },
+    "side_menu_mon_compte": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "5dfedf06afca83dc4aaf2fcc7719ffb50bfc1eb5faa88179f3c668019ff973ec",
+      "translation": {
+        "value": "Mano paskyra"
+      }
+    },
+    "side_menu_se_deconnecter": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "22c2ac59587698341946ab50553c0887aacde56dda9191a98357e3df64c90c39",
+      "translation": {
+        "value": "Atsijungti"
+      }
+    },
+    "side_menu_soutenir_le_projet": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "94cebcfd4bbf60140b92f586a0b0f812d0a7098a2f09181c93ecabe5978355af",
+      "translation": {
+        "value": "Paremti projektą"
+      }
+    },
+    "support_intro_bienvenue_dans_la_resistance_numerique": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "636e90bf797a5b2546411f565a50270a30375eb55e938fcd38be166962a1f14d",
+      "translation": {
+        "value": "SVEIKI ATVYKĘ Į\\nSKAITMENINĮ PASIPRIEŠINIMĄ"
+      }
+    },
+    "support_intro_chaque_don_finance_les_serveurs_le_developpement_de_deep": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "308dc82a56f9d94c1732eae460652668e1dd2cf5572a2811f2b468c08502d571",
+      "translation": {
+        "value": "Kiekviena auka padeda finansuoti serverius,\\nDeep Shield kūrimą\\nir projekto nepriklausomybę."
+      }
+    },
+    "support_intro_continuer_gratuitement": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d327ddab8ce2762f1cac7f382145b23aa73f1bffcc3790b67de79c59c1cdce1b",
+      "translation": {
+        "value": "Tęsti nemokamai"
+      }
+    },
+    "support_intro_la_vie_privee_n_est_pas_un_luxe_c_est_un_droit": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "99eb250b96bfadc5e0791d38661380c3fa6750fff8880ee2074cb7ee754a9512",
+      "translation": {
+        "value": "Privatumas nėra prabanga.\\nTai yra teisė."
+      }
+    },
+    "support_intro_notre_seule_ressource_c_est_votre_soutien": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "f77e76cf1a3e2ca084c24aec9c018d6ab62aa1e124933119742bb8b39a7b55ef",
+      "translation": {
+        "value": "Vienintelis mūsų išteklius,\\nyra jūsų parama."
+      }
+    },
+    "support_intro_pendant_que_les_autres_monetisent_leurs_utilisateurs_del": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "448aba4c87b2de0f3ed97fd0dd254ff963ed6dd475562542342ac4ce3e5adfb8",
+      "translation": {
+        "value": "Kol kiti pelnosi iš savo naudotojų,\\nDeliriuum saugo savuosius."
+      }
+    },
+    "support_intro_rejoindre_les_soutiens": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "bcc8d4c2ec03acdbb4aa6fda25c6d4894c0ab845c457871f2fdb17814bfab0dd",
+      "translation": {
+        "value": "Prisidėti prie rėmėjų"
+      }
+    },
+    "tunnel_manager_erreur_lors_de_l_arret_du_tunnel": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "23277bf5a0cd0ee73964ead55e2b53d8f11736a9281372b945d9560b53c0c3de",
+      "translation": {
+        "value": "Klaida stabdant tunelį."
+      }
+    },
+    "tunnel_manager_impossible_d_etablir_la_connexion": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a5e0f7fd4abb1ad8236671698354d4eccac4b74d234a7cfe1af5e1210bf2a987",
+      "translation": {
+        "value": "Nepavyksta užmegzti ryšio."
+      }
+    },
+    "tunnel_manager_impossible_de_fermer_l_ancienne_session": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "29a5cd696ecf7250950f12ace7b2c290f26d3662de57d0f30312d1e2940e9d50",
+      "translation": {
+        "value": "Nepavyksta uždaryti ankstesnės sesijos."
+      }
+    },
+    "tunnel_manager_impossible_de_retrouver_l_appareil_deliriuum_local": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "9568d00f5d09dc6eec4d2164a7a8645c1b07f6434b5afc85b62e40b6c1f5e974",
+      "translation": {
+        "value": "Nepavyksta rasti vietinio Deliriuum įrenginio."
+      }
+    },
+    "tunnel_manager_le_tunnel_est_ferme_mais_la_session_distante_n_a_pas_pu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d425596c56d09822cb436dc9a106d3f384e4ebfd5253f3089a7d4faf8da86850",
+      "translation": {
+        "value": "Tunelis uždarytas, tačiau nepavyko užbaigti nuotolinės sesijos."
+      }
+    },
+    "tunnel_manager_le_tunnel_vpn_ne_repond_plus_la_navigation_dans_deliriuu": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "d99d127a9e47abf7b485181033cb8e79bcb438905180e42003a9503d2b20753a",
+      "translation": {
+        "value": "VPN tunelis nebeatsako. Naršymas naudojant Deliriuum pristabdytas."
+      }
+    },
+    "tunnel_manager_reconnexion_impossible": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "b196c0221474f4fc47a29a8242d91d90afa770c9187246fa53ce751ad1411d42",
+      "translation": {
+        "value": "Nepavyksta prisijungti iš naujo."
+      }
+    },
+    "vpn_consent_accepter_et_continuer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "49eed7bb3045c844afdffb4d3616eef503cce97c1cc42b3f00dbace1757cb66d",
+      "translation": {
+        "value": "Sutikti ir tęsti"
+      }
+    },
+    "vpn_consent_deliriuum_utilise_le_service_android_vpnservice_afin_de": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "4765e3f57a4505d57fdaa024370ca45009bca2705d91e8f0635b6264b2ffc1de",
+      "translation": {
+        "value": "Deliriuum naudoja Android VpnService paslaugą, kad sukurtų šifruotą tunelį tarp jūsų įrenginio ir mūsų VPN infrastruktūros.\\n\\n• Tikslas: apsaugoti jūsų interneto srautą ir privatumą.\\n\\n• Naršymo duomenys: Deliriuum nefiksuoja jūsų naršymo istorijos ar jūsų ryšių turinio ir neparduoda jokių naršymo duomenų trečiosioms šalims.\\n\\nAndroid prieš užmezgant VPN tunelį paprašys jūsų sistemos leidimo."
+      }
+    },
+    "vpn_consent_refuser_et_quitter": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "a3deef2ff2f8ab43c4cce4d41e90f384ad259b6641ba89ce218b7f15405bd01e",
+      "translation": {
+        "value": "Nesutikti ir išeiti"
+      }
+    },
+    "vpn_consent_utilisation_du_service_vpn": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "dfbbc17a880a8866105dcadcf2a652222e4fa2e2dccf2e97b734888173099ba4",
+      "translation": {
+        "value": "VPN paslaugos naudojimas"
+      }
+    },
+    "vpn_lost_fermer_le_navigateur": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "075fff6b2480cc3fce06501634d0ecdb7c48aed63a71327a720fc608847d0e54",
+      "translation": {
+        "value": "Uždaryti naršyklę"
+      }
+    },
+    "vpn_lost_le_tunnel_vpn_deliriuum_a_ete_interrompu_la_navigation_d": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "1d294f401660448cef4ffaa0fdf02f3124333fe7c7c63addf2fc3d3301f63b81",
+      "translation": {
+        "value": "VPN tunelis Deliriuum buvo nutrauktas. Naršymas naudojant Deliriuum sustabdytas, kad puslapis nebūtų įkeltas be VPN apsaugos."
+      }
+    },
+    "vpn_lost_protection_interrompue": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "530ab1a6c7c468920c7dfce73765ead008015f1a10621d40e03f891686bf7bdc",
+      "translation": {
+        "value": "Apsauga nutraukta"
+      }
+    },
+    "vpn_lost_reconnexion": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "560119774157b6ac3e330381c53d290994608f6113c29ff20a58f709dd632d60",
+      "translation": {
+        "value": "Jungiamasi iš naujo…"
+      }
+    },
+    "vpn_lost_retablir_la_protection": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2ce921e88fb23877723873a90f36a4ffcec024b4d151256abc865e57e8113995",
+      "translation": {
+        "value": "Atkurti apsaugą"
+      }
+    },
+    "vpn_lost_tentative_de_reconnexion": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "0fbb0f4d04d07192e09b0007054e892ee2ad874394e6beaa7724fc90e374df03",
+      "translation": {
+        "value": "Bandoma prisijungti iš naujo…"
+      }
+    },
+    "vpn_lost_vous_pouvez_tenter_de_retablir_la_connexion_ou_fermer_le": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "2d2a19dc7d22d4d6878ae346e65beee1d132e114bc2f2dcd85178b2c344d37bf",
+      "translation": {
+        "value": "Galite pabandyti atkurti ryšį arba uždaryti naršyklę."
+      }
+    },
+    "welcome_a_vendre": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "456a914d6ea1523d445d6138fb4e40541854ac4e78c78d15c664717dfa62ae68",
+      "translation": {
+        "value": "parduodamas."
+      }
+    },
+    "welcome_continuer": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "80e1901381c0e9ff086ef7754d1ad24cf842310306a736e57e1629a99e70f1e5",
+      "translation": {
+        "value": "Tęsti"
+      }
+    },
+    "welcome_en_savoir_plus": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3cb4c1557f00647d872a5b593fbd903e7e3080405d905ec260ebc24189a43a03",
+      "translation": {
+        "value": "Sužinoti daugiau"
+      }
+    },
+    "welcome_l_app_pour_survivre_en_deliristan": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "7081fe752b91defc6920a4305223c70c973d8203b24fa5708e9f19e1ebe0db12",
+      "translation": {
+        "value": "PROGRAMĖLĖ, PADĖSIANTI IŠGYVENTI DELIRISTANE"
+      }
+    },
+    "welcome_la_plupart_des_vpn_cachent_seulement_ton_ip_deliriuum_va": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "de99c92a1683d29f9382f6c14cf03eb75563ab7e74059221df3d11f7d27329de",
+      "translation": {
+        "value": "Dauguma VPN slepia tik tavo IP adresą. Deliriuum eina toliau: be šifruoto tunelio, mūsų technologija Deep Shield pakeičia tavo įrenginio atspaudą. Socialiniams tinklams tu jau nebesi Europoje. Taikymas pagal tave baigtas."
+      }
+    },
+    "welcome_n_est_pas": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "3ca37bd420c29eef108165abc7c363b64fb15db2e848c14cf54dab44a7c3a895",
+      "translation": {
+        "value": "nėra"
+      }
+    },
+    "welcome_ta_vie_privee": {
+      "model": "gpt-5.6-luna",
+      "source_hash": "6f48d23e14d86508f228004b1c4769b8c0284b3af67b621feb51e7ee450c3dc7",
+      "translation": {
+        "value": "Tavo privatumas"
+      }
+    }
+  }
+}
