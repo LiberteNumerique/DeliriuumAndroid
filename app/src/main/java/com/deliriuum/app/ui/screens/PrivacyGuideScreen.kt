@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
+import com.deliriuum.app.R
 
 private data class PrivacyTip(
     val icon: String,
@@ -26,36 +28,38 @@ private data class PrivacyTip(
 
 @Composable
 fun PrivacyGuideScreen(onDismiss: () -> Unit) {
+    val _i18nContext = LocalContext.current
+
     val tips = listOf(
         PrivacyTip(
             icon = "📍",
-            title = "Désactive la localisation précise",
-            text = "Paramètres → Sécurité et confidentialité → Confidentialité → Gestionnaire d'autorisations → Position : retire l'accès ou désactive \"Utiliser la position exacte\" pour les apps non essentielles."
+            title = _i18nContext.getString(R.string.privacy_guide_desactive_la_localisation_precise),
+            text = _i18nContext.getString(R.string.privacy_guide_parametres_securite_et_confidentialite_confidentialite_g)
         ),
         PrivacyTip(
             icon = "🚫",
-            title = "Limite le suivi publicitaire",
-            text = "Paramètres → Sécurité et confidentialité → Confidentialité → Autres paramètres de confidentialité → Annonces : clique sur \"Supprimer l'identifiant publicitaire\"."
+            title = _i18nContext.getString(R.string.privacy_guide_limite_le_suivi_publicitaire),
+            text = _i18nContext.getString(R.string.privacy_guide_parametres_securite_et_confidentialite_confidentialite_a)
         ),
         PrivacyTip(
             icon = "📸",
-            title = "Vérifie la caméra et le micro",
-            text = "Passe régulièrement en revue le Gestionnaire d'autorisations pour bloquer les applications en arrière-plan qui n'ont aucune raison de t'écouter ou de te filmer."
+            title = _i18nContext.getString(R.string.privacy_guide_verifie_la_camera_et_le_micro),
+            text = _i18nContext.getString(R.string.privacy_guide_passe_regulierement_en_revue_le_gestionnaire_d_autorisat)
         ),
         PrivacyTip(
             icon = "🌐",
-            title = "Évite les Wi-Fi publics ouverts",
-            text = "Active systématiquement le tunnel Deliriuum dès que tu te connectes au réseau d'un café, d'une gare ou d'un hôtel. C'est là que tes paquets réseaux sont le plus interceptables."
+            title = _i18nContext.getString(R.string.privacy_guide_evite_les_wi_fi_publics_ouverts),
+            text = _i18nContext.getString(R.string.privacy_guide_active_systematiquement_le_tunnel_deliriuum_des_que_tu_t)
         ),
         PrivacyTip(
             icon = "🔑",
-            title = "Utilise des clés uniques",
-            text = "Un gestionnaire robuste comme Google Password Manager, Bitwarden ou Dashlane t'évitera la pire erreur : utiliser le même mot de passe pour ton email et tes autres comptes."
+            title = _i18nContext.getString(R.string.privacy_guide_utilise_des_cles_uniques),
+            text = _i18nContext.getString(R.string.privacy_guide_un_gestionnaire_robuste_comme_google_password_manager_bi)
         ),
         PrivacyTip(
             icon = "🔒",
-            title = "Masque le contenu sur l'écran verrouillé",
-            text = "Paramètres → Notifications → Notifications sur l'écran verrouillé : sélectionne \"Masquer le contenu sensible\" pour éviter les regards indiscrets sur tes SMS de double-authentification."
+            title = _i18nContext.getString(R.string.privacy_guide_masque_le_contenu_sur_l_ecran_verrouille),
+            text = _i18nContext.getString(R.string.privacy_guide_parametres_notifications_notifications_sur_l_ecran_verro)
         )
     )
 
@@ -105,7 +109,7 @@ fun PrivacyGuideScreen(onDismiss: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Guide d'hygiène numérique",
+                    text = _i18nContext.getString(R.string.side_menu_guide_d_hygiene_numerique),
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
@@ -129,7 +133,7 @@ fun PrivacyGuideScreen(onDismiss: () -> Unit) {
             }
 
             Text(
-                text = "Quelques réglages simples pour reprendre le contrôle de ta vie privée sur Android, en complément de Deliriuum.",
+                text = _i18nContext.getString(R.string.privacy_guide_quelques_reglages_simples_pour_reprendre_le_controle_de),
                 color = Color.White.copy(alpha = 0.65f),
                 fontSize = 15.sp,
                 lineHeight = 22.sp,

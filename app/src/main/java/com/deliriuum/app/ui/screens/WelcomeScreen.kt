@@ -30,6 +30,8 @@ import com.deliriuum.app.R
 
 @Composable
 fun WelcomeScreen(onContinueClick: () -> Unit) {
+    val _i18nContext = LocalContext.current
+
     val context = LocalContext.current
     val density = LocalDensity.current
     val scrollState = rememberScrollState()
@@ -129,7 +131,7 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         Text(
-                            text = "BIEN PLUS QU'UN SIMPLE VPN",
+                            text = _i18nContext.getString(R.string.about_bien_plus_qu_un_simple_vpn),
                             color = Color.Cyan,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Black,
@@ -140,7 +142,7 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                         )
 
                         Text(
-                            text = "L'APP POUR SURVIVRE EN DELIRISTAN",
+                            text = _i18nContext.getString(R.string.welcome_l_app_pour_survivre_en_deliristan),
                             color = Color(0xFFC08CFF),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Black,
@@ -168,7 +170,7 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                         verticalArrangement = Arrangement.spacedBy(2.dp)
                     ) {
                         Text(
-                            text = "Ta vie privée",
+                            text = _i18nContext.getString(R.string.welcome_ta_vie_privee),
                             color = Color.White,
                             fontSize = 22.sp,
                             fontWeight = FontWeight.Bold,
@@ -180,14 +182,14 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "n'est pas",
+                                text = _i18nContext.getString(R.string.welcome_n_est_pas),
                                 color = Color.White,
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.Bold
                             )
 
                             Text(
-                                text = "à vendre.",
+                                text = _i18nContext.getString(R.string.welcome_a_vendre),
                                 color = Color(0xFFFFC033),
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.Black
@@ -197,7 +199,7 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                 }
 
                 Text(
-                    text = "La plupart des VPN cachent seulement ton IP. Deliriuum va plus loin : en plus du tunnel chiffré, notre technologie Deep Shield modifie l'empreinte de ton appareil. Pour les réseaux sociaux, tu n'es plus en Europe. Fini le ciblage.",
+                    text = _i18nContext.getString(R.string.welcome_la_plupart_des_vpn_cachent_seulement_ton_ip_deliriuum_va),
                     color = Color.White,
                     fontSize = 17.sp,
                     textAlign = TextAlign.Center,
@@ -236,7 +238,7 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Continuer",
+                        text = _i18nContext.getString(R.string.welcome_continuer),
                         color = Color.Black,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold
@@ -271,7 +273,7 @@ fun WelcomeScreen(onContinueClick: () -> Unit) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "En savoir plus",
+                            text = _i18nContext.getString(R.string.welcome_en_savoir_plus),
                             color = Color.Cyan,
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold

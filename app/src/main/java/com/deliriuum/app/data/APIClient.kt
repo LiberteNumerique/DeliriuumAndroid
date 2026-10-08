@@ -11,15 +11,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import java.io.IOException
+import com.deliriuum.app.R
+import com.deliriuum.app.i18n.AppStrings
 
 // MARK: - API Errors
 
 sealed class APIError(message: String) : Exception(message) {
-    object InvalidURL : APIError("Invalid URL.")
+    object InvalidURL : APIError(AppStrings.get(R.string.api_client_invalid_url))
     class Server(val detail: String) : APIError(detail)
     class Conflict(val detail: String) : APIError(detail)
-    object Decoding : APIError("Could not read the server response.")
-    object NoToken : APIError("Session expired, please log in again.")
+    object Decoding : APIError(AppStrings.get(R.string.api_client_could_not_read_the_server_response))
+    object NoToken : APIError(AppStrings.get(R.string.api_client_session_expired_please_log_in_again))
 }
 
 
@@ -304,11 +306,11 @@ class APIClient private constructor() {
 
             } catch (_: Exception) {
 
-                "Server error (${response.code()})."
+                AppStrings.get(R.string.api_client_server_error, response.code())
             }
         }
 
-        return "Server error (${response.code()})."
+        return AppStrings.get(R.string.api_client_server_error, response.code())
     }
 
 
@@ -404,7 +406,7 @@ class APIClient private constructor() {
                  * On NE supprime PAS les tokens.
                  */
                 throw APIError.Server(
-                    "Network failure: ${e.localizedMessage}"
+                    AppStrings.get(R.string.api_client_network_failure, e.localizedMessage)
                 )
             }
         }
@@ -506,7 +508,7 @@ class APIClient private constructor() {
         } catch (e: IOException) {
 
             throw APIError.Server(
-                "Network failure: ${e.localizedMessage}"
+                AppStrings.get(R.string.api_client_network_failure, e.localizedMessage)
             )
         }
     }
@@ -570,7 +572,7 @@ class APIClient private constructor() {
         } catch (e: IOException) {
 
             throw APIError.Server(
-                "Network failure: ${e.localizedMessage}"
+                AppStrings.get(R.string.api_client_network_failure, e.localizedMessage)
             )
         }
     }

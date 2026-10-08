@@ -15,10 +15,22 @@ object DeepShieldConfig {
                 "deepshield-gecko.yaml"
             )
 
-
         val yaml =
             """
             prefs:
+
+              # ==================================================
+              # MOZILLA RESIST FINGERPRINTING
+              # ==================================================
+
+              # Protection anti-fingerprinting complète native Gecko.
+              #
+              # Important :
+              # aucune valeur spécifique à Deliriuum n'est fabriquée.
+              # Nous utilisons le profil RFP standard de Mozilla.
+              privacy.resistFingerprinting: true
+              privacy.resistFingerprinting.pbmode: true
+
 
               # ==================================================
               # WEBRTC
@@ -35,8 +47,7 @@ object DeepShieldConfig {
               # GEOLOCATION
               # ==================================================
 
-              # Deep Shield n'expose pas la localisation réelle
-              # par l'API navigateur.
+              # L'API de géolocalisation du navigateur est désactivée.
               geo.enabled: false
 
 
@@ -57,7 +68,6 @@ object DeepShieldConfig {
 
             """.trimIndent()
 
-
         /*
          * Réécriture volontaire à chaque démarrage :
          * le fichier ne constitue pas un état utilisateur.
@@ -65,7 +75,6 @@ object DeepShieldConfig {
         file.writeText(
             yaml
         )
-
 
         return file.absolutePath
     }

@@ -25,6 +25,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.InetSocketAddress
 import java.net.Socket
+import com.deliriuum.app.R
+import com.deliriuum.app.i18n.AppStrings
 
 
 enum class TunnelStatus {
@@ -360,7 +362,7 @@ class TunnelManager private constructor(
 
                         lastErrorMessage =
                             e.localizedMessage
-                                ?: "Reconnexion impossible."
+                                ?: AppStrings.get(R.string.tunnel_manager_reconnexion_impossible)
 
                     } finally {
 
@@ -693,8 +695,7 @@ class TunnelManager private constructor(
 
 
                                 lastErrorMessage =
-                                    "Le tunnel VPN ne répond plus. " +
-                                            "La navigation dans Deliriuum est suspendue."
+                                    AppStrings.get(R.string.tunnel_manager_le_tunnel_vpn_ne_repond_plus_la_navigation_dans_deliriuu)
 
 
                                 Log.e(
@@ -1420,7 +1421,7 @@ class TunnelManager private constructor(
 
                 lastErrorMessage =
                     e.localizedMessage
-                        ?: "Impossible d'établir la connexion."
+                        ?: AppStrings.get(R.string.tunnel_manager_impossible_d_etablir_la_connexion)
             }
 
 
@@ -1493,7 +1494,7 @@ class TunnelManager private constructor(
                 null
             )
                 ?: throw IllegalStateException(
-                    "Impossible de retrouver l'appareil Deliriuum local."
+                    AppStrings.get(R.string.tunnel_manager_impossible_de_retrouver_l_appareil_deliriuum_local)
                 )
 
 
@@ -1548,7 +1549,7 @@ class TunnelManager private constructor(
 
             lastErrorMessage =
                 e.localizedMessage
-                    ?: "Impossible de fermer l'ancienne session."
+                    ?: AppStrings.get(R.string.tunnel_manager_impossible_de_fermer_l_ancienne_session)
 
             throw e
         }
@@ -1636,7 +1637,7 @@ class TunnelManager private constructor(
 
                 lastErrorMessage =
                     e.localizedMessage
-                        ?: "Erreur lors de l'arrêt du tunnel."
+                        ?: AppStrings.get(R.string.tunnel_manager_erreur_lors_de_l_arret_du_tunnel)
             }
 
 
@@ -1676,7 +1677,7 @@ class TunnelManager private constructor(
 
                     lastErrorMessage =
                         e.localizedMessage
-                            ?: "Le tunnel est fermé, mais la session distante n'a pas pu être clôturée."
+                            ?: AppStrings.get(R.string.tunnel_manager_le_tunnel_est_ferme_mais_la_session_distante_n_a_pas_pu)
                 }
             }
 

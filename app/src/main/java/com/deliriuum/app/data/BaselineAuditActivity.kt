@@ -391,7 +391,7 @@ class BaselineAuditActivity :
                 GeckoSessionSettings
                     .Builder()
                     .usePrivateMode(
-                        true
+                        false
                     )
                     .userAgentMode(
                         GeckoSessionSettings

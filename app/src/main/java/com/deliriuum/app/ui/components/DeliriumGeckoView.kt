@@ -2,6 +2,7 @@ package com.deliriuum.app.ui.components
 
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -12,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import com.deliriuum.app.data.DeliriumGeckoRuntime
 import com.deliriuum.app.data.GeckoPopupHolder
+import com.deliriuum.app.data.PrivacyAuditManager
 import com.deliriuum.app.ui.screens.GeckoPopupActivity
 import org.json.JSONObject
 import org.mozilla.geckoview.GeckoResult
@@ -20,7 +22,7 @@ import org.mozilla.geckoview.GeckoSessionSettings
 import org.mozilla.geckoview.GeckoView
 import org.mozilla.geckoview.WebExtension
 import org.mozilla.geckoview.WebRequestError
-import com.deliriuum.app.data.PrivacyAuditManager
+
 
 /**
  * État de navigation exposé à l'interface Compose du navigateur.
@@ -48,60 +50,122 @@ class GeckoBrowserNavigationState {
 
     private var session: GeckoSession? = null
 
+
     fun goBack() {
-        if (canGoBack) {
-            session?.goBack()
+
+        if (
+            canGoBack
+        ) {
+
+            session
+                ?.goBack()
         }
     }
+
 
     fun goForward() {
-        if (canGoForward) {
-            session?.goForward()
+
+        if (
+            canGoForward
+        ) {
+
+            session
+                ?.goForward()
         }
     }
 
+
     fun reload() {
-        session?.reload()
+
+        session
+            ?.reload()
     }
 
+
     fun stop() {
-        session?.stop()
+
+        session
+            ?.stop()
     }
+
 
     internal fun attach(
         session: GeckoSession,
         initialUrl: String
     ) {
-        this.session = session
-        canGoBack = false
-        canGoForward = false
-        isLoading = false
-        currentUrl = initialUrl
-        currentTitle = ""
+
+        this.session =
+            session
+
+        canGoBack =
+            false
+
+        canGoForward =
+            false
+
+        isLoading =
+            false
+
+        currentUrl =
+            initialUrl
+
+        currentTitle =
+            ""
     }
 
-    internal fun updateCanGoBack(value: Boolean) {
-        canGoBack = value
+
+    internal fun updateCanGoBack(
+        value: Boolean
+    ) {
+
+        canGoBack =
+            value
     }
 
-    internal fun updateCanGoForward(value: Boolean) {
-        canGoForward = value
+
+    internal fun updateCanGoForward(
+        value: Boolean
+    ) {
+
+        canGoForward =
+            value
     }
 
-    internal fun updateLoading(value: Boolean) {
-        isLoading = value
+
+    internal fun updateLoading(
+        value: Boolean
+    ) {
+
+        isLoading =
+            value
     }
 
-    internal fun updateUrl(value: String?) {
-        if (!value.isNullOrBlank()) {
-            currentUrl = value
+
+    internal fun updateUrl(
+        value: String?
+    ) {
+
+        if (
+            !value.isNullOrBlank()
+        ) {
+
+            currentUrl =
+                value
         }
     }
 
-    internal fun updateTitle(value: String?) {
-        currentTitle = value?.trim().orEmpty()
+
+    internal fun updateTitle(
+        value: String?
+    ) {
+
+        currentTitle =
+            value
+                ?.trim()
+                .orEmpty()
     }
 }
+
 
 @Composable
 fun DeliriumGeckoView(
@@ -188,8 +252,10 @@ fun DeliriumGeckoView(
             currentNavigationState
                 .value
                 ?.attach(
-                    session = session,
-                    initialUrl = url
+                    session =
+                        session,
+                    initialUrl =
+                        url
                 )
 
 
@@ -236,6 +302,7 @@ fun DeliriumGeckoView(
                                 is JSONObject ->
                                     message
 
+
                                 is Map<*, *> -> {
 
                                     try {
@@ -258,6 +325,7 @@ fun DeliriumGeckoView(
                                     }
                                 }
 
+
                                 else -> {
 
                                     Log.w(
@@ -274,9 +342,10 @@ fun DeliriumGeckoView(
 
 
                         val type =
-                            json.optString(
-                                "type"
-                            )
+                            json
+                                .optString(
+                                    "type"
+                                )
 
 
                         if (
@@ -320,6 +389,7 @@ fun DeliriumGeckoView(
                                         .toString()
                         )
 
+
                         PrivacyAuditManager
                             .shared
                             .updateFromProbe(
@@ -346,6 +416,7 @@ fun DeliriumGeckoView(
                         session: GeckoSession,
                         canGoBack: Boolean
                     ) {
+
                         currentNavigationState
                             .value
                             ?.updateCanGoBack(
@@ -358,6 +429,7 @@ fun DeliriumGeckoView(
                         session: GeckoSession,
                         canGoForward: Boolean
                     ) {
+
                         currentNavigationState
                             .value
                             ?.updateCanGoForward(
@@ -490,15 +562,18 @@ fun DeliriumGeckoView(
                     GeckoSession
                     .ProgressDelegate {
 
+
                     override fun onPageStart(
                         session: GeckoSession,
                         url: String
                     ) {
+
                         currentNavigationState
                             .value
                             ?.updateUrl(
                                 url
                             )
+
 
                         currentNavigationState
                             .value
@@ -507,10 +582,12 @@ fun DeliriumGeckoView(
                             )
                     }
 
+
                     override fun onPageStop(
                         session: GeckoSession,
                         success: Boolean
                     ) {
+
                         currentNavigationState
                             .value
                             ?.updateLoading(
@@ -525,10 +602,12 @@ fun DeliriumGeckoView(
                     GeckoSession
                     .ContentDelegate {
 
+
                     override fun onTitleChange(
                         session: GeckoSession,
                         title: String?
                     ) {
+
                         currentNavigationState
                             .value
                             ?.updateTitle(
@@ -542,9 +621,11 @@ fun DeliriumGeckoView(
                 .navigationDelegate =
                 navigationDelegate
 
+
             session
                 .progressDelegate =
                 progressDelegate
+
 
             session
                 .contentDelegate =
@@ -615,6 +696,7 @@ fun DeliriumGeckoView(
                 context
             ).apply {
 
+
                 layoutParams =
                     ViewGroup
                         .LayoutParams(
@@ -628,6 +710,47 @@ fun DeliriumGeckoView(
                         )
 
 
+                /*
+                 * ==================================================
+                 * AUTOFILL / GESTIONNAIRE DE MOTS DE PASSE ANDROID
+                 * ==================================================
+                 *
+                 * Équivalent Android du trousseau / Password AutoFill
+                 * utilisé dans la version iOS.
+                 *
+                 * GeckoView expose les champs de formulaire au service
+                 * Autofill Android.
+                 *
+                 * Le mot de passe reste géré par le fournisseur choisi
+                 * par l'utilisateur :
+                 *
+                 * - Google Password Manager
+                 * - Bitwarden
+                 * - 1Password
+                 * - Proton Pass
+                 * - autre service Autofill Android
+                 *
+                 * Deliriuum ne récupère pas le mot de passe et ne le
+                 * stocke pas dans KeychainStore.
+                 */
+                setAutofillEnabled(
+                    true
+                )
+
+
+                /*
+                 * Indique explicitement au framework Android que cette
+                 * vue participe à Autofill.
+                 */
+                importantForAutofill =
+                    View
+                        .IMPORTANT_FOR_AUTOFILL_YES
+
+
+                // ==================================================
+                // SESSION
+                // ==================================================
+
                 setSession(
                     session
                 )
@@ -636,6 +759,10 @@ fun DeliriumGeckoView(
                 tag =
                     session
 
+
+                // ==================================================
+                // PREMIÈRE NAVIGATION
+                // ==================================================
 
                 session
                     .loadUri(

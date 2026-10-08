@@ -32,6 +32,8 @@ import com.deliriuum.app.R
 fun AboutScreen(
     onDismiss: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     val context =
         LocalContext.current
 
@@ -130,7 +132,7 @@ fun AboutScreen(
                 )
 
                 Text(
-                    text = "À propos",
+                    text = _i18nContext.getString(R.string.about_a_propos),
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
@@ -200,7 +202,7 @@ fun AboutScreen(
 
                         Text(
                             text =
-                                "Un espace Web protégé",
+                                _i18nContext.getString(R.string.about_un_espace_web_protege),
                             color =
                                 Color.White,
                             fontSize =
@@ -212,10 +214,7 @@ fun AboutScreen(
 
                     Text(
                         text =
-                            "Deliriuum réunit dans une même application un tunnel VPN, " +
-                                    "un navigateur GeckoView protégé par Deep Shield, " +
-                                    "un moteur de recherche, une navigation Web directe " +
-                                    "et des accès aux principaux réseaux sociaux.",
+                            _i18nContext.getString(R.string.about_deliriuum_reunit_dans_une_meme_application_un_tunnel_vpn),
                         color =
                             Color.White.copy(
                                 alpha = 0.75f
@@ -228,17 +227,17 @@ fun AboutScreen(
 
                     InfoBadge(
                         text =
-                            "Recherche Web intégrée"
+                            _i18nContext.getString(R.string.about_recherche_web_integree)
                     )
 
                     InfoBadge(
                         text =
-                            "Navigation par adresse"
+                            _i18nContext.getString(R.string.about_navigation_par_adresse)
                     )
 
                     InfoBadge(
                         text =
-                            "Réseaux sociaux dans le navigateur protégé"
+                            _i18nContext.getString(R.string.about_reseaux_sociaux_dans_le_navigateur_protege)
                     )
                 }
             }
@@ -269,7 +268,7 @@ fun AboutScreen(
 
                         Text(
                             text =
-                                "Tunnel VPN WireGuard",
+                                _i18nContext.getString(R.string.privacy_audit_manager_tunnel_vpn_wireguard),
                             color =
                                 Color.White,
                             fontSize =
@@ -281,9 +280,7 @@ fun AboutScreen(
 
                     Text(
                         text =
-                            "Lorsque la protection est active, la connexion passe par " +
-                                    "un tunnel WireGuard. Les sites voient l'adresse IP du serveur " +
-                                    "de sortie au lieu de l'adresse IP publique habituelle de votre connexion.",
+                            _i18nContext.getString(R.string.about_lorsque_la_protection_est_active_la_connexion_passe_par),
                         color =
                             Color.White.copy(
                                 alpha = 0.75f
@@ -296,17 +293,17 @@ fun AboutScreen(
 
                     InfoBadge(
                         text =
-                            "IPv4 et IPv6 pris en charge"
+                            _i18nContext.getString(R.string.about_ipv4_et_ipv6_pris_en_charge)
                     )
 
                     InfoBadge(
                         text =
-                            "DNS routé avec la connexion VPN"
+                            _i18nContext.getString(R.string.about_dns_route_avec_la_connexion_vpn)
                     )
 
                     InfoBadge(
                         text =
-                            "Navigation Deliriuum suspendue si le tunnel est perdu"
+                            _i18nContext.getString(R.string.about_navigation_deliriuum_suspendue_si_le_tunnel_est_perdu)
                     )
                 }
             }
@@ -337,7 +334,7 @@ fun AboutScreen(
 
                         Text(
                             text =
-                                "Protection de navigation",
+                                _i18nContext.getString(R.string.about_protection_de_navigation),
                             color =
                                 Color.White,
                             fontSize =
@@ -349,10 +346,7 @@ fun AboutScreen(
 
                     Text(
                         text =
-                            "Si le tunnel devient indisponible, Deliriuum suspend automatiquement " +
-                                    "son navigateur intégré, la recherche et les accès Web. " +
-                                    "Les autres applications du téléphone et leur accès Internet " +
-                                    "ne sont pas bloqués.",
+                            _i18nContext.getString(R.string.about_si_le_tunnel_devient_indisponible_deliriuum_suspend_auto),
                         color =
                             Color.White.copy(
                                 alpha = 0.75f
@@ -365,12 +359,12 @@ fun AboutScreen(
 
                     InfoBadge(
                         text =
-                            "Watchdog réseau actif"
+                            _i18nContext.getString(R.string.about_watchdog_reseau_actif)
                     )
 
                     InfoBadge(
                         text =
-                            "GeckoView inaccessible hors protection"
+                            _i18nContext.getString(R.string.about_geckoview_inaccessible_hors_protection)
                     )
                 }
             }
@@ -390,76 +384,65 @@ fun AboutScreen(
                 FeatureRow(
                     emoji = "🎨",
                     title =
-                        "Canvas & WebGL",
+                        _i18nContext.getString(R.string.about_canvas_webgl),
                     text =
-                        "Deep Shield réduit les informations graphiques exploitables " +
-                                "pour construire une empreinte. Le rendu WebGL sensible est masqué " +
-                                "et Canvas bénéficie des protections anti-fingerprinting de Gecko."
+                        _i18nContext.getString(R.string.about_deep_shield_reduit_les_informations_graphiques_exploitab)
                 )
 
                 FeatureRow(
                     emoji = "🎧",
                     title =
-                        "Empreinte audio réduite",
+                        _i18nContext.getString(R.string.about_empreinte_audio_reduite),
                     text =
-                        "Les informations exposées par AudioContext sont normalisées afin " +
-                                "de réduire les différences liées au matériel audio."
+                        _i18nContext.getString(R.string.about_les_informations_exposees_par_audiocontext_sont_normalis)
                 )
 
                 FeatureRow(
                     emoji = "🔤",
                     title =
-                        "Polices limitées",
+                        _i18nContext.getString(R.string.about_polices_limitees),
                     text =
-                        "L'ensemble de polices détectables par les pages est fortement réduit, " +
-                                "ce qui diminue une source classique d'identification du terminal."
+                        _i18nContext.getString(R.string.about_l_ensemble_de_polices_detectables_par_les_pages_est_fort)
                 )
 
                 FeatureRow(
                     emoji = "🎥",
                     title =
-                        "Périphériques média",
+                        _i18nContext.getString(R.string.about_peripheriques_media),
                     text =
-                        "Les libellés et identifiants de micro et caméra ne sont pas exposés " +
-                                "aux pages avant autorisation, ce qui réduit les informations disponibles " +
-                                "pour le fingerprinting."
+                        _i18nContext.getString(R.string.about_les_libelles_et_identifiants_de_micro_et_camera_ne_sont)
                 )
 
                 FeatureRow(
                     emoji = "📡",
                     title =
-                        "WebRTC limité",
+                        _i18nContext.getString(R.string.about_webrtc_limite),
                     text =
-                        "Les candidats réseau WebRTC susceptibles de révéler des informations " +
-                                "sur le réseau local sont bloqués ou fortement limités."
+                        _i18nContext.getString(R.string.about_les_candidats_reseau_webrtc_susceptibles_de_reveler_des)
                 )
 
                 FeatureRow(
                     emoji = "🌍",
                     title =
-                        "Cohérence géographique",
+                        _i18nContext.getString(R.string.about_coherence_geographique),
                     text =
-                        "Le navigateur adapte certaines informations, notamment le fuseau horaire, " +
-                                "au profil de sortie VPN afin d'éviter des incohérences évidentes " +
-                                "entre l'adresse IP visible et l'environnement du navigateur."
+                        _i18nContext.getString(R.string.about_le_navigateur_adapte_certaines_informations_notamment_le)
                 )
 
                 FeatureRow(
                     emoji = "📶",
                     title =
-                        "Informations réseau réduites",
+                        _i18nContext.getString(R.string.about_informations_reseau_reduites),
                     text =
-                        "L'API Network Information n'est pas exposée au contenu Web, ce qui évite " +
-                                "de révéler directement le type de connexion, la latence ou le débit estimé."
+                        _i18nContext.getString(R.string.about_l_api_network_information_n_est_pas_exposee_au_contenu_w)
                 )
 
                 FeatureRow(
                     emoji = "🧩",
                     title =
-                        "Protections natives Gecko",
+                        _i18nContext.getString(R.string.about_protections_natives_gecko),
                     text =
-                        "Deliriuum s'appuie sur les mécanismes anti-fingerprinting de Gecko " +
-                                "et ajoute une couche de cohérence dédiée à son environnement VPN."
+                        _i18nContext.getString(R.string.about_deliriuum_s_appuie_sur_les_mecanismes_anti_fingerprintin)
                 )
             }
 
@@ -476,7 +459,7 @@ fun AboutScreen(
                 ) {
                     Text(
                         text =
-                            "Ce que Deep Shield réduit ou bloque",
+                            _i18nContext.getString(R.string.about_ce_que_deep_shield_reduit_ou_bloque),
                         color =
                             Color.White,
                         fontSize =
@@ -487,32 +470,32 @@ fun AboutScreen(
 
                     SecurityLine(
                         text =
-                            "Exposition directe de l'adresse IP habituelle dans la navigation protégée"
+                            _i18nContext.getString(R.string.about_exposition_directe_de_l_adresse_ip_habituelle_dans_la_na)
                     )
 
                     SecurityLine(
                         text =
-                            "Fuite WebRTC de candidats réseau"
+                            _i18nContext.getString(R.string.about_fuite_webrtc_de_candidats_reseau)
                     )
 
                     SecurityLine(
                         text =
-                            "Identification précise du GPU via WebGL"
+                            _i18nContext.getString(R.string.about_identification_precise_du_gpu_via_webgl)
                     )
 
                     SecurityLine(
                         text =
-                            "Inventaire détaillé des polices disponibles"
+                            _i18nContext.getString(R.string.about_inventaire_detaille_des_polices_disponibles)
                     )
 
                     SecurityLine(
                         text =
-                            "Exposition des identifiants de périphériques média"
+                            _i18nContext.getString(R.string.about_exposition_des_identifiants_de_peripheriques_media)
                     )
 
                     SecurityLine(
                         text =
-                            "Incohérence évidente entre IP VPN et fuseau horaire"
+                            _i18nContext.getString(R.string.about_incoherence_evidente_entre_ip_vpn_et_fuseau_horaire)
                     )
                 }
             }
@@ -543,7 +526,7 @@ fun AboutScreen(
 
                         Text(
                             text =
-                                "Ce que Deliriuum ne prétend pas faire",
+                                _i18nContext.getString(R.string.about_ce_que_deliriuum_ne_pretend_pas_faire),
                             color =
                                 Color.White,
                             fontSize =
@@ -555,11 +538,7 @@ fun AboutScreen(
 
                     Text(
                         text =
-                            "Deliriuum réduit le pistage et certaines possibilités de corrélation, " +
-                                    "mais aucun navigateur ne peut garantir l'anonymat absolu. " +
-                                    "Si vous vous connectez à un compte personnel, le service concerné " +
-                                    "continue de vous reconnaître par ce compte. Certaines caractéristiques " +
-                                    "du navigateur, du protocole réseau ou du système peuvent également rester observables.",
+                            _i18nContext.getString(R.string.about_deliriuum_reduit_le_pistage_et_certaines_possibilites_de),
                         color =
                             Color.White.copy(
                                 alpha = 0.68f
@@ -586,7 +565,7 @@ fun AboutScreen(
             ) {
                 StatBlock(
                     value = "0 €",
-                    label = "Accès",
+                    label = _i18nContext.getString(R.string.about_acces),
                     modifier =
                         Modifier.weight(1f)
                 )
@@ -600,7 +579,7 @@ fun AboutScreen(
 
                 StatBlock(
                     value = "0",
-                    label = "Donnée revendue",
+                    label = _i18nContext.getString(R.string.about_donnee_revendue),
                     modifier =
                         Modifier.weight(1f)
                 )
@@ -621,7 +600,7 @@ fun AboutScreen(
                 ) {
                     Text(
                         text =
-                            "Le projet vit grâce à vous",
+                            _i18nContext.getString(R.string.about_le_projet_vit_grace_a_vous),
                         color =
                             Color.White,
                         fontSize =
@@ -632,9 +611,7 @@ fun AboutScreen(
 
                     Text(
                         text =
-                            "Deliriuum est gratuit et ne repose pas sur la revente de données. " +
-                                    "Le projet est financé par les dons de la communauté, " +
-                                    "sans obligation pour utiliser l'application.",
+                            _i18nContext.getString(R.string.about_deliriuum_est_gratuit_et_ne_repose_pas_sur_la_revente_de),
                         color =
                             Color.White.copy(
                                 alpha = 0.65f
@@ -683,7 +660,7 @@ fun AboutScreen(
                     ) {
                         Text(
                             text =
-                                "Faire un don  ➔",
+                                _i18nContext.getString(R.string.about_faire_un_don),
                             color =
                                 Color.Black,
                             fontSize =
@@ -705,6 +682,8 @@ fun AboutScreen(
 
 @Composable
 private fun IntroSection() {
+    val _i18nContext = LocalContext.current
+
     Column(
         horizontalAlignment =
             Alignment.CenterHorizontally,
@@ -719,7 +698,7 @@ private fun IntroSection() {
                     id = R.drawable.logo
                 ),
             contentDescription =
-                "Logo Deliriuum",
+                _i18nContext.getString(R.string.about_logo_deliriuum),
             modifier =
                 Modifier
                     .size(
@@ -751,7 +730,7 @@ private fun IntroSection() {
         ) {
             Text(
                 text =
-                    "BIEN PLUS QU'UN SIMPLE VPN",
+                    _i18nContext.getString(R.string.about_bien_plus_qu_un_simple_vpn),
                 color =
                     Color.Cyan,
                 fontSize =
@@ -766,7 +745,7 @@ private fun IntroSection() {
 
             Text(
                 text =
-                    "L'APP POUR SURVIVRE AU DELIRISTAN",
+                    _i18nContext.getString(R.string.about_l_app_pour_survivre_au_deliristan),
                 color =
                     Color(0xFFC08CFF),
                 fontSize =
@@ -782,8 +761,7 @@ private fun IntroSection() {
 
         Text(
             text =
-                "Un tunnel VPN pour masquer votre adresse IP. " +
-                        "Un navigateur protégé pour réduire votre empreinte numérique.",
+                _i18nContext.getString(R.string.about_un_tunnel_vpn_pour_masquer_votre_adresse_ip_un_navigateu),
             color =
                 Color.White,
             fontSize =
@@ -807,6 +785,8 @@ private fun IntroSection() {
 
 @Composable
 private fun DeepShieldHeader() {
+    val _i18nContext = LocalContext.current
+
     Column(
         horizontalAlignment =
             Alignment.CenterHorizontally,
@@ -826,7 +806,7 @@ private fun DeepShieldHeader() {
 
         Text(
             text =
-                "Deep Shield",
+                _i18nContext.getString(R.string.about_deep_shield),
             color =
                 Color.White,
             fontSize =
@@ -837,9 +817,7 @@ private fun DeepShieldHeader() {
 
         Text(
             text =
-                "Le VPN agit sur votre adresse IP. Deep Shield agit sur les informations " +
-                        "que les pages Web peuvent exploiter pour distinguer votre appareil : " +
-                        "graphismes, audio, polices, périphériques, réseau et environnement.",
+                _i18nContext.getString(R.string.about_le_vpn_agit_sur_votre_adresse_ip_deep_shield_agit_sur_le),
             color =
                 Color.White.copy(
                     alpha = 0.75f
@@ -990,6 +968,8 @@ private fun FeatureRow(
 private fun InfoBadge(
     text: String
 ) {
+    val _i18nContext = LocalContext.current
+
     Box(
         modifier =
             Modifier
@@ -1020,7 +1000,7 @@ private fun InfoBadge(
     ) {
         Text(
             text =
-                "✓  $text",
+                _i18nContext.getString(R.string.about_text, text),
             color =
                 Color.Cyan.copy(
                     alpha = 0.88f

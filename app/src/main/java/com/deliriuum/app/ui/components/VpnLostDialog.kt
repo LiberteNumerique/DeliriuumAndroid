@@ -19,6 +19,8 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import com.deliriuum.app.R
 
 @Composable
 fun VpnLostDialog(
@@ -26,6 +28,8 @@ fun VpnLostDialog(
     onReconnect: () -> Unit,
     onClose: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
 
     Dialog(
         onDismissRequest = {
@@ -87,7 +91,7 @@ fun VpnLostDialog(
 
 
             Text(
-                text = "Protection interrompue",
+                text = _i18nContext.getString(R.string.vpn_lost_protection_interrompue),
                 color = Color.White,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Black,
@@ -97,9 +101,7 @@ fun VpnLostDialog(
 
             Text(
                 text =
-                    "Le tunnel VPN Deliriuum a été interrompu. " +
-                            "La navigation dans Deliriuum est suspendue afin d'éviter " +
-                            "qu'une page soit chargée sans la protection du VPN.",
+                    _i18nContext.getString(R.string.vpn_lost_le_tunnel_vpn_deliriuum_a_ete_interrompu_la_navigation_d),
 
                 color = Color.White.copy(alpha = 0.76f),
                 fontSize = 14.sp,
@@ -111,9 +113,9 @@ fun VpnLostDialog(
             Text(
                 text =
                     if (isReconnecting) {
-                        "Tentative de reconnexion…"
+                        _i18nContext.getString(R.string.vpn_lost_tentative_de_reconnexion)
                     } else {
-                        "Vous pouvez tenter de rétablir la connexion ou fermer le navigateur."
+                        _i18nContext.getString(R.string.vpn_lost_vous_pouvez_tenter_de_retablir_la_connexion_ou_fermer_le)
                     },
 
                 color = Color.Cyan.copy(alpha = 0.85f),
@@ -158,9 +160,9 @@ fun VpnLostDialog(
                 Text(
                     text =
                         if (isReconnecting) {
-                            "Reconnexion…"
+                            _i18nContext.getString(R.string.vpn_lost_reconnexion)
                         } else {
-                            "Rétablir la protection"
+                            _i18nContext.getString(R.string.vpn_lost_retablir_la_protection)
                         },
 
                     color = Color.Black,
@@ -193,7 +195,7 @@ fun VpnLostDialog(
             ) {
 
                 Text(
-                    text = "Fermer le navigateur",
+                    text = _i18nContext.getString(R.string.vpn_lost_fermer_le_navigateur),
                     color = Color.White.copy(alpha = 0.78f),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold

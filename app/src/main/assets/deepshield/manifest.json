@@ -1,25 +1,31 @@
 {
   "manifest_version": 2,
   "name": "Deep Shield",
-  "version": "11.0.6",
-  "description": "Vérification de cohérence de l'environnement Deliriuum",
-
+  "version": "11.1.2",
+  "description": "Audit de confidentialité Deliriuum",
   "browser_specific_settings": {
-    "gecko": { "id": "deepshield@deliriuum.com" },
+    "gecko": {
+      "id": "deepshield@deliriuum.com"
+    },
     "gecko_android": {}
   },
-
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["timezone.js","probe.js"],
-      "run_at": "document_idle",
+      "matches": [
+        "https://example.com/*"
+      ],
+      "js": [
+        "bridge.js"
+      ],
+      "run_at": "document_start",
       "all_frames": false
     }
   ],
-
+  "web_accessible_resources": [
+    "probe.js"
+  ],
   "permissions": [
-    "<all_urls>",
+    "https://example.com/*",
     "nativeMessaging",
     "nativeMessagingFromContent",
     "geckoViewAddons"

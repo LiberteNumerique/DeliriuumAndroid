@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Deliriuum Android i18n extractor — V3
+Deliriuum Android i18n extractor — V3.1
 =====================================
 
 Cette version est conçue pour le projet Deliriuum après analyse du rapport
@@ -73,6 +73,9 @@ PROMOTE_TO_COMPOSABLE: dict[str, set[str]] = {
         "auditPedagogy",
         "pedagogicalAuditResult",
     },
+}
+
+NONCOMPOSABLE_UI_FUNCTIONS: dict[str, set[str]] = {
     "GeckoBrowserActivity.kt": {
         "messageFor",
     },
@@ -936,6 +939,7 @@ def normalize_special_args(path: Path, raw: str, args: list[str]) -> list[str]:
 
 
 def classify_file(path: Path, text: str) -> list[Candidate]:
+    all_funcs = all_braced_functions(text)
     funcs = localizable_functions(path, text)
     tokens = scan_regular_strings(text)
     transparency_span = (
@@ -1025,8 +1029,27 @@ def classify_file(path: Path, text: str) -> list[Candidate]:
             continue
 
         fn = containing_function(start, funcs)
+        raw_fn = containing_function(start, all_funcs)
         resource_text, args = raw_to_android_format(raw)
         args = normalize_special_args(path, raw, args)
+
+        noncomposable_ui_names = NONCOMPOSABLE_UI_FUNCTIONS.get(path.name, set())
+        if raw_fn is not None and raw_fn.name in noncomposable_ui_names:
+            out.append(
+                Candidate(
+                    path=path,
+                    start=start,
+                    end=end,
+                    line=line,
+                    raw_content=raw,
+                    category="SAFE",
+                    reason="helper UI non-Compose localisé via AppStrings",
+                    resource_text=resource_text,
+                    args=args,
+                    function=None,
+                )
+            )
+            continue
 
         if fn is not None:
             reason = (
@@ -1201,7 +1224,7 @@ def append_strings_xml(
         raise RuntimeError(f"{path} ne contient pas </resources>")
 
     block = [
-        "\n    <!-- Ajouté automatiquement par extract_android_strings.py V3 -->\n"
+        "\n    <!-- Ajouté automatiquement par extract_android_strings.py V3.1 -->\n"
     ]
     for key, value in entries:
         block.append(

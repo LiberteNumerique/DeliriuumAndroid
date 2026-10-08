@@ -5,7 +5,7 @@
   // DEEP SHIELD PRIVACY PROBE v2
   // ============================================================
 
-  const PROBE_VERSION = "11.0.1";
+  const PROBE_VERSION = "11.1.0";
   const NATIVE_APP = "deepshield";
 
   console.error(
@@ -143,113 +143,41 @@
     payload
   ) {
 
-    const message = {
-      type: "privacy_audit",
-      payload: payload
-    };
-
-
     try {
 
-      if (
-        typeof browser !== "undefined" &&
-        browser.runtime &&
-        typeof browser.runtime.sendNativeMessage === "function"
-      ) {
+      window.postMessage(
+        {
+          source:
+            "DELIRIIUM_PRIVACY_AUDIT_MAIN",
 
-        await browser.runtime
-          .sendNativeMessage(
-            "deepshield",
-            message
-          );
+          type:
+            "privacy_audit",
 
+          payload:
+            payload
+        },
 
-        log(
-          "nativeMessage",
-          "sent"
-        );
+        window.location.origin
+      );
 
-
-        return;
-      }
-
-    } catch (e) {
 
       log(
-        "nativeMessage.browser",
-        "ERROR:" +
-        String(e)
+        "bridge",
+        "payload posted from MAIN"
       );
-    }
 
-
-    try {
-
-      if (
-        typeof chrome !== "undefined" &&
-        chrome.runtime &&
-        typeof chrome.runtime.sendNativeMessage === "function"
-      ) {
-
-        await new Promise(
-          function (resolve) {
-
-            chrome.runtime
-              .sendNativeMessage(
-                "deepshield",
-                message,
-                function () {
-
-                  try {
-
-                    if (
-                      chrome.runtime.lastError
-                    ) {
-
-                      log(
-                        "nativeMessage.chrome",
-                        "ERROR:" +
-                        chrome.runtime
-                          .lastError
-                          .message
-                      );
-
-                    } else {
-
-                      log(
-                        "nativeMessage",
-                        "sent"
-                      );
-                    }
-
-                  } catch (_) {}
-
-
-                  resolve();
-                }
-              );
-          }
-        );
-
-
-        return;
-      }
-
-    } catch (e) {
+    } catch (error) {
 
       log(
-        "nativeMessage.chrome",
+        "bridge",
         "ERROR:" +
-        String(e)
+        String(error)
       );
+
+      throw error;
     }
-
-
-    log(
-      "nativeMessage",
-      "unavailable"
-    );
   }
+
 
   // ============================================================
   // RUN
@@ -666,6 +594,10 @@
     // AUDIO CONTEXT
     // ==========================================================
 
+    // ==========================================================
+    // AUDIO CONTEXT
+    // ==========================================================
+
     try {
 
       const AudioCtx =
@@ -708,6 +640,34 @@
             : null;
 
 
+        /*
+         * Valeurs exposées par AudioDestinationNode.
+         *
+         * Elles permettent de vérifier si Gecko applique bien
+         * sa normalisation native liée à la protection
+         * anti-fingerprinting.
+         *
+         * IMPORTANT :
+         *
+         * Deliriuum ne modifie aucune de ces valeurs.
+         * Le probe se contente de les observer.
+         */
+        result.audio.maxChannelCount =
+          audio.destination &&
+          typeof audio.destination.maxChannelCount ===
+            "number"
+            ? audio.destination.maxChannelCount
+            : null;
+
+
+        result.audio.channelCount =
+          audio.destination &&
+          typeof audio.destination.channelCount ===
+            "number"
+            ? audio.destination.channelCount
+            : null;
+
+
         log(
           "audio.sampleRate",
           result.audio.sampleRate
@@ -727,6 +687,22 @@
           result.audio.outputLatency === null
             ? "not exposed"
             : result.audio.outputLatency
+        );
+
+
+        log(
+          "audio.maxChannelCount",
+          result.audio.maxChannelCount === null
+            ? "not exposed"
+            : result.audio.maxChannelCount
+        );
+
+
+        log(
+          "audio.channelCount",
+          result.audio.channelCount === null
+            ? "not exposed"
+            : result.audio.channelCount
         );
 
 

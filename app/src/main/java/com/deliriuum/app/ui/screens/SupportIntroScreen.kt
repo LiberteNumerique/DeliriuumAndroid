@@ -21,11 +21,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.deliriuum.app.R
 
 @Composable
 fun SupportIntroScreen(
     onContinue: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     val context = LocalContext.current
     val scrollState = rememberScrollState()
 
@@ -64,7 +67,7 @@ fun SupportIntroScreen(
             Spacer(Modifier.height(24.dp))
 
             Text(
-                text = "BIENVENUE DANS\nLA RÉSISTANCE NUMÉRIQUE",
+                text = _i18nContext.getString(R.string.support_intro_bienvenue_dans_la_resistance_numerique),
                 color = Color(0xFFFFC633),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Black,
@@ -76,7 +79,7 @@ fun SupportIntroScreen(
             Spacer(Modifier.height(34.dp))
 
             Text(
-                text = "Pendant que les autres monétisent leurs utilisateurs,\nDeliriuum protège les siens.",
+                text = _i18nContext.getString(R.string.support_intro_pendant_que_les_autres_monetisent_leurs_utilisateurs_del),
                 color = Color.White,
                 fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
@@ -87,7 +90,7 @@ fun SupportIntroScreen(
             Spacer(Modifier.height(24.dp))
 
             Text(
-                text = "Notre seule ressource,\nc'est votre soutien.",
+                text = _i18nContext.getString(R.string.support_intro_notre_seule_ressource_c_est_votre_soutien),
                 color = Color.White.copy(alpha = 0.78f),
                 fontSize = 18.sp,
                 lineHeight = 27.sp,
@@ -111,7 +114,7 @@ fun SupportIntroScreen(
                     .padding(22.dp)
             ) {
                 Text(
-                    text = "Chaque don finance les serveurs,\nle développement de Deep Shield\net l'indépendance du projet.",
+                    text = _i18nContext.getString(R.string.support_intro_chaque_don_finance_les_serveurs_le_developpement_de_deep),
                     color = Color.White.copy(alpha = 0.82f),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -123,7 +126,7 @@ fun SupportIntroScreen(
             Spacer(Modifier.height(40.dp))
 
             Text(
-                text = "La vie privée n'est pas un luxe.\nC'est un droit.",
+                text = _i18nContext.getString(R.string.support_intro_la_vie_privee_n_est_pas_un_luxe_c_est_un_droit),
                 color = Color.White,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
@@ -160,7 +163,7 @@ fun SupportIntroScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Rejoindre les soutiens",
+                    text = _i18nContext.getString(R.string.support_intro_rejoindre_les_soutiens),
                     color = Color.Black,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Black
@@ -184,7 +187,7 @@ fun SupportIntroScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Continuer gratuitement",
+                    text = _i18nContext.getString(R.string.support_intro_continuer_gratuitement),
                     color = Color(0xFFFFC633),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold

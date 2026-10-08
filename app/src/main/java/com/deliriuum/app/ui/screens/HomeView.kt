@@ -23,9 +23,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -77,6 +80,8 @@ fun HomeView(
     authManager: AuthManager,
     onNavigateBackToWelcome: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val tunnelManager = TunnelManager.shared
@@ -579,7 +584,7 @@ fun HomeView(
                     enabled = protectedNavigationEnabled,
                     onOpen = { item ->
                         openInternalPage(
-                            "${item.name} via Deliriuum",
+                            _i18nContext.getString(R.string.home_via_deliriuum, item.name),
                             item.url
                         )
                     },
@@ -590,7 +595,7 @@ fun HomeView(
                         editingSpace =
                             SpaceEditorState(
                                 spaceId = space.id,
-                                name = space.name,
+                                name = localizedShortcutSpaceName(context, space),
                                 iconKey = space.iconKey
                             )
                     },
@@ -723,9 +728,9 @@ fun HomeView(
 
             pendingSpaceDeletion?.let { space ->
                 ConfirmDeleteDialog(
-                    title = "Supprimer l'espace ?",
+                    title = _i18nContext.getString(R.string.home_supprimer_l_espace),
                     message =
-                        "L'espace « ${space.name} » et ses raccourcis seront supprimés de cet appareil.",
+                        _i18nContext.getString(R.string.home_l_espace_et_ses_raccourcis_seront_supprimes_de_cet_appar, localizedShortcutSpaceName(_i18nContext, space)),
                     onDismiss = {
                         pendingSpaceDeletion = null
                     },
@@ -741,9 +746,9 @@ fun HomeView(
 
             pendingShortcutDeletion?.let { pending ->
                 ConfirmDeleteDialog(
-                    title = "Supprimer le raccourci ?",
+                    title = _i18nContext.getString(R.string.home_supprimer_le_raccourci),
                     message =
-                        "« ${pending.item.name} » sera retiré de cet espace.",
+                        _i18nContext.getString(R.string.home_sera_retire_de_cet_espace, pending.item.name),
                     onDismiss = {
                         pendingShortcutDeletion = null
                     },
@@ -936,6 +941,8 @@ private fun SessionConflictDialog(
     onDismiss: () -> Unit,
     onReplace: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     AlertDialog(
         onDismissRequest = onDismiss,
 
@@ -983,7 +990,7 @@ private fun SessionConflictDialog(
 
         title = {
             Text(
-                text = "Une session est déjà active",
+                text = _i18nContext.getString(R.string.home_une_session_est_deja_active),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
@@ -1009,9 +1016,8 @@ private fun SessionConflictDialog(
 
                 Text(
                     text =
-                        "Cela arrive lorsque l'application a été fermée sans couper la protection. " +
-                                "Vous pouvez fermer cette session et vous reconnecter.",
-                    color = Color.White.copy(alpha = 0.50f),
+                        _i18nContext.getString(R.string.home_cela_arrive_lorsque_l_application_a_ete_fermee_sans_coup),
+                    color = Color.White,
                     fontSize = 12.sp,
                     lineHeight = 18.sp,
                     textAlign = TextAlign.Center,
@@ -1071,9 +1077,9 @@ private fun SessionConflictDialog(
                     Text(
                         text =
                             if (isBusy) {
-                                "Fermeture…"
+                                _i18nContext.getString(R.string.home_fermeture)
                             } else {
-                                "Fermer et me reconnecter"
+                                _i18nContext.getString(R.string.home_fermer_et_me_reconnecter)
                             },
                         color = Color.Black,
                         fontSize = 13.sp,
@@ -1089,8 +1095,8 @@ private fun SessionConflictDialog(
                 enabled = !isBusy
             ) {
                 Text(
-                    text = "Annuler",
-                    color = Color.White.copy(alpha = 0.65f),
+                    text = _i18nContext.getString(R.string.account_annuler),
+                    color = Color.White,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -1161,6 +1167,8 @@ private fun TopButtons(
     onMenuClick: () -> Unit,
     onCloseClick: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -1198,7 +1206,7 @@ private fun TopButtons(
                 )
 
                 Text(
-                    text = "Menu",
+                    text = _i18nContext.getString(R.string.home_menu),
                     color = Color.White,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold
@@ -1222,6 +1230,8 @@ private fun TopButtons(
 private fun SupportBanner(
     onClick: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     Row(
         modifier =
             Modifier
@@ -1247,7 +1257,7 @@ private fun SupportBanner(
     ) {
         Text(
             text =
-                "Deliriuum est gratuit grâce aux dons.",
+                _i18nContext.getString(R.string.home_deliriuum_est_gratuit_grace_aux_dons),
             fontSize = 13.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black
@@ -1258,7 +1268,7 @@ private fun SupportBanner(
         )
 
         Text(
-            text = "Soutenir ➔",
+            text = _i18nContext.getString(R.string.home_soutenir),
             fontSize = 13.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black
@@ -1275,6 +1285,8 @@ private fun SupportBanner(
 private fun AutoDisconnectedCard(
     onReconnect: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     Column(
         modifier =
             Modifier
@@ -1320,7 +1332,7 @@ private fun AutoDisconnectedCard(
             Column {
                 Text(
                     text =
-                        "Session fermée automatiquement",
+                        _i18nContext.getString(R.string.home_session_fermee_automatiquement),
                     color = Color.White,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Bold
@@ -1328,7 +1340,7 @@ private fun AutoDisconnectedCard(
 
                 Text(
                     text =
-                        "Protection après inactivité",
+                        _i18nContext.getString(R.string.home_protection_apres_inactivite),
                     color = Color(0xFFFFC633),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
@@ -1338,9 +1350,9 @@ private fun AutoDisconnectedCard(
 
         Text(
             text =
-                "Votre session a été fermée automatiquement après 30 minutes d'inactivité afin de protéger votre confidentialité.",
+                _i18nContext.getString(R.string.home_votre_session_a_ete_fermee_automatiquement_apres_30_minu),
             color =
-                Color.White.copy(alpha = 0.74f),
+                Color.White,
             fontSize = 13.sp,
             lineHeight = 20.sp
         )
@@ -1361,7 +1373,7 @@ private fun AutoDisconnectedCard(
                 Alignment.Center
         ) {
             Text(
-                text = "Se reconnecter",
+                text = _i18nContext.getString(R.string.home_se_reconnecter),
                 color = Color.Black,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Black
@@ -1379,17 +1391,19 @@ private fun AutoDisconnectedCard(
 private fun LockedWebNotice(
     isLoggedIn: Boolean
 ) {
+    val _i18nContext = LocalContext.current
+
     val message =
         if (!isLoggedIn) {
-            "Connectez-vous puis activez la protection Deliriuum pour accéder à la navigation Web et aux réseaux sociaux dans le navigateur protégé."
+            _i18nContext.getString(R.string.home_connectez_vous_puis_activez_la_protection_deliriuum_pour)
         } else {
-            "Activez la protection Deliriuum pour accéder à la navigation Web et aux réseaux sociaux dans le navigateur protégé."
+            _i18nContext.getString(R.string.home_activez_la_protection_deliriuum_pour_acceder_a_la_naviga)
         }
 
     Text(
         text = message,
         color =
-            Color.White.copy(alpha = 0.58f),
+            Color.White,
         fontSize = 12.sp,
         lineHeight = 18.sp,
         textAlign = TextAlign.Center,
@@ -1399,7 +1413,7 @@ private fun LockedWebNotice(
 
 
 // ================================================================
-// PROTECTION CARD — UX ALIGNÉE SUR iOS
+// PROTECTION CARD — PARITÉ VISUELLE APPLE
 // ================================================================
 
 @Composable
@@ -1408,6 +1422,9 @@ private fun ProtectionCard(
     isToggling: Boolean,
     onToggle: () -> Unit
 ) {
+    val _i18nContext =
+        LocalContext.current
+
     val protectedState =
         tunnelManager.isProtected
 
@@ -1416,60 +1433,105 @@ private fun ProtectionCard(
                 tunnelManager.status == TunnelStatus.CONNECTING ||
                 tunnelManager.status == TunnelStatus.DISCONNECTING
 
+
+    // ------------------------------------------------------------
+    // ETAT
+    // ------------------------------------------------------------
+
     val statusLabel =
         when {
+
             tunnelManager.status == TunnelStatus.CONNECTED &&
                     !tunnelManager.tunnelReachable ->
-                "Tunnel indisponible"
+
+                _i18nContext.getString(
+                    R.string.home_tunnel_indisponible
+                )
+
 
             tunnelManager.status == TunnelStatus.CONNECTED ->
-                "Active"
+
+                _i18nContext.getString(
+                    R.string.home_active
+                )
+
 
             tunnelManager.status == TunnelStatus.CONNECTING ->
-                "Activation…"
+
+                _i18nContext.getString(
+                    R.string.home_activation
+                )
+
 
             tunnelManager.status == TunnelStatus.DISCONNECTING ->
-                "Désactivation…"
+
+                _i18nContext.getString(
+                    R.string.home_desactivation
+                )
+
 
             else ->
-                "Inactive"
+
+                _i18nContext.getString(
+                    R.string.home_inactive
+                )
         }
+
 
     val statusColor =
         when {
+
             tunnelManager.status == TunnelStatus.CONNECTED &&
                     !tunnelManager.tunnelReachable ->
+
                 Color(0xFFFFC633)
 
+
             protectedState ->
+
                 Color(0xFF42E695)
 
+
             transitionalState ->
+
                 Color(0xFF8E7CFF)
 
+
             else ->
+
                 Color(0xFFFF5A6F)
         }
 
+
+    // ------------------------------------------------------------
+    // GRADIENT EXACTEMENT DANS L'ESPRIT APPLE
+    // ------------------------------------------------------------
+
     val buttonGradient =
         when {
+
             protectedState ->
+
                 Brush.horizontalGradient(
                     listOf(
-                        Color(0xFF1FC5F5),
+                        Color(0xFF1FC2FA),
                         Color(0xFF42E695)
                     )
                 )
 
+
             transitionalState ->
+
                 Brush.horizontalGradient(
                     listOf(
-                        Color(0xFF467AF5),
-                        Color(0xFFC25BEA)
+                        Color(0xFF407AF5),
+                        Color(0xFFC259EB)
                     )
                 )
 
+
             else ->
+
                 Brush.horizontalGradient(
                     listOf(
                         Color(0xFFE62E3D),
@@ -1478,244 +1540,1008 @@ private fun ProtectionCard(
                 )
         }
 
-    val actionLabel =
-        when (tunnelManager.status) {
-            TunnelStatus.CONNECTED ->
-                "Désactiver la protection"
 
-            TunnelStatus.CONNECTING ->
-                "Connexion sécurisée…"
+    val glowColor =
+        when {
 
-            TunnelStatus.DISCONNECTING ->
-                "Désactivation…"
+            protectedState ->
+
+                Color(0xFF4DD9E8)
+                    .copy(alpha = 0.34f)
+
+
+            transitionalState ->
+
+                Color(0xFFC259EB)
+                    .copy(alpha = 0.28f)
+
 
             else ->
-                "Activer la protection"
+
+                Color(0xFFFF4F5E)
+                    .copy(alpha = 0.30f)
         }
+
+
+    // ------------------------------------------------------------
+    // TEXTE DU BOUTON
+    //
+    // Apple :
+    // grande ligne = état
+    // petite ligne = action
+    // ------------------------------------------------------------
 
     val buttonStatusLabel =
         when {
+
             tunnelManager.status == TunnelStatus.CONNECTED &&
                     !tunnelManager.tunnelReachable ->
-                "Tunnel indisponible"
+
+                _i18nContext.getString(
+                    R.string.home_tunnel_indisponible
+                )
+
 
             tunnelManager.status == TunnelStatus.CONNECTED ->
-                "Protection active"
+
+                _i18nContext.getString(
+                    R.string.home_protection_active
+                )
+
 
             tunnelManager.status == TunnelStatus.CONNECTING ->
-                "Connexion au tunnel"
+
+                _i18nContext.getString(
+                    R.string.home_connexion_au_tunnel
+                )
+
 
             tunnelManager.status == TunnelStatus.DISCONNECTING ->
-                "Fermeture du tunnel"
+
+                _i18nContext.getString(
+                    R.string.home_fermeture_du_tunnel
+                )
+
 
             else ->
-                "Protection inactive"
+
+                _i18nContext.getString(
+                    R.string.home_protection_inactive
+                )
         }
+
+
+    val actionLabel =
+        when (tunnelManager.status) {
+
+            TunnelStatus.CONNECTED ->
+
+                _i18nContext.getString(
+                    R.string.home_desactiver_la_protection
+                )
+
+
+            TunnelStatus.CONNECTING ->
+
+                _i18nContext.getString(
+                    R.string.home_connexion_securisee
+                )
+
+
+            TunnelStatus.DISCONNECTING ->
+
+                _i18nContext.getString(
+                    R.string.home_desactivation
+                )
+
+
+            else ->
+
+                _i18nContext.getString(
+                    R.string.home_activer_la_protection
+                )
+        }
+
+
+    // ============================================================
+    // CARTE
+    // ============================================================
 
     Column(
         modifier =
             Modifier
                 .fillMaxWidth()
                 .background(
-                    Color.White.copy(alpha = 0.07f),
-                    RoundedCornerShape(24.dp)
+                    Color.White.copy(
+                        alpha = 0.07f
+                    ),
+                    RoundedCornerShape(
+                        24.dp
+                    )
                 )
                 .border(
-                    1.dp,
-                    Color.White.copy(alpha = 0.10f),
-                    RoundedCornerShape(24.dp)
+                    width = 1.dp,
+                    color =
+                        Color.White.copy(
+                            alpha = 0.10f
+                        ),
+                    shape =
+                        RoundedCornerShape(
+                            24.dp
+                        )
                 )
-                .padding(18.dp),
+                .padding(
+                    18.dp
+                ),
+
         verticalArrangement =
-            Arrangement.spacedBy(13.dp)
+            Arrangement.spacedBy(
+                13.dp
+            )
     ) {
+
+        // ========================================================
+        // ENTETE — IDENTIQUE AU PRINCIPE iOS
+        // ========================================================
+
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+            modifier =
+                Modifier.fillMaxWidth(),
+
+            verticalAlignment =
+                Alignment.CenterVertically,
+
+            horizontalArrangement =
+                Arrangement.spacedBy(
+                    10.dp
+                )
         ) {
+
             Column(
-                verticalArrangement = Arrangement.spacedBy(3.dp)
+                verticalArrangement =
+                    Arrangement.spacedBy(
+                        3.dp
+                    )
             ) {
+
                 Text(
-                    text = "Protection Deliriuum",
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White.copy(alpha = 0.58f)
+                    text =
+                        _i18nContext.getString(
+                            R.string.home_protection_deliriuum
+                        ),
+
+                    fontSize =
+                        12.sp,
+
+                    fontWeight =
+                        FontWeight.Bold,
+
+                    color =
+                        Color.White
                 )
 
+
                 Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(7.dp)
+                    verticalAlignment =
+                        Alignment.CenterVertically,
+
+                    horizontalArrangement =
+                        Arrangement.spacedBy(
+                            7.dp
+                        )
                 ) {
+
                     Box(
                         modifier =
                             Modifier
-                                .size(7.dp)
+                                .size(
+                                    7.dp
+                                )
                                 .background(
                                     statusColor,
                                     CircleShape
                                 )
+                                .shadow(
+                                    elevation =
+                                        5.dp,
+                                    shape =
+                                        CircleShape
+                                )
                     )
 
+
                     Text(
-                        text = statusLabel,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        text =
+                            statusLabel,
+
+                        fontSize =
+                            15.sp,
+
+                        fontWeight =
+                            FontWeight.Bold,
+
+                        color =
+                            Color.White
                     )
                 }
             }
 
-            Spacer(Modifier.weight(1f))
 
+            Spacer(
+                Modifier.weight(
+                    1f
+                )
+            )
+
+
+            /*
+             * Sur Apple :
+             * logo Deliriuum dans une pastille à droite.
+             */
             Box(
                 modifier =
                     Modifier
-                        .size(42.dp)
-                        .background(
-                            Color.White.copy(alpha = 0.06f),
-                            CircleShape
+                        .size(
+                            42.dp
                         )
-                        .border(
-                            1.dp,
-                            statusColor.copy(alpha = 0.22f),
+                        .background(
+                            Color.White.copy(
+                                alpha = 0.06f
+                            ),
                             CircleShape
                         ),
-                contentAlignment = Alignment.Center
+
+                contentAlignment =
+                    Alignment.Center
             ) {
-                Text(
-                    text = if (protectedState) "🛡" else "🔓",
-                    fontSize = 20.sp
+
+                Image(
+                    painter =
+                        painterResource(
+                            id =
+                                R.drawable.logo
+                        ),
+
+                    contentDescription =
+                        _i18nContext.getString(
+                            R.string.about_logo_deliriuum
+                        ),
+
+                    modifier =
+                        Modifier.size(
+                            34.dp
+                        ),
+
+                    contentScale =
+                        ContentScale.Fit
                 )
             }
         }
+
+
+        // ========================================================
+        // GROS BOUTON APPLE
+        // ========================================================
 
         Box(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .height(72.dp)
+
+                    /*
+                     * Même présence visuelle que le glow Apple.
+                     */
+                    .shadow(
+                        elevation =
+                            16.dp,
+
+                        shape =
+                            RoundedCornerShape(
+                                20.dp
+                            ),
+
+                        ambientColor =
+                            glowColor,
+
+                        spotColor =
+                            glowColor,
+
+                        clip =
+                            false
+                    )
+
+                    .height(
+                        72.dp
+                    )
+
                     .background(
-                        buttonGradient,
-                        RoundedCornerShape(20.dp)
+                        brush =
+                            buttonGradient,
+
+                        shape =
+                            RoundedCornerShape(
+                                20.dp
+                            )
                     )
+
                     .border(
-                        1.dp,
-                        Color.White.copy(alpha = 0.16f),
-                        RoundedCornerShape(20.dp)
+                        width =
+                            1.dp,
+
+                        color =
+                            Color.White.copy(
+                                alpha = 0.16f
+                            ),
+
+                        shape =
+                            RoundedCornerShape(
+                                20.dp
+                            )
                     )
+
+                    .graphicsLayer {
+                        alpha =
+                            if (
+                                transitionalState
+                            ) {
+                                0.92f
+                            } else {
+                                1f
+                            }
+                    }
+
                     .clickable(
-                        enabled = !transitionalState
+                        enabled =
+                            !transitionalState
                     ) {
                         onToggle()
                     }
-                    .padding(horizontal = 14.dp),
-            contentAlignment = Alignment.Center
+
+                    .padding(
+                        horizontal =
+                            16.dp
+                    ),
+
+            contentAlignment =
+                Alignment.Center
         ) {
+
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(11.dp)
+                modifier =
+                    Modifier.fillMaxWidth(),
+
+                verticalAlignment =
+                    Alignment.CenterVertically,
+
+                horizontalArrangement =
+                    Arrangement.spacedBy(
+                        14.dp
+                    )
             ) {
+
+
+                // ------------------------------------------------
+                // ICONE GAUCHE 46 x 46
+                // ------------------------------------------------
+
                 Box(
                     modifier =
                         Modifier
-                            .size(44.dp)
+                            .size(
+                                46.dp
+                            )
                             .background(
-                                Color.White.copy(alpha = 0.16f),
+                                Color.White.copy(
+                                    alpha = 0.16f
+                                ),
                                 CircleShape
                             ),
-                    contentAlignment = Alignment.Center
+
+                    contentAlignment =
+                        Alignment.Center
                 ) {
-                    if (transitionalState) {
+
+                    if (
+                        transitionalState
+                    ) {
+
                         CircularProgressIndicator(
-                            modifier = Modifier.size(21.dp),
-                            strokeWidth = 2.dp,
-                            color = Color.White
+                            modifier =
+                                Modifier.size(
+                                    22.dp
+                                ),
+
+                            strokeWidth =
+                                2.dp,
+
+                            color =
+                                Color.White
                         )
+
                     } else {
-                        Text(
-                            text = if (protectedState) "✓" else "→",
-                            color = Color.White,
-                            fontSize = 19.sp,
-                            fontWeight = FontWeight.Black
+
+                        ProtectionStateGlyph(
+                            protectedState =
+                                protectedState,
+
+                            modifier =
+                                Modifier.size(
+                                    26.dp
+                                )
                         )
                     }
                 }
 
+
+                // ------------------------------------------------
+                // TEXTE
+                // ------------------------------------------------
+
                 Column(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(3.dp)
+                    modifier =
+                        Modifier.weight(
+                            1f
+                        ),
+
+                    verticalArrangement =
+                        Arrangement.spacedBy(
+                            3.dp
+                        )
                 ) {
+
+                    /*
+                     * Ligne principale iOS :
+                     * Protection active / inactive.
+                     */
                     Text(
-                        text = actionLabel,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Black,
-                        color = Color.White,
-                        maxLines = 1,
-                        softWrap = false
+                        text =
+                            buttonStatusLabel,
+
+                        fontSize =
+                            17.sp,
+
+                        fontWeight =
+                            FontWeight.Black,
+
+                        color =
+                            Color.White,
+
+                        maxLines =
+                            1,
+
+                        softWrap =
+                            false
                     )
 
+
+                    /*
+                     * Ligne secondaire iOS :
+                     * Activer / désactiver la protection.
+                     */
                     Text(
-                        text = buttonStatusLabel,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color.White.copy(alpha = 0.78f),
-                        maxLines = 1,
-                        softWrap = false
+                        text =
+                            actionLabel,
+
+                        fontSize =
+                            12.sp,
+
+                        fontWeight =
+                            FontWeight.SemiBold,
+
+                        color =
+                            Color.White,
+
+                        maxLines =
+                            1,
+
+                        softWrap =
+                            false
                     )
                 }
+
+
+                // ------------------------------------------------
+                // PASTILLE DROITE 34 x 34
+                // ------------------------------------------------
 
                 Box(
                     modifier =
                         Modifier
-                            .size(32.dp)
+                            .size(
+                                34.dp
+                            )
                             .background(
-                                Color.Black.copy(alpha = 0.12f),
+                                Color.Black.copy(
+                                    alpha = 0.12f
+                                ),
                                 CircleShape
                             ),
-                    contentAlignment = Alignment.Center
+
+                    contentAlignment =
+                        Alignment.Center
                 ) {
-                    Text(
-                        text = if (protectedState) "⏻" else "→",
-                        color = Color.White,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+
+                    if (
+                        protectedState
+                    ) {
+
+                        ProtectionPowerGlyph(
+                            modifier =
+                                Modifier.size(
+                                    17.dp
+                                )
+                        )
+
+                    } else {
+
+                        ProtectionArrowGlyph(
+                            modifier =
+                                Modifier.size(
+                                    16.dp
+                                )
+                        )
+                    }
                 }
             }
         }
 
+
+        // ========================================================
+        // TEXTE SOUS LE BOUTON
+        // ========================================================
+
         Text(
             text =
-                if (protectedState) {
-                    "Votre trafic passe par le tunnel Deliriuum. La navigation intégrée peut utiliser Deep Shield."
+                if (
+                    protectedState
+                ) {
+
+                    _i18nContext.getString(
+                        R.string.home_votre_trafic_passe_par_le_tunnel_deliriuum_la_navigation
+                    )
+
                 } else {
-                    "Votre trafic n’est pas protégé par Deliriuum. Activez la protection pour ouvrir le navigateur sécurisé."
+
+                    _i18nContext.getString(
+                        R.string.home_votre_trafic_n_est_pas_protege_par_deliriuum_activez_la
+                    )
                 },
+
             color =
-                if (protectedState) {
-                    Color(0xFF42E695)
+                if (
+                    protectedState
+                ) {
+
+                    Color(
+                        0xFF42E695
+                    )
+
                 } else {
-                    Color.White.copy(alpha = 0.58f)
+
+                    Color.White
                 },
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Medium,
-            lineHeight = 17.sp
+
+            fontSize =
+                12.sp,
+
+            fontWeight =
+                FontWeight.Medium,
+
+            lineHeight =
+                17.sp
         )
 
-        tunnelManager.lastErrorMessage
-            ?.let { error ->
-                Text(
-                    text = error,
-                    fontSize = 12.sp,
-                    lineHeight = 17.sp,
-                    color = Color(0xFFFF5A6F)
-                )
-            }
     }
 }
+
+
+// ================================================================
+// ICONE : SHIELD LOCK / OPEN LOCK
+// Dessin vectoriel Compose — aucun emoji, aucune dépendance Material
+// ================================================================
+
+@Composable
+private fun ProtectionStateGlyph(
+    protectedState: Boolean,
+    modifier: Modifier = Modifier
+) {
+
+    Canvas(
+        modifier =
+            modifier
+    ) {
+
+        val w =
+            size.width
+
+        val h =
+            size.height
+
+        val stroke =
+            size.minDimension *
+                    0.075f
+
+
+        if (
+            protectedState
+        ) {
+
+            // ----------------------------------------------------
+            // BOUCLIER
+            // ----------------------------------------------------
+
+            val shield =
+                Path().apply {
+
+                    moveTo(
+                        w * 0.50f,
+                        h * 0.05f
+                    )
+
+                    lineTo(
+                        w * 0.83f,
+                        h * 0.18f
+                    )
+
+                    lineTo(
+                        w * 0.79f,
+                        h * 0.57f
+                    )
+
+                    quadraticBezierTo(
+                        w * 0.74f,
+                        h * 0.80f,
+                        w * 0.50f,
+                        h * 0.94f
+                    )
+
+                    quadraticBezierTo(
+                        w * 0.26f,
+                        h * 0.80f,
+                        w * 0.21f,
+                        h * 0.57f
+                    )
+
+                    lineTo(
+                        w * 0.17f,
+                        h * 0.18f
+                    )
+
+                    close()
+                }
+
+
+            drawPath(
+                path =
+                    shield,
+
+                color =
+                    Color.White,
+
+                style =
+                    Stroke(
+                        width =
+                            stroke
+                    )
+            )
+
+
+            // ----------------------------------------------------
+            // CADENAS DANS LE BOUCLIER
+            // ----------------------------------------------------
+
+            drawRoundRect(
+                color =
+                    Color.White,
+
+                topLeft =
+                    Offset(
+                        w * 0.37f,
+                        h * 0.49f
+                    ),
+
+                size =
+                    Size(
+                        w * 0.26f,
+                        h * 0.22f
+                    ),
+
+                cornerRadius =
+                    CornerRadius(
+                        w * 0.035f,
+                        w * 0.035f
+                    ),
+
+                style =
+                    Stroke(
+                        width =
+                            stroke * 0.80f
+                    )
+            )
+
+
+            val shackle =
+                Path().apply {
+
+                    moveTo(
+                        w * 0.41f,
+                        h * 0.50f
+                    )
+
+                    lineTo(
+                        w * 0.41f,
+                        h * 0.42f
+                    )
+
+                    quadraticBezierTo(
+                        w * 0.41f,
+                        h * 0.32f,
+                        w * 0.50f,
+                        h * 0.32f
+                    )
+
+                    quadraticBezierTo(
+                        w * 0.59f,
+                        h * 0.32f,
+                        w * 0.59f,
+                        h * 0.42f
+                    )
+
+                    lineTo(
+                        w * 0.59f,
+                        h * 0.50f
+                    )
+                }
+
+
+            drawPath(
+                path =
+                    shackle,
+
+                color =
+                    Color.White,
+
+                style =
+                    Stroke(
+                        width =
+                            stroke * 0.80f
+                    )
+            )
+
+        } else {
+
+            // ----------------------------------------------------
+            // CADENAS OUVERT
+            // ----------------------------------------------------
+
+            drawRoundRect(
+                color =
+                    Color.White,
+
+                topLeft =
+                    Offset(
+                        w * 0.25f,
+                        h * 0.48f
+                    ),
+
+                size =
+                    Size(
+                        w * 0.50f,
+                        h * 0.34f
+                    ),
+
+                cornerRadius =
+                    CornerRadius(
+                        w * 0.06f,
+                        w * 0.06f
+                    ),
+
+                style =
+                    Stroke(
+                        width =
+                            stroke
+                    )
+            )
+
+
+            val openShackle =
+                Path().apply {
+
+                    moveTo(
+                        w * 0.34f,
+                        h * 0.50f
+                    )
+
+                    lineTo(
+                        w * 0.34f,
+                        h * 0.34f
+                    )
+
+                    quadraticBezierTo(
+                        w * 0.34f,
+                        h * 0.17f,
+                        w * 0.50f,
+                        h * 0.17f
+                    )
+
+                    quadraticBezierTo(
+                        w * 0.65f,
+                        h * 0.17f,
+                        w * 0.65f,
+                        h * 0.31f
+                    )
+
+                    lineTo(
+                        w * 0.78f,
+                        h * 0.31f
+                    )
+                }
+
+
+            drawPath(
+                path =
+                    openShackle,
+
+                color =
+                    Color.White,
+
+                style =
+                    Stroke(
+                        width =
+                            stroke
+                    )
+            )
+        }
+    }
+}
+
+
+// ================================================================
+// ICONE : POWER
+// ================================================================
+
+@Composable
+private fun ProtectionPowerGlyph(
+    modifier: Modifier = Modifier
+) {
+
+    Canvas(
+        modifier =
+            modifier
+    ) {
+
+        val stroke =
+            size.minDimension *
+                    0.115f
+
+
+        drawArc(
+            color =
+                Color.White,
+
+            startAngle =
+                -45f,
+
+            sweepAngle =
+                270f,
+
+            useCenter =
+                false,
+
+            style =
+                Stroke(
+                    width =
+                        stroke
+                )
+        )
+
+
+        drawLine(
+            color =
+                Color.White,
+
+            start =
+                Offset(
+                    size.width * 0.50f,
+                    size.height * 0.04f
+                ),
+
+            end =
+                Offset(
+                    size.width * 0.50f,
+                    size.height * 0.49f
+                ),
+
+            strokeWidth =
+                stroke
+        )
+    }
+}
+
+
+// ================================================================
+// ICONE : FLECHE DROITE
+// ================================================================
+
+@Composable
+private fun ProtectionArrowGlyph(
+    modifier: Modifier = Modifier
+) {
+
+    Canvas(
+        modifier =
+            modifier
+    ) {
+
+        val stroke =
+            size.minDimension *
+                    0.12f
+
+
+        drawLine(
+            color =
+                Color.White,
+
+            start =
+                Offset(
+                    size.width * 0.15f,
+                    size.height * 0.50f
+                ),
+
+            end =
+                Offset(
+                    size.width * 0.82f,
+                    size.height * 0.50f
+                ),
+
+            strokeWidth =
+                stroke
+        )
+
+
+        drawLine(
+            color =
+                Color.White,
+
+            start =
+                Offset(
+                    size.width * 0.58f,
+                    size.height * 0.25f
+                ),
+
+            end =
+                Offset(
+                    size.width * 0.82f,
+                    size.height * 0.50f
+                ),
+
+            strokeWidth =
+                stroke
+        )
+
+
+        drawLine(
+            color =
+                Color.White,
+
+            start =
+                Offset(
+                    size.width * 0.58f,
+                    size.height * 0.75f
+                ),
+
+            end =
+                Offset(
+                    size.width * 0.82f,
+                    size.height * 0.50f
+                ),
+
+            strokeWidth =
+                stroke
+        )
+    }
+}
+
 
 
 // ================================================================
@@ -1727,6 +2553,8 @@ private fun ProtectionCard(
 private fun RowScope.SafetyBadge(
     text: String
 ) {
+    val _i18nContext = LocalContext.current
+
     Box(
         modifier =
             Modifier
@@ -1748,7 +2576,7 @@ private fun RowScope.SafetyBadge(
             Alignment.Center
     ) {
         Text(
-            text = "✓ $text",
+            text = _i18nContext.getString(R.string.home_text, text),
             color =
                 Color.Cyan.copy(alpha = 0.88f),
             fontSize = 10.sp,
@@ -1768,6 +2596,8 @@ private fun WebNavigationSpace(
     enabled: Boolean,
     onOpen: (String) -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     var address by remember {
         mutableStateOf("")
     }
@@ -1777,9 +2607,9 @@ private fun WebNavigationSpace(
 
     SectionCard(
         emoji = "🌐",
-        title = "Navigateur Deliriuum",
+        title = _i18nContext.getString(R.string.home_navigateur_deliriuum),
         subtitle =
-            "Rechercher ou ouvrir un site avec le navigateur protégé"
+            _i18nContext.getString(R.string.home_rechercher_ou_ouvrir_un_site_avec_le_navigateur_protege)
     ) {
         OutlinedTextField(
             value = address,
@@ -1788,7 +2618,7 @@ private fun WebNavigationSpace(
             },
             enabled = enabled,
             placeholder = {
-                Text("Rechercher ou saisir une adresse")
+                Text(_i18nContext.getString(R.string.home_rechercher_ou_saisir_une_adresse))
             },
             singleLine = true,
             modifier =
@@ -1827,7 +2657,7 @@ private fun WebNavigationSpace(
                         if (enabled) {
                             Color.Cyan
                         } else {
-                            Color.White.copy(alpha = 0.25f)
+                            Color.White
                         },
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
@@ -1848,9 +2678,9 @@ private fun WebNavigationSpace(
 
         Text(
             text =
-                "Une adresse s'ouvre directement, le reste est recherché sur DuckDuckGo.",
+                _i18nContext.getString(R.string.home_une_adresse_s_ouvre_directement_le_reste_est_recherche_s),
             color =
-                Color.White.copy(alpha = 0.45f),
+                Color.White,
             fontSize = 11.sp,
             lineHeight = 16.sp
         )
@@ -1899,6 +2729,22 @@ private data class PendingShortcutDeletion(
     val spaceId: String,
     val item: ShortcutItem
 )
+
+
+private fun localizedShortcutSpaceName(
+    context: android.content.Context,
+    space: ShortcutSpace
+): String =
+    when (space.kind) {
+        ShortcutSpaceKind.SOCIAL ->
+            context.getString(R.string.shortcut_space_social)
+
+        ShortcutSpaceKind.VIDEO ->
+            context.getString(R.string.shortcut_space_video)
+
+        ShortcutSpaceKind.CUSTOM ->
+            space.name
+    }
 
 
 private class ShortcutSpaceStore(
@@ -2167,6 +3013,8 @@ private fun ShortcutSpacesSection(
     onDeleteShortcut: (ShortcutSpace, ShortcutItem) -> Unit,
     onMoveShortcut: (String, String, Int) -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(14.dp)
@@ -2200,7 +3048,7 @@ private fun ShortcutSpacesSection(
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
-                    contentDescription = "Logo Deliriuum",
+                    contentDescription = _i18nContext.getString(R.string.about_logo_deliriuum),
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Fit
                 )
@@ -2211,15 +3059,15 @@ private fun ShortcutSpacesSection(
                 verticalArrangement = Arrangement.spacedBy(3.dp)
             ) {
                 Text(
-                    text = "Mes espaces",
+                    text = _i18nContext.getString(R.string.home_mes_espaces),
                     color = Color.White,
                     fontSize = 19.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "Organise tes raccourcis comme tu veux",
-                    color = Color.White.copy(alpha = 0.58f),
+                    text = _i18nContext.getString(R.string.home_organise_tes_raccourcis_comme_tu_veux),
+                    color = Color.White,
                     fontSize = 12.sp,
                     lineHeight = 16.sp
                 )
@@ -2233,7 +3081,7 @@ private fun ShortcutSpacesSection(
                     )
             ) {
                 Text(
-                    text = "+ Nouveau",
+                    text = _i18nContext.getString(R.string.home_nouveau),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -2296,7 +3144,7 @@ private fun ShortcutSpacesSection(
                             )
                 ) {
                     Text(
-                        text = "APPUI LONG",
+                        text = _i18nContext.getString(R.string.home_appui_long),
                         color = Color.Cyan.copy(alpha = 0.92f),
                         fontSize = 9.sp,
                         fontWeight = FontWeight.Black,
@@ -2306,8 +3154,8 @@ private fun ShortcutSpacesSection(
                 }
 
                 Text(
-                    text = "Déplacer  ·  Modifier  ·  Supprimer",
-                    color = Color.White.copy(alpha = 0.62f),
+                    text = _i18nContext.getString(R.string.home_deplacer_modifier_supprimer),
+                    color = Color.White,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.SemiBold,
                     maxLines = 1,
@@ -2377,6 +3225,8 @@ private fun ShortcutSpaceCard(
     onMoveShortcut: (String, Int) -> Unit,
     onLongPressDiscovered: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     var showSpaceMenu by remember(space.id) {
         mutableStateOf(false)
     }
@@ -2384,13 +3234,13 @@ private fun ShortcutSpaceCard(
     val subtitle =
         when (space.kind) {
             ShortcutSpaceKind.SOCIAL ->
-                "Réseaux sociaux via Deliriuum + Deep Shield"
+                _i18nContext.getString(R.string.home_reseaux_sociaux_via_deliriuum_deep_shield)
 
             ShortcutSpaceKind.VIDEO ->
-                "Plateformes vidéo via Deliriuum + Deep Shield"
+                _i18nContext.getString(R.string.home_plateformes_video_via_deliriuum_deep_shield)
 
             ShortcutSpaceKind.CUSTOM ->
-                "Espace personnalisé"
+                _i18nContext.getString(R.string.browser_espace_personnalise)
         }
 
     SectionCard(
@@ -2398,7 +3248,7 @@ private fun ShortcutSpaceCard(
             space.iconKey,
             space.kind
         ),
-        title = space.name,
+        title = localizedShortcutSpaceName(_i18nContext, space),
         subtitle = subtitle
     ) {
         Row(
@@ -2426,7 +3276,7 @@ private fun ShortcutSpaceCard(
                 ) {
                     Text(
                         text = "•••",
-                        color = Color.White.copy(alpha = 0.68f),
+                        color = Color.White,
                         fontWeight = FontWeight.Bold
                     )
                 }
@@ -2439,7 +3289,7 @@ private fun ShortcutSpaceCard(
                 ) {
                     DropdownMenuItem(
                         text = {
-                            Text("Renommer / modifier")
+                            Text(_i18nContext.getString(R.string.home_renommer_modifier))
                         },
                         onClick = {
                             showSpaceMenu = false
@@ -2449,7 +3299,7 @@ private fun ShortcutSpaceCard(
 
                     DropdownMenuItem(
                         text = {
-                            Text("Supprimer")
+                            Text(_i18nContext.getString(R.string.account_supprimer))
                         },
                         onClick = {
                             showSpaceMenu = false
@@ -2477,8 +3327,8 @@ private fun ShortcutSpaceCard(
                 )
 
                 Text(
-                    text = "Aucun raccourci dans cet espace",
-                    color = Color.White.copy(alpha = 0.58f),
+                    text = _i18nContext.getString(R.string.home_aucun_raccourci_dans_cet_espace),
+                    color = Color.White,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -2515,7 +3365,7 @@ private fun ShortcutSpaceCard(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "+ Ajouter un raccourci",
+                text = _i18nContext.getString(R.string.home_ajouter_un_raccourci),
                 color = Color.Cyan,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold
@@ -2753,6 +3603,8 @@ private fun ShortcutTile(
     onDragEnd: () -> Unit,
     onDragCancel: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     var showShortcutMenu by remember(item.id) {
         mutableStateOf(false)
     }
@@ -2937,9 +3789,7 @@ private fun ShortcutTile(
                     if (enabled) {
                         Color.White
                     } else {
-                        Color.White.copy(
-                            alpha = 0.34f
-                        )
+                        Color.White
                     },
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
@@ -3004,7 +3854,7 @@ private fun ShortcutTile(
                 ) {
                     DropdownMenuItem(
                         text = {
-                            Text("Modifier")
+                            Text(_i18nContext.getString(R.string.home_modifier))
                         },
                         onClick = {
                             showShortcutMenu = false
@@ -3014,7 +3864,7 @@ private fun ShortcutTile(
 
                     DropdownMenuItem(
                         text = {
-                            Text("Supprimer")
+                            Text(_i18nContext.getString(R.string.account_supprimer))
                         },
                         onClick = {
                             showShortcutMenu = false
@@ -3027,7 +3877,7 @@ private fun ShortcutTile(
 
         if (isDragging) {
             Text(
-                text = "DÉPLACER",
+                text = _i18nContext.getString(R.string.home_deplacer),
                 color = Color.Black,
                 fontSize = 9.sp,
                 fontWeight = FontWeight.Black,
@@ -3207,7 +4057,7 @@ private fun ShortcutBrandBadge(
             ) {
                 Text(
                     text = "OFF",
-                    color = Color.White.copy(alpha = 0.88f),
+                    color = Color.White,
                     fontSize = 7.sp,
                     fontWeight = FontWeight.Black,
                     letterSpacing = 1.sp
@@ -3350,6 +4200,8 @@ private fun SpaceEditorDialog(
     onDismiss: () -> Unit,
     onSave: (String, String) -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     var name by remember(editor.spaceId) {
         mutableStateOf(editor.name)
     }
@@ -3385,9 +4237,9 @@ private fun SpaceEditorDialog(
             Text(
                 text =
                     if (editor.spaceId == null) {
-                        "Créer un espace"
+                        _i18nContext.getString(R.string.home_creer_un_espace)
                     } else {
-                        "Modifier l'espace"
+                        _i18nContext.getString(R.string.home_modifier_l_espace)
                     },
                 color = Color.White,
                 fontWeight = FontWeight.Bold
@@ -3407,8 +4259,8 @@ private fun SpaceEditorDialog(
                 )
 
                 Text(
-                    text = "Icône",
-                    color = Color.White.copy(alpha = 0.68f),
+                    text = _i18nContext.getString(R.string.home_icone),
+                    color = Color.White,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -3477,7 +4329,7 @@ private fun SpaceEditorDialog(
                 Text(
                     text =
                         if (editor.spaceId == null) {
-                            "Créer"
+                            _i18nContext.getString(R.string.home_creer)
                         } else {
                             "Enregistrer"
                         },
@@ -3489,8 +4341,8 @@ private fun SpaceEditorDialog(
         dismissButton = {
             TextButton(onClick = onDismiss) {
                 Text(
-                    text = "Annuler",
-                    color = Color.White.copy(alpha = 0.60f)
+                    text = _i18nContext.getString(R.string.account_annuler),
+                    color = Color.White
                 )
             }
         }
@@ -3503,6 +4355,8 @@ private fun ShortcutEditorDialog(
     onDismiss: () -> Unit,
     onSave: (String, String) -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     var name by remember(editor.shortcutId, editor.spaceId) {
         mutableStateOf(editor.name)
     }
@@ -3518,9 +4372,9 @@ private fun ShortcutEditorDialog(
             Text(
                 text =
                     if (editor.shortcutId == null) {
-                        "Ajouter un raccourci"
+                        _i18nContext.getString(R.string.home_ajouter_un_raccourci_832a52b)
                     } else {
-                        "Modifier le raccourci"
+                        _i18nContext.getString(R.string.home_modifier_le_raccourci)
                     },
                 color = Color.White,
                 fontWeight = FontWeight.Bold
@@ -3543,7 +4397,7 @@ private fun ShortcutEditorDialog(
                     value = url,
                     onValueChange = { url = it },
                     modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Adresse du site") },
+                    label = { Text(_i18nContext.getString(R.string.home_adresse_du_site)) },
                     placeholder = { Text("https://exemple.com") },
                     singleLine = true,
                     colors = protectedTextFieldColors(),
@@ -3555,8 +4409,8 @@ private fun ShortcutEditorDialog(
 
                 Text(
                     text =
-                        "Pour un site connu, Deliriuum utilise son logo local. Pour un raccourci personnalisé, le favicon du site est utilisé si disponible.",
-                    color = Color.White.copy(alpha = 0.48f),
+                        _i18nContext.getString(R.string.home_pour_un_site_connu_deliriuum_utilise_son_logo_local_pour),
+                    color = Color.White,
                     fontSize = 11.sp,
                     lineHeight = 16.sp
                 )
@@ -3581,8 +4435,8 @@ private fun ShortcutEditorDialog(
         dismissButton = {
             TextButton(onClick = onDismiss) {
                 Text(
-                    text = "Annuler",
-                    color = Color.White.copy(alpha = 0.60f)
+                    text = _i18nContext.getString(R.string.account_annuler),
+                    color = Color.White
                 )
             }
         }
@@ -3596,6 +4450,8 @@ private fun ConfirmDeleteDialog(
     onDismiss: () -> Unit,
     onConfirm: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = Color(0xFF12121A),
@@ -3610,7 +4466,7 @@ private fun ConfirmDeleteDialog(
         text = {
             Text(
                 text = message,
-                color = Color.White.copy(alpha = 0.70f),
+                color = Color.White,
                 fontSize = 13.sp,
                 lineHeight = 19.sp
             )
@@ -3618,7 +4474,7 @@ private fun ConfirmDeleteDialog(
         confirmButton = {
             TextButton(onClick = onConfirm) {
                 Text(
-                    text = "Supprimer",
+                    text = _i18nContext.getString(R.string.account_supprimer),
                     color = Color(0xFFFF5A6F),
                     fontWeight = FontWeight.Bold
                 )
@@ -3627,8 +4483,8 @@ private fun ConfirmDeleteDialog(
         dismissButton = {
             TextButton(onClick = onDismiss) {
                 Text(
-                    text = "Annuler",
-                    color = Color.White.copy(alpha = 0.60f)
+                    text = _i18nContext.getString(R.string.account_annuler),
+                    color = Color.White
                 )
             }
         }
@@ -3706,7 +4562,7 @@ private fun SectionCard(
 
                 Text(
                     text = subtitle,
-                    color = Color.White.copy(alpha = 0.72f),
+                    color = Color.White,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Medium,
                     lineHeight = 16.sp
@@ -3746,10 +4602,8 @@ private fun protectedTextFieldColors():
         disabledContainerColor =
             Color.Black.copy(alpha = 0.10f),
 
-        focusedPlaceholderColor =
-            Color.White.copy(alpha = 0.38f),
-        unfocusedPlaceholderColor =
-            Color.White.copy(alpha = 0.38f),
+        focusedPlaceholderColor = Color.White,
+        unfocusedPlaceholderColor = Color.White,
         disabledPlaceholderColor =
             Color.White.copy(alpha = 0.20f),
 
@@ -3765,6 +4619,8 @@ private fun protectedTextFieldColors():
 private fun DeepShieldStatusCard(
     tunnelManager: TunnelManager
 ) {
+    val _i18nContext = LocalContext.current
+
     val protectedState =
         tunnelManager.isProtected
 
@@ -3827,7 +4683,7 @@ private fun DeepShieldStatusCard(
             ) {
 
                 Text(
-                    text = "Deep Shield",
+                    text = _i18nContext.getString(R.string.about_deep_shield),
                     color = Color.White,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Bold
@@ -3839,7 +4695,7 @@ private fun DeepShieldStatusCard(
                  */
                 Text(
                     text =
-                        "Protection renforcée de la navigation",
+                        _i18nContext.getString(R.string.home_protection_renforcee_de_la_navigation),
                     color =
                         Color.Cyan.copy(alpha = 0.85f),
                     fontSize = 12.sp,
@@ -3856,9 +4712,9 @@ private fun DeepShieldStatusCard(
             Text(
                 text =
                     if (protectedState) {
-                        "MODE PROTÉGÉ"
+                        _i18nContext.getString(R.string.home_mode_protege)
                     } else {
-                        "MODE NON PROTÉGÉ"
+                        _i18nContext.getString(R.string.home_mode_non_protege)
                     },
                 color =
                     if (protectedState) {
@@ -3873,16 +4729,12 @@ private fun DeepShieldStatusCard(
             Text(
                 text =
                     if (protectedState) {
-                        "Le tunnel WireGuard est actif et le navigateur GeckoView " +
-                                "applique les protections Deep Shield Android contre " +
-                                "plusieurs sources d’empreinte et de fuite réseau."
+                        _i18nContext.getString(R.string.home_le_tunnel_wireguard_est_actif_et_le_navigateur_geckoview)
                     } else {
-                        "Deep Shield n’est pas encore appliqué. Deliriuum mesure " +
-                                "automatiquement cet environnement avant activation " +
-                                "afin de disposer d’une référence réelle."
+                        _i18nContext.getString(R.string.home_deep_shield_n_est_pas_encore_applique_deliriuum_mesure_a)
                     },
                 color =
-                    Color.White.copy(alpha = 0.68f),
+                    Color.White,
                 fontSize = 13.sp,
                 lineHeight = 19.sp
             )
@@ -3984,6 +4836,8 @@ private fun PrivacyAuditCard(
     tunnelProtected: Boolean,
     auditReady: Boolean
 ) {
+    val _i18nContext = LocalContext.current
+
     var showAllAuditDetails by remember {
         mutableStateOf(false)
     }
@@ -4011,20 +4865,20 @@ private fun PrivacyAuditCard(
     val levelLabel =
         if (!auditReady) {
 
-            "Analyse en attente"
+            _i18nContext.getString(R.string.home_analyse_en_attente)
 
         } else {
 
             when (auditState.level) {
 
                 com.deliriuum.app.data.PrivacyProtectionLevel.HIGH ->
-                    "Protection élevée"
+                    _i18nContext.getString(R.string.home_protection_elevee)
 
                 com.deliriuum.app.data.PrivacyProtectionLevel.REINFORCED ->
-                    "Protection renforcée"
+                    _i18nContext.getString(R.string.home_protection_renforcee)
 
                 com.deliriuum.app.data.PrivacyProtectionLevel.LOW ->
-                    "Protection faible"
+                    _i18nContext.getString(R.string.home_protection_faible)
             }
         }
 
@@ -4062,71 +4916,28 @@ private fun PrivacyAuditCard(
         }
 
     val transparencyText =
-        buildString {
-
-            if (
-                auditState.exposedCount > 0
-            ) {
-
-                append(
-                    "${auditState.exposedCount} élément"
+        buildList {
+            if (auditState.exposedCount > 0) {
+                add(
+                    _i18nContext.resources.getQuantityString(
+                        R.plurals.home_audit_exposed_elements,
+                        auditState.exposedCount,
+                        auditState.exposedCount
+                    )
                 )
-
-                if (
-                    auditState.exposedCount > 1
-                ) {
-                    append("s")
-                }
-
-                append(
-                    " reste"
-                )
-
-                if (
-                    auditState.exposedCount > 1
-                ) {
-                    append("nt")
-                }
-
-                append(
-                    " observable"
-                )
-
-                if (
-                    auditState.exposedCount > 1
-                ) {
-                    append("s")
-                }
-
-                append(". ")
             }
 
-            if (
-                auditState.partialCount > 0
-            ) {
-
-                append(
-                    "${auditState.partialCount} protection"
-                )
-
-                if (
-                    auditState.partialCount > 1
-                ) {
-                    append("s")
-                }
-
-                append(
-                    if (
-                        auditState.partialCount > 1
-                    ) {
-                        " sont partielles."
-                    } else {
-                        " est partielle."
-                    }
+            if (auditState.partialCount > 0) {
+                add(
+                    _i18nContext.resources.getQuantityString(
+                        R.plurals.home_audit_partial_protections,
+                        auditState.partialCount,
+                        auditState.partialCount
+                    )
                 )
             }
         }
-            .trim()
+            .joinToString(" ")
 
     Column(
         modifier =
@@ -4192,11 +5003,11 @@ private fun PrivacyAuditCard(
             ) {
 
                 Text(
-                    text = "État de confidentialité",
+                    text = _i18nContext.getString(R.string.home_etat_de_confidentialite),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color =
-                        Color.White.copy(alpha = 0.62f)
+                        Color.White
                 )
 
                 Text(
@@ -4242,24 +5053,20 @@ private fun PrivacyAuditCard(
             text =
                 if (tunnelProtected) {
                     if (auditReady) {
-                        "Deep Shield mesure ce que les sites peuvent réellement " +
-                                "observer avec la protection Deliriuum active."
+                        _i18nContext.getString(R.string.home_deep_shield_mesure_ce_que_les_sites_peuvent_reellement_o)
                     } else {
-                        "Le tunnel est protégé. Deep Shield mesure maintenant " +
-                                "l’environnement réellement exposé aux sites."
+                        _i18nContext.getString(R.string.home_le_tunnel_est_protege_deep_shield_mesure_maintenant_l_en)
                     }
                 } else {
                     if (auditReady) {
-                        "Mesure réalisée avant activation de Deliriuum : " +
-                                "voici ce que les sites que vous consultez peuvent observer dans l’environnement standard."
+                        _i18nContext.getString(R.string.home_mesure_realisee_avant_activation_de_deliriuum_voici_ce_q)
                     } else {
-                        "Deliriuum mesure automatiquement l’environnement avant " +
-                                "d’activer la protection. Aucune action n’est demandée."
+                        _i18nContext.getString(R.string.home_deliriuum_mesure_automatiquement_l_environnement_avant_d)
                     }
                 },
             fontSize = 12.sp,
             color =
-                Color.White.copy(alpha = 0.62f),
+                Color.White,
             lineHeight = 18.sp
         )
 
@@ -4281,7 +5088,7 @@ private fun PrivacyAuditCard(
                     } else {
                         "—"
                     },
-                label = "Protégés",
+                label = _i18nContext.getString(R.string.home_proteges),
                 color = Color(0xFF42E695),
                 modifier =
                     Modifier.weight(1f)
@@ -4380,9 +5187,9 @@ private fun PrivacyAuditCard(
                 Text(
                     text =
                         if (showAllAuditDetails) {
-                            "Masquer le détail des protections"
+                            _i18nContext.getString(R.string.home_masquer_le_detail_des_protections)
                         } else {
-                            "Voir le détail des protections"
+                            _i18nContext.getString(R.string.home_voir_le_detail_des_protections)
                         },
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
@@ -4391,10 +5198,10 @@ private fun PrivacyAuditCard(
 
                 Text(
                     text =
-                        "Comprendre ce que chaque contrôle mesure",
+                        _i18nContext.getString(R.string.home_comprendre_ce_que_chaque_controle_mesure),
                     fontSize = 12.sp,
                     color =
-                        Color.White.copy(alpha = 0.62f)
+                        Color.White
                 )
             }
 
@@ -4408,7 +5215,7 @@ private fun PrivacyAuditCard(
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 color =
-                    Color.White.copy(alpha = 0.62f)
+                    Color.White
             )
         }
 
@@ -4471,7 +5278,7 @@ private fun PrivacyAuditCard(
             ) {
 
                 Text(
-                    text = "Transparence Deep Shield",
+                    text = _i18nContext.getString(R.string.home_transparence_deep_shield),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
@@ -4481,7 +5288,7 @@ private fun PrivacyAuditCard(
                     text = transparencyText,
                     fontSize = 12.sp,
                     color =
-                        Color.White.copy(alpha = 0.62f),
+                        Color.White,
                     lineHeight = 17.sp
                 )
             }
@@ -4499,10 +5306,10 @@ private fun PrivacyAuditCard(
         ) {
 
             Text(
-                text = "Mesuré localement par Deep Shield",
+                text = _i18nContext.getString(R.string.home_mesure_localement_par_deep_shield),
                 fontSize = 12.sp,
                 color =
-                    Color.White.copy(alpha = 0.55f)
+                    Color.White
             )
 
             Spacer(
@@ -4511,7 +5318,7 @@ private fun PrivacyAuditCard(
             )
 
             Text(
-                text = "Pas de score artificiel",
+                text = _i18nContext.getString(R.string.home_pas_de_score_artificiel),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 color =
@@ -4529,6 +5336,8 @@ private fun FullAuditDetailRowAndroid(
     technicalDetail: String,
     status: PrivacyCheckStatus
 ) {
+    val _i18nContext = LocalContext.current
+
     val color =
         auditStatusColor(
             status
@@ -4566,16 +5375,16 @@ private fun FullAuditDetailRowAndroid(
         when (status) {
 
             PrivacyCheckStatus.PROTECTED ->
-                "Protégé"
+                _i18nContext.getString(R.string.home_protege)
 
             PrivacyCheckStatus.PARTIAL ->
-                "Partiel"
+                _i18nContext.getString(R.string.home_partiel)
 
             PrivacyCheckStatus.EXPOSED ->
-                "Visible"
+                _i18nContext.getString(R.string.home_visible)
 
             PrivacyCheckStatus.NOT_TESTED ->
-                "Non vérifié"
+                _i18nContext.getString(R.string.home_non_verifie)
         }
 
     Column(
@@ -4639,7 +5448,7 @@ private fun FullAuditDetailRowAndroid(
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold,
                 color =
-                    Color.White.copy(alpha = 0.94f)
+                    Color.White
             )
 
             Box(
@@ -4672,7 +5481,7 @@ private fun FullAuditDetailRowAndroid(
             text = pedagogy.explanation,
             fontSize = 12.sp,
             color =
-                Color.White.copy(alpha = 0.70f),
+                Color.White,
             lineHeight = 18.sp
         )
 
@@ -4694,7 +5503,7 @@ private fun FullAuditDetailRowAndroid(
         ) {
 
             Text(
-                text = "RÉSULTAT SUR VOTRE APPAREIL",
+                text = _i18nContext.getString(R.string.home_resultat_sur_votre_appareil),
                 fontSize = 8.sp,
                 fontWeight = FontWeight.Black,
                 color =
@@ -4706,7 +5515,7 @@ private fun FullAuditDetailRowAndroid(
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Medium,
                 color =
-                    Color.White.copy(alpha = 0.88f),
+                    Color.White,
                 lineHeight = 16.sp
             )
 
@@ -4721,10 +5530,10 @@ private fun FullAuditDetailRowAndroid(
 
                 Text(
                     text =
-                        "Mesure : $technicalDetail",
+                        _i18nContext.getString(R.string.home_mesure, technicalDetail),
                     fontSize = 10.sp,
                     color =
-                        Color.White.copy(alpha = 0.45f),
+                        Color.White,
                     lineHeight = 15.sp
                 )
             }
@@ -4793,7 +5602,7 @@ private fun AuditCounter(
         Text(
             text = label,
             color =
-                Color.White.copy(alpha = 0.55f),
+                Color.White,
             fontSize = 9.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
@@ -4812,139 +5621,126 @@ private data class AuditPedagogy(
 )
 
 
+@Composable
 private fun auditPedagogy(
     id: String,
     fallbackTitle: String
 ): AuditPedagogy {
+    val _i18nContext = LocalContext.current
+
 
     return when (id) {
 
         "vpn_tunnel" ->
             AuditPedagogy(
                 title =
-                    "Adresse IP et tunnel VPN",
+                    _i18nContext.getString(R.string.home_adresse_ip_et_tunnel_vpn),
                 explanation =
-                    "Votre adresse IP publique est normalement visible par les sites que vous consultez. " +
-                            "Elle peut indiquer votre fournisseur d’accès et donner une approximation de votre localisation. " +
-                            "Le tunnel VPN sert à faire sortir votre trafic par l’infrastructure Deliriuum au lieu de votre connexion habituelle."
+                    _i18nContext.getString(R.string.home_votre_adresse_ip_publique_est_normalement_visible_par_le)
             )
 
         "tunnel_reachability" ->
             AuditPedagogy(
                 title =
-                    "Connexion réellement protégée",
+                    _i18nContext.getString(R.string.home_connexion_reellement_protegee),
                 explanation =
-                    "Afficher « connecté » ne suffit pas : il faut aussi vérifier que le trafic Internet passe réellement par le tunnel. " +
-                            "Ce contrôle confirme que le chemin réseau protégé fonctionne effectivement."
+                    _i18nContext.getString(R.string.home_afficher_connecte_ne_suffit_pas_il_faut_aussi_verifier_q)
             )
 
         "network_information" ->
             AuditPedagogy(
                 title =
-                    "Type de connexion",
+                    _i18nContext.getString(R.string.home_type_de_connexion),
                 explanation =
-                    "Votre navigateur peut parfois indiquer aux sites que vous consultez si vous utilisez du Wi‑Fi, un réseau mobile ou certaines caractéristiques de votre connexion. " +
-                            "Ces informations ne vous identifient pas seules, mais elles ajoutent des indices à votre empreinte numérique."
+                    _i18nContext.getString(R.string.home_votre_navigateur_peut_parfois_indiquer_aux_sites_que_vou)
             )
 
         "webgl" ->
             AuditPedagogy(
                 title =
-                    "Carte graphique",
+                    _i18nContext.getString(R.string.home_carte_graphique),
                 explanation =
-                    "Les pages Web peuvent demander à votre appareil d’effectuer des calculs graphiques avec WebGL. " +
-                            "Le fabricant, le modèle ou le comportement de la puce graphique peuvent alors devenir des éléments distinctifs utilisés pour reconnaître un appareil."
+                    _i18nContext.getString(R.string.home_les_pages_web_peuvent_demander_a_votre_appareil_d_effect)
             )
 
         "fonts" ->
             AuditPedagogy(
                 title =
-                    "Polices disponibles",
+                    _i18nContext.getString(R.string.home_polices_disponibles),
                 explanation =
-                    "Les sites peuvent tester quelles polices de caractères sont disponibles dans votre navigateur. " +
-                            "La combinaison obtenue varie selon le système et l’appareil et peut donc compléter une empreinte numérique."
+                    _i18nContext.getString(R.string.home_les_sites_peuvent_tester_quelles_polices_de_caracteres_s)
             )
 
         "media_devices" ->
             AuditPedagogy(
                 title =
-                    "Micro et caméra",
+                    _i18nContext.getString(R.string.home_micro_et_camera),
                 explanation =
-                    "Même sans enregistrer votre voix ni votre image, le navigateur peut parfois révéler des informations sur les microphones, caméras ou autres périphériques présents. " +
-                            "Leur nombre, leur nom ou leurs identifiants peuvent devenir des indices supplémentaires."
+                    _i18nContext.getString(R.string.home_meme_sans_enregistrer_votre_voix_ni_votre_image_le_navig)
             )
 
         "webrtc" ->
             AuditPedagogy(
                 title =
-                    "Fuites réseau WebRTC",
+                    _i18nContext.getString(R.string.home_fuites_reseau_webrtc),
                 explanation =
-                    "WebRTC est la technologie utilisée par de nombreux sites pour les appels audio et vidéo en direct. " +
-                            "Pour établir ces communications, le navigateur peut échanger des informations réseau. " +
-                            "Si elles sont trop précises, elles peuvent aider les sites que vous consultez à obtenir des informations supplémentaires sur votre connexion réelle malgré un VPN."
+                    _i18nContext.getString(R.string.home_webrtc_est_la_technologie_utilisee_par_de_nombreux_sites)
             )
 
         "dpr_consistency" ->
             AuditPedagogy(
                 title =
-                    "Écran et densité de pixels",
+                    _i18nContext.getString(R.string.home_ecran_et_densite_de_pixels),
                 explanation =
-                    "Les sites peuvent mesurer la taille logique de l’écran et sa densité de pixels. " +
-                            "Ces valeurs permettent de distinguer certaines familles d’appareils et peuvent être combinées avec d’autres caractéristiques pour affiner une empreinte."
+                    _i18nContext.getString(R.string.home_les_sites_peuvent_mesurer_la_taille_logique_de_l_ecran_e)
             )
 
         "timezone_consistency" ->
             AuditPedagogy(
                 title =
-                    "Localisation par fuseau horaire",
+                    _i18nContext.getString(R.string.home_localisation_par_fuseau_horaire),
                 explanation =
-                    "Le fuseau horaire de votre navigateur donne un indice sur l’endroit où vous vous trouvez. " +
-                            "S’il indique votre zone réelle alors que votre adresse IP sort dans un autre pays, les sites que vous consultez peuvent repérer cette incohérence et en déduire l’usage d’un VPN."
+                    _i18nContext.getString(R.string.home_le_fuseau_horaire_de_votre_navigateur_donne_un_indice_su)
             )
 
         "canvas" ->
             AuditPedagogy(
                 title =
-                    "Empreinte graphique Canvas",
+                    _i18nContext.getString(R.string.home_empreinte_graphique_canvas),
                 explanation =
-                    "Les sites que vous consultez peuvent demander au navigateur de dessiner une image invisible puis analyser le résultat. " +
-                            "De minuscules différences liées au matériel, au système et au moteur graphique peuvent produire une signature suffisamment stable pour participer au fingerprinting."
+                    _i18nContext.getString(R.string.home_les_sites_que_vous_consultez_peuvent_demander_au_navigat)
             )
 
         "audio" ->
             AuditPedagogy(
                 title =
-                    "Empreinte audio",
+                    _i18nContext.getString(R.string.privacy_audit_manager_empreinte_audio),
                 explanation =
-                    "Le navigateur peut traiter un signal audio sans utiliser votre microphone. " +
-                            "De petites différences de calcul liées au matériel et au logiciel peuvent être mesurées et devenir un indice supplémentaire pour reconnaître votre appareil."
+                    _i18nContext.getString(R.string.home_le_navigateur_peut_traiter_un_signal_audio_sans_utiliser)
             )
 
         "platform" ->
             AuditPedagogy(
                 title =
-                    "Système et architecture",
+                    _i18nContext.getString(R.string.home_systeme_et_architecture),
                 explanation =
-                    "Le navigateur peut révéler des informations générales sur la plateforme sur laquelle il fonctionne. " +
-                            "Ces données sont assez larges prises séparément, mais deviennent plus utiles au fingerprinting lorsqu’elles sont croisées avec d’autres indices."
+                    _i18nContext.getString(R.string.home_le_navigateur_peut_reveler_des_informations_generales_su)
             )
 
         "hardware_concurrency" ->
             AuditPedagogy(
                 title =
-                    "Nombre de cœurs du processeur",
+                    _i18nContext.getString(R.string.home_nombre_de_c_urs_du_processeur),
                 explanation =
-                    "Une page Web peut demander combien de cœurs logiques votre navigateur met à sa disposition. " +
-                            "Cette valeur donne une indication sur la puissance et la catégorie de l’appareil et peut contribuer à le différencier."
+                    _i18nContext.getString(R.string.home_une_page_web_peut_demander_combien_de_c_urs_logiques_vot)
             )
 
         "max_touch_points" ->
             AuditPedagogy(
                 title =
-                    "Caractéristiques tactiles",
+                    _i18nContext.getString(R.string.home_caracteristiques_tactiles),
                 explanation =
-                    "Le navigateur peut indiquer combien de points de contact tactiles l’appareil sait gérer simultanément. " +
-                            "Cette caractéristique aide les sites que vous consultez à mieux décrire le type de téléphone ou de tablette utilisé."
+                    _i18nContext.getString(R.string.home_le_navigateur_peut_indiquer_combien_de_points_de_contact)
             )
 
         else ->
@@ -4952,243 +5748,245 @@ private fun auditPedagogy(
                 title =
                     fallbackTitle,
                 explanation =
-                    "Cette mesure vérifie une information que les pages Web peuvent observer. " +
-                            "Prise seule, elle n’identifie pas forcément votre appareil, mais elle peut devenir utile lorsqu’elle est combinée avec de nombreux autres indices."
+                    _i18nContext.getString(R.string.home_cette_mesure_verifie_une_information_que_les_pages_web_p)
             )
     }
 }
 
 
+@Composable
 private fun pedagogicalAuditResult(
     id: String,
     status: PrivacyCheckStatus
 ): String {
+    val _i18nContext = LocalContext.current
+
 
     return when (id) {
 
         "vpn_tunnel" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Votre trafic passe par le tunnel Deliriuum : les sites ne voient plus directement l’adresse IP publique de votre connexion habituelle."
+                    _i18nContext.getString(R.string.home_votre_trafic_passe_par_le_tunnel_deliriuum_les_sites_ne)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Le tunnel Deliriuum n’est pas actif : les sites peuvent voir l’adresse IP publique de votre connexion habituelle."
+                    _i18nContext.getString(R.string.home_le_tunnel_deliriuum_n_est_pas_actif_les_sites_peuvent_vo)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Le tunnel semble actif, mais cette mesure ne permet pas de confirmer complètement que tout le trafic est protégé."
+                    _i18nContext.getString(R.string.home_le_tunnel_semble_actif_mais_cette_mesure_ne_permet_pas_d)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Le passage du trafic par le tunnel n’a pas pu être vérifié."
+                    _i18nContext.getString(R.string.home_le_passage_du_trafic_par_le_tunnel_n_a_pas_pu_etre_verif)
             }
 
         "tunnel_reachability" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Deliriuum a confirmé que le tunnel permet réellement d’atteindre Internet. La protection n’est donc pas seulement affichée comme active : le chemin réseau fonctionne."
+                    _i18nContext.getString(R.string.home_deliriuum_a_confirme_que_le_tunnel_permet_reellement_d_a)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Le tunnel ne fournit pas actuellement un chemin réseau utilisable vers Internet."
+                    _i18nContext.getString(R.string.home_le_tunnel_ne_fournit_pas_actuellement_un_chemin_reseau_u)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "La connexion au tunnel existe, mais son fonctionnement réel n’a pas pu être confirmé complètement."
+                    _i18nContext.getString(R.string.home_la_connexion_au_tunnel_existe_mais_son_fonctionnement_re)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Ce contrôle n’a pas encore pu vérifier le chemin réseau protégé."
+                    _i18nContext.getString(R.string.home_ce_controle_n_a_pas_encore_pu_verifier_le_chemin_reseau)
             }
 
         "network_information" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Les sites que vous consultez n’ont pas accès aux informations détaillant le type ou les caractéristiques de votre connexion réseau."
+                    _i18nContext.getString(R.string.home_les_sites_que_vous_consultez_n_ont_pas_acces_aux_informa)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Des informations sur votre connexion restent accessibles à la page Web et peuvent enrichir votre empreinte."
+                    _i18nContext.getString(R.string.home_des_informations_sur_votre_connexion_restent_accessibles)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Une partie des informations réseau est masquée, mais la protection n’est pas complète."
+                    _i18nContext.getString(R.string.home_une_partie_des_informations_reseau_est_masquee_mais_la_p)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition des informations réseau n’a pas pu être vérifiée."
+                    _i18nContext.getString(R.string.home_l_exposition_des_informations_reseau_n_a_pas_pu_etre_ver)
             }
 
         "webgl" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Les informations graphiques les plus identifiantes, comme le fabricant ou le modèle précis du matériel, ne sont pas révélées aux sites que vous consultez."
+                    _i18nContext.getString(R.string.home_les_informations_graphiques_les_plus_identifiantes_comme)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent encore obtenir des informations suffisamment précises sur votre environnement graphique pour contribuer à votre empreinte."
+                    _i18nContext.getString(R.string.home_les_sites_que_vous_consultez_peuvent_encore_obtenir_des)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Certaines informations graphiques sont limitées, mais ce test ne permet pas de considérer la protection comme complète."
+                    _i18nContext.getString(R.string.home_certaines_informations_graphiques_sont_limitees_mais_ce)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition des informations graphiques n’a pas pu être mesurée."
+                    _i18nContext.getString(R.string.home_l_exposition_des_informations_graphiques_n_a_pas_pu_etre)
             }
 
         "fonts" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Le nombre de polices que les sites que vous consultez parviennent à distinguer est limité, ce qui réduit l’intérêt de ce signal pour reconnaître votre appareil."
+                    _i18nContext.getString(R.string.home_le_nombre_de_polices_que_les_sites_que_vous_consultez_pa)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent distinguer suffisamment de polices pour utiliser cette combinaison comme un indice supplémentaire."
+                    _i18nContext.getString(R.string.home_les_sites_que_vous_consultez_peuvent_distinguer_suffisam)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "La détection des polices est limitée, mais elle n’est pas complètement neutralisée."
+                    _i18nContext.getString(R.string.home_la_detection_des_polices_est_limitee_mais_elle_n_est_pas)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "La détection des polices n’a pas pu être mesurée."
+                    _i18nContext.getString(R.string.home_la_detection_des_polices_n_a_pas_pu_etre_mesuree)
             }
 
         "media_devices" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Les sites que vous consultez ne reçoivent pas les noms ni les identifiants permettant de caractériser précisément vos microphones, caméras ou autres périphériques."
+                    _i18nContext.getString(R.string.home_les_sites_que_vous_consultez_ne_recoivent_pas_les_noms_n)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Certaines informations sur vos périphériques restent accessibles et peuvent ajouter des indices à votre empreinte."
+                    _i18nContext.getString(R.string.home_certaines_informations_sur_vos_peripheriques_restent_acc)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "L’accès aux informations sur les périphériques est limité, mais le test ne permet pas de conclure à une protection complète."
+                    _i18nContext.getString(R.string.home_l_acces_aux_informations_sur_les_peripheriques_est_limit)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition des informations sur le micro, la caméra et les périphériques n’a pas pu être vérifiée."
+                    _i18nContext.getString(R.string.home_l_exposition_des_informations_sur_le_micro_la_camera_et)
             }
 
         "webrtc" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Le test WebRTC n’a révélé aucune information réseau exploitable permettant de contourner la protection du tunnel."
+                    _i18nContext.getString(R.string.home_le_test_webrtc_n_a_revele_aucune_information_reseau_expl)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "WebRTC a révélé des informations réseau. Elles peuvent fournir aux sites que vous consultez des indices supplémentaires sur votre connexion réelle."
+                    _i18nContext.getString(R.string.home_webrtc_a_revele_des_informations_reseau_elles_peuvent_fo)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "WebRTC est limité, mais le test ne permet pas de garantir qu’aucune information réseau supplémentaire ne soit exposée."
+                    _i18nContext.getString(R.string.home_webrtc_est_limite_mais_le_test_ne_permet_pas_de_garantir)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Le comportement de WebRTC n’a pas pu être vérifié."
+                    _i18nContext.getString(R.string.home_le_comportement_de_webrtc_n_a_pas_pu_etre_verifie)
             }
 
         "dpr_consistency" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Les différentes mesures de densité d’écran racontent une histoire cohérente et ne créent pas d’incohérence supplémentaire facile à exploiter."
+                    _i18nContext.getString(R.string.home_les_differentes_mesures_de_densite_d_ecran_racontent_une)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Les caractéristiques d’affichage restent directement observables et peuvent servir d’indice pour distinguer votre appareil."
+                    _i18nContext.getString(R.string.home_les_caracteristiques_d_affichage_restent_directement_obs)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Le test ne peut pas confirmer complètement la cohérence des informations d’écran. Cela ne signifie pas nécessairement une fuite, mais le résultat reste incomplet."
+                    _i18nContext.getString(R.string.home_le_test_ne_peut_pas_confirmer_completement_la_coherence)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Les caractéristiques d’affichage n’ont pas pu être vérifiées."
+                    _i18nContext.getString(R.string.home_les_caracteristiques_d_affichage_n_ont_pas_pu_etre_verif)
             }
 
         "timezone_consistency" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Le fuseau horaire visible par les sites que vous consultez est cohérent avec la localisation de sortie du VPN. Votre fuseau réel ne crée donc pas ici de contradiction évidente."
+                    _i18nContext.getString(R.string.home_le_fuseau_horaire_visible_par_les_sites_que_vous_consult)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Le fuseau horaire visible ne correspond pas à la sortie VPN. Cette différence peut donner au site un indice sur votre localisation réelle ou sur l’usage d’un VPN."
+                    _i18nContext.getString(R.string.home_le_fuseau_horaire_visible_ne_correspond_pas_a_la_sortie)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Le fuseau horaire a été observé, mais Deliriuum ne dispose pas de suffisamment d’informations pour confirmer sa cohérence avec la sortie VPN."
+                    _i18nContext.getString(R.string.home_le_fuseau_horaire_a_ete_observe_mais_deliriuum_ne_dispos)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Le fuseau horaire visible par les sites n’a pas pu être mesuré."
+                    _i18nContext.getString(R.string.home_le_fuseau_horaire_visible_par_les_sites_n_a_pas_pu_etre)
             }
 
         "canvas" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Le test ne met pas en évidence de signature Canvas exploitable de manière évidente."
+                    _i18nContext.getString(R.string.home_le_test_ne_met_pas_en_evidence_de_signature_canvas_explo)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Le rendu Canvas fournit une signature stable qui peut devenir un élément de fingerprinting."
+                    _i18nContext.getString(R.string.home_le_rendu_canvas_fournit_une_signature_stable_qui_peut_de)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Le Canvas fournit une mesure stable, mais ce test seul ne permet pas de déterminer si cette signature suffit réellement à vous distinguer."
+                    _i18nContext.getString(R.string.home_le_canvas_fournit_une_mesure_stable_mais_ce_test_seul_ne)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "L’empreinte Canvas n’a pas pu être mesurée."
+                    _i18nContext.getString(R.string.home_l_empreinte_canvas_n_a_pas_pu_etre_mesuree)
             }
 
         "audio" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Le test audio ne met pas en évidence de caractéristique exploitable de manière évidente pour distinguer votre appareil."
+                    _i18nContext.getString(R.string.home_le_test_audio_ne_met_pas_en_evidence_de_caracteristique)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Des caractéristiques audio suffisamment précises restent visibles et peuvent participer à votre empreinte."
+                    _i18nContext.getString(R.string.home_des_caracteristiques_audio_suffisamment_precises_restent)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Certaines caractéristiques du traitement audio restent mesurables. Le test ne suffit toutefois pas à déterminer à lui seul si elles permettent de vous reconnaître."
+                    _i18nContext.getString(R.string.home_certaines_caracteristiques_du_traitement_audio_restent_m)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "L’empreinte audio n’a pas pu être mesurée."
+                    _i18nContext.getString(R.string.home_l_empreinte_audio_n_a_pas_pu_etre_mesuree)
             }
 
         "platform" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "La plateforme précise n’est pas directement révélée aux sites que vous consultez."
+                    _i18nContext.getString(R.string.home_la_plateforme_precise_n_est_pas_directement_revelee_aux)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Le navigateur révèle encore une information générale sur votre système. Elle est peu discriminante seule, mais peut compléter d’autres indices."
+                    _i18nContext.getString(R.string.home_le_navigateur_revele_encore_une_information_generale_sur)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "Une information générale sur la plateforme reste disponible, mais elle est limitée."
+                    _i18nContext.getString(R.string.home_une_information_generale_sur_la_plateforme_reste_disponi)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "L’exposition de la plateforme n’a pas pu être vérifiée."
+                    _i18nContext.getString(R.string.home_l_exposition_de_la_plateforme_n_a_pas_pu_etre_verifiee)
             }
 
         "hardware_concurrency" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Le nombre précis de cœurs logiques n’est pas exposé comme caractéristique distinctive."
+                    _i18nContext.getString(R.string.home_le_nombre_precis_de_c_urs_logiques_n_est_pas_expose_comm)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent connaître le nombre de cœurs logiques déclaré par votre navigateur et l’utiliser comme un indice supplémentaire sur votre appareil."
+                    _i18nContext.getString(R.string.home_les_sites_que_vous_consultez_peuvent_connaitre_le_nombre)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "La valeur liée au processeur est partiellement limitée, sans être totalement masquée."
+                    _i18nContext.getString(R.string.home_la_valeur_liee_au_processeur_est_partiellement_limitee_s)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Le nombre de cœurs visible par les sites n’a pas pu être vérifié."
+                    _i18nContext.getString(R.string.home_le_nombre_de_c_urs_visible_par_les_sites_n_a_pas_pu_etre)
             }
 
         "max_touch_points" ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "La capacité tactile précise n’est pas exposée comme caractéristique distinctive."
+                    _i18nContext.getString(R.string.home_la_capacite_tactile_precise_n_est_pas_exposee_comme_cara)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Les sites que vous consultez peuvent connaître la capacité tactile déclarée par l’appareil. Cette donnée aide à préciser le type de terminal utilisé."
+                    _i18nContext.getString(R.string.home_les_sites_que_vous_consultez_peuvent_connaitre_la_capaci)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "L’information tactile est limitée, mais reste partiellement observable."
+                    _i18nContext.getString(R.string.home_l_information_tactile_est_limitee_mais_reste_partielleme)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Les caractéristiques tactiles n’ont pas pu être vérifiées."
+                    _i18nContext.getString(R.string.home_les_caracteristiques_tactiles_n_ont_pas_pu_etre_verifiee)
             }
 
         else ->
             when (status) {
                 PrivacyCheckStatus.PROTECTED ->
-                    "Ce contrôle indique que l’information testée est correctement limitée."
+                    _i18nContext.getString(R.string.home_ce_controle_indique_que_l_information_testee_est_correct)
 
                 PrivacyCheckStatus.EXPOSED ->
-                    "Cette information reste visible par les pages Web et peut être combinée avec d’autres indices."
+                    _i18nContext.getString(R.string.home_cette_information_reste_visible_par_les_pages_web_et_peu)
 
                 PrivacyCheckStatus.PARTIAL ->
-                    "La protection est incomplète ou le test ne permet pas de conclure avec suffisamment de certitude."
+                    _i18nContext.getString(R.string.home_la_protection_est_incomplete_ou_le_test_ne_permet_pas_de)
 
                 PrivacyCheckStatus.NOT_TESTED ->
-                    "Cette caractéristique n’a pas pu être vérifiée."
+                    _i18nContext.getString(R.string.home_cette_caracteristique_n_a_pas_pu_etre_verifiee)
             }
     }
 }

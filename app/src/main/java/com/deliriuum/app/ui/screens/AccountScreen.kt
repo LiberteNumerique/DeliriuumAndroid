@@ -32,6 +32,8 @@ import com.deliriuum.app.data.AuthManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.compose.ui.platform.LocalContext
+import com.deliriuum.app.R
 
 
 @Composable
@@ -40,6 +42,8 @@ fun AccountScreen(
     onDismiss: () -> Unit,
     onLogout: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
 
     val scope =
         rememberCoroutineScope()
@@ -190,7 +194,7 @@ fun AccountScreen(
                     ) {
 
                         Text(
-                            text = "Changer mon mot de passe",
+                            text = _i18nContext.getString(R.string.account_changer_mon_mot_de_passe),
                             color = Color.White,
                             fontSize = 17.sp,
                             fontWeight = FontWeight.Bold,
@@ -198,7 +202,7 @@ fun AccountScreen(
                         )
 
                         Text(
-                            text = "Pour des raisons de sécurité, Deliriuum t'envoie un lien à l'adresse de ton compte. Ce lien permet de choisir un nouveau mot de passe sans exposer l'ancien.",
+                            text = _i18nContext.getString(R.string.account_pour_des_raisons_de_securite_deliriuum_t_envoie_un_lien),
                             color = Color.White.copy(alpha = 0.68f),
                             fontSize = 13.sp,
                             lineHeight = 19.sp,
@@ -242,7 +246,7 @@ fun AccountScreen(
 
                         GradientButton(
                             text =
-                                "Envoyer le lien sécurisé",
+                                _i18nContext.getString(R.string.account_envoyer_le_lien_securise),
                             enabled =
                                 resetEmail.isNotBlank() &&
                                         !isSendingReset,
@@ -281,7 +285,7 @@ fun AccountScreen(
 
                                     resetError =
                                         e.localizedMessage
-                                            ?: "Erreur inconnue."
+                                            ?: _i18nContext.getString(R.string.account_erreur_inconnue)
 
                                 } finally {
 
@@ -297,7 +301,7 @@ fun AccountScreen(
 
                 OutlineButton(
                     text =
-                        "🔑  Changer mon mot de passe",
+                        _i18nContext.getString(R.string.account_changer_mon_mot_de_passe_c550fb1),
                     color =
                         Color.Cyan
                 ) {
@@ -321,7 +325,7 @@ fun AccountScreen(
             if (authManager.isLoggedIn) {
 
                 DangerButton(
-                    "Se déconnecter"
+                    _i18nContext.getString(R.string.side_menu_se_deconnecter)
                 ) {
 
                     onLogout()
@@ -341,7 +345,7 @@ fun AccountScreen(
 
                             Text(
                                 text =
-                                    "Cette action est définitive. Confirme avec ton mot de passe.",
+                                    _i18nContext.getString(R.string.account_cette_action_est_definitive_confirme_avec_ton_mot_de_pas),
                                 color =
                                     Color.White.copy(
                                         alpha = 0.7f
@@ -360,7 +364,7 @@ fun AccountScreen(
                                     deletePassword = it
                                 },
                                 placeholder =
-                                    "Mot de passe",
+                                    _i18nContext.getString(R.string.account_mot_de_passe),
                                 keyboardType =
                                     KeyboardType.Password,
                                 isPassword =
@@ -419,7 +423,7 @@ fun AccountScreen(
                                 ) {
 
                                     Text(
-                                        text = "Annuler",
+                                        text = _i18nContext.getString(R.string.account_annuler),
                                         color =
                                             Color.White.copy(
                                                 alpha = 0.75f
@@ -489,7 +493,7 @@ fun AccountScreen(
 
                                                         deleteError =
                                                             e.localizedMessage
-                                                                ?: "Erreur inconnue."
+                                                                ?: _i18nContext.getString(R.string.account_erreur_inconnue)
 
                                                     } finally {
 
@@ -522,7 +526,7 @@ fun AccountScreen(
 
                                         Text(
                                             text =
-                                                "Supprimer",
+                                                _i18nContext.getString(R.string.account_supprimer),
                                             color =
                                                 Color.White,
                                             fontWeight =
@@ -538,7 +542,7 @@ fun AccountScreen(
 
                     OutlineButton(
                         text =
-                            "🗑️  Supprimer mon compte",
+                            _i18nContext.getString(R.string.account_supprimer_mon_compte),
                         color =
                             Color(0xFFB375FF)
                     ) {
@@ -619,6 +623,8 @@ private fun Background() {
 private fun TopBar(
     onDismiss: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
 
     Row(
         modifier =
@@ -637,7 +643,7 @@ private fun TopBar(
 
         Text(
             text =
-                "Mon compte",
+                _i18nContext.getString(R.string.side_menu_mon_compte),
             color =
                 Color.White,
             fontWeight =
@@ -691,6 +697,8 @@ private fun TopBar(
 private fun IdentityCard(
     authManager: AuthManager
 ) {
+    val _i18nContext = LocalContext.current
+
 
     val isLoggedIn =
         authManager.isLoggedIn
@@ -738,7 +746,7 @@ private fun IdentityCard(
 
                     Text(
                         text =
-                            "Non connecté",
+                            _i18nContext.getString(R.string.account_non_connecte),
                         color =
                             Color.White,
                         fontSize =
@@ -797,11 +805,11 @@ private fun IdentityCard(
                             text =
                                 if (user.isVerified) {
 
-                                    "✅ Compte vérifié"
+                                    _i18nContext.getString(R.string.account_compte_verifie)
 
                                 } else {
 
-                                    "⏳ Vérification en attente"
+                                    _i18nContext.getString(R.string.account_verification_en_attente)
                                 },
                             color =
                                 verifiedColor,
@@ -817,7 +825,7 @@ private fun IdentityCard(
 
                         Text(
                             text =
-                                "💚 Supporter du projet",
+                                _i18nContext.getString(R.string.account_supporter_du_projet),
                             color =
                                 Color(0xFFFFD54F),
                             fontSize =
@@ -846,7 +854,7 @@ private fun IdentityCard(
 
                     Text(
                         text =
-                            "Chargement du compte…",
+                            _i18nContext.getString(R.string.account_chargement_du_compte),
                         color =
                             Color.White.copy(
                                 alpha = 0.55f
@@ -872,7 +880,7 @@ private fun IdentityCard(
 
                     Text(
                         text =
-                            "Profil indisponible",
+                            _i18nContext.getString(R.string.account_profil_indisponible),
                         color =
                             Color(0xFFFFA726),
                         fontSize =
@@ -887,7 +895,7 @@ private fun IdentityCard(
                     Text(
                         text =
                             authManager.errorMessage
-                                ?: "Impossible de contacter le serveur.",
+                                ?: _i18nContext.getString(R.string.account_impossible_de_contacter_le_serveur),
                         color =
                             Color.White.copy(
                                 alpha = 0.55f
@@ -903,7 +911,7 @@ private fun IdentityCard(
 
                     OutlineButton(
                         text =
-                            "↻  Réessayer",
+                            _i18nContext.getString(R.string.account_reessayer),
                         color =
                             Color.Cyan
                     ) {

@@ -37,6 +37,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.deliriuum.app.i18n.AppStrings
 
 class MainActivity : ComponentActivity() {
 
@@ -78,6 +79,16 @@ class MainActivity : ComponentActivity() {
                     Dispatchers.Main
         )
 
+    override fun attachBaseContext(
+        newBase: Context
+    ) {
+        super.attachBaseContext(
+            AppStrings.localizedContext(
+                newBase
+            )
+        )
+    }
+
     override fun onCreate(
         savedInstanceState: Bundle?
     ) {
@@ -87,6 +98,10 @@ class MainActivity : ComponentActivity() {
         // ========================================================
         // INITIALISATION
         // ========================================================
+
+        AppStrings.initialize(
+            applicationContext
+        )
 
         KeychainStore.initialize(
             applicationContext

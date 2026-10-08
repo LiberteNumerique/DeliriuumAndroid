@@ -11,6 +11,8 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import com.deliriuum.app.R
+import com.deliriuum.app.i18n.AppStrings
 
 
 class PrivacyAuditManager private constructor() {
@@ -313,6 +315,22 @@ class PrivacyAuditManager private constructor() {
         protectedRuntimeEverStarted =
             true
 
+        val probeVersion =
+            payload
+                .optJSONObject("meta")
+                ?.optString("version", "")
+                .orEmpty()
+
+        if (probeVersion != "11.1.0") {
+
+            android.util.Log.d(
+                "PrivacyAudit",
+                "OLD PROTECTED PROBE IGNORED version=$probeVersion"
+            )
+
+            return
+        }
+
         if (!TunnelManager.shared.isProtected) {
             return
         }
@@ -466,7 +484,7 @@ class PrivacyAuditManager private constructor() {
                     "vpn_tunnel",
 
                 title =
-                    "Tunnel VPN WireGuard",
+                    AppStrings.get(R.string.privacy_audit_manager_tunnel_vpn_wireguard),
 
                 status =
                     if (
@@ -485,11 +503,11 @@ class PrivacyAuditManager private constructor() {
                         tunnelConnected
                     ) {
 
-                        "Le tunnel WireGuard est actif."
+                        AppStrings.get(R.string.privacy_audit_manager_le_tunnel_wireguard_est_actif)
 
                     } else {
 
-                        "Le tunnel WireGuard n'est pas actif."
+                        AppStrings.get(R.string.privacy_audit_manager_le_tunnel_wireguard_n_est_pas_actif)
                     }
             )
 
@@ -504,7 +522,7 @@ class PrivacyAuditManager private constructor() {
                     "tunnel_reachability",
 
                 title =
-                    "Chemin réseau du tunnel",
+                    AppStrings.get(R.string.privacy_audit_manager_chemin_reseau_du_tunnel),
 
                 status =
                     when {
@@ -523,13 +541,13 @@ class PrivacyAuditManager private constructor() {
                     when {
 
                         !tunnelConnected ->
-                            "Le tunnel est déconnecté."
+                            AppStrings.get(R.string.privacy_audit_manager_le_tunnel_est_deconnecte)
 
                         tunnelManager.tunnelReachable ->
-                            "Le watchdog confirme que le tunnel permet d'atteindre Internet."
+                            AppStrings.get(R.string.privacy_audit_manager_le_watchdog_confirme_que_le_tunnel_permet_d_atteindre_in)
 
                         else ->
-                            "WireGuard est actif mais le chemin réseau ne répond plus."
+                            AppStrings.get(R.string.privacy_audit_manager_wireguard_est_actif_mais_le_chemin_reseau_ne_repond_plus)
                     }
             )
 
@@ -660,7 +678,7 @@ class PrivacyAuditManager private constructor() {
                         "network_information",
 
                     title =
-                        "Informations réseau",
+                        AppStrings.get(R.string.privacy_audit_manager_informations_reseau),
 
                     status =
                         if (
@@ -679,11 +697,11 @@ class PrivacyAuditManager private constructor() {
                             !exposed
                         ) {
 
-                            "L'API Network Information n'est pas exposée."
+                            AppStrings.get(R.string.privacy_audit_manager_l_api_network_information_n_est_pas_exposee)
 
                         } else {
 
-                            "Le contenu Web peut accéder à des informations réseau."
+                            AppStrings.get(R.string.privacy_audit_manager_le_contenu_web_peut_acceder_a_des_informations_reseau)
                         }
                 )
 
@@ -695,13 +713,13 @@ class PrivacyAuditManager private constructor() {
                         "network_information",
 
                     title =
-                        "Informations réseau",
+                        AppStrings.get(R.string.privacy_audit_manager_informations_reseau),
 
                     status =
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(R.string.privacy_audit_manager_mesure_indisponible)
                 )
         }
 
@@ -737,13 +755,13 @@ class PrivacyAuditManager private constructor() {
                             "webgl",
 
                         title =
-                            "Identité graphique WebGL",
+                            AppStrings.get(R.string.privacy_audit_manager_identite_graphique_webgl),
 
                         status =
                             PrivacyCheckStatus.PARTIAL,
 
                         detail =
-                            "WebGL n'est pas disponible dans ce contexte."
+                            AppStrings.get(R.string.privacy_audit_manager_webgl_n_est_pas_disponible_dans_ce_contexte)
                     )
 
             } else {
@@ -807,7 +825,7 @@ class PrivacyAuditManager private constructor() {
                             "webgl",
 
                         title =
-                            "Identité graphique WebGL",
+                            AppStrings.get(R.string.privacy_audit_manager_identite_graphique_webgl),
 
                         status =
                             if (
@@ -826,11 +844,11 @@ class PrivacyAuditManager private constructor() {
                                 masked
                             ) {
 
-                                "Le fabricant et le renderer matériels ne sont pas révélés."
+                                AppStrings.get(R.string.privacy_audit_manager_le_fabricant_et_le_renderer_materiels_ne_sont_pas_revele)
 
                             } else {
 
-                                "Des informations graphiques identifiantes restent visibles."
+                                AppStrings.get(R.string.privacy_audit_manager_des_informations_graphiques_identifiantes_restent_visibl)
                             }
                     )
             }
@@ -843,13 +861,13 @@ class PrivacyAuditManager private constructor() {
                         "webgl",
 
                     title =
-                        "Identité graphique WebGL",
+                        AppStrings.get(R.string.privacy_audit_manager_identite_graphique_webgl),
 
                     status =
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(R.string.privacy_audit_manager_mesure_indisponible)
                 )
         }
 
@@ -925,13 +943,13 @@ class PrivacyAuditManager private constructor() {
                             "fonts",
 
                         title =
-                            "Polices détectables",
+                            AppStrings.get(R.string.privacy_audit_manager_polices_detectables),
 
                         status =
                             fontStatus,
 
                         detail =
-                            "$detected police(s) détectée(s) sur $testedCount testées."
+                            AppStrings.quantity(R.plurals.privacy_audit_fonts_detected, detected, detected, testedCount)
                     )
 
             } else {
@@ -942,13 +960,13 @@ class PrivacyAuditManager private constructor() {
                             "fonts",
 
                         title =
-                            "Polices détectables",
+                            AppStrings.get(R.string.privacy_audit_manager_polices_detectables),
 
                         status =
                             PrivacyCheckStatus.NOT_TESTED,
 
                         detail =
-                            "Mesure incomplète."
+                            AppStrings.get(R.string.privacy_audit_manager_mesure_incomplete)
                     )
             }
 
@@ -960,13 +978,13 @@ class PrivacyAuditManager private constructor() {
                         "fonts",
 
                     title =
-                        "Polices détectables",
+                        AppStrings.get(R.string.privacy_audit_manager_polices_detectables),
 
                     status =
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(R.string.privacy_audit_manager_mesure_indisponible)
                 )
         }
 
@@ -1002,13 +1020,13 @@ class PrivacyAuditManager private constructor() {
                             "media_devices",
 
                         title =
-                            "Micro, caméra et périphériques",
+                            AppStrings.get(R.string.privacy_audit_manager_micro_camera_et_peripheriques),
 
                         status =
                             PrivacyCheckStatus.PARTIAL,
 
                         detail =
-                            "L'API MediaDevices n'est pas disponible dans ce contexte."
+                            AppStrings.get(R.string.privacy_audit_manager_l_api_mediadevices_n_est_pas_disponible_dans_ce_contexte)
                     )
 
             } else {
@@ -1046,7 +1064,7 @@ class PrivacyAuditManager private constructor() {
                             "media_devices",
 
                         title =
-                            "Micro, caméra et périphériques",
+                            AppStrings.get(R.string.privacy_audit_manager_micro_camera_et_peripheriques),
 
                         status =
                             if (
@@ -1065,11 +1083,11 @@ class PrivacyAuditManager private constructor() {
                                 !exposed
                             ) {
 
-                                "Les labels et identifiants des périphériques ne sont pas exposés."
+                                AppStrings.get(R.string.privacy_audit_manager_les_labels_et_identifiants_des_peripheriques_ne_sont_pas)
 
                             } else {
 
-                                "Certains identifiants de périphériques sont accessibles."
+                                AppStrings.get(R.string.privacy_audit_manager_certains_identifiants_de_peripheriques_sont_accessibles)
                             }
                     )
             }
@@ -1082,13 +1100,13 @@ class PrivacyAuditManager private constructor() {
                         "media_devices",
 
                     title =
-                        "Micro, caméra et périphériques",
+                        AppStrings.get(R.string.privacy_audit_manager_micro_camera_et_peripheriques),
 
                     status =
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(R.string.privacy_audit_manager_mesure_indisponible)
                 )
         }
 
@@ -1151,7 +1169,7 @@ class PrivacyAuditManager private constructor() {
                             PrivacyCheckStatus.PARTIAL,
 
                         detail =
-                            "WebRTC n'est pas disponible."
+                            AppStrings.get(R.string.privacy_audit_manager_webrtc_n_est_pas_disponible)
                     )
 
             } else {
@@ -1191,11 +1209,11 @@ class PrivacyAuditManager private constructor() {
                                 safe
                             ) {
 
-                                "Aucun candidat ICE n'a été exposé lors du test."
+                                AppStrings.get(R.string.privacy_audit_manager_aucun_candidat_ice_n_a_ete_expose_lors_du_test)
 
                             } else {
 
-                                "$candidateCount candidat(s) ICE ont été observés."
+                                AppStrings.quantity(R.plurals.privacy_audit_ice_candidates_observed, candidateCount, candidateCount)
                             }
                     )
             }
@@ -1214,7 +1232,7 @@ class PrivacyAuditManager private constructor() {
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(R.string.privacy_audit_manager_mesure_indisponible)
                 )
         }
 
@@ -1287,7 +1305,7 @@ class PrivacyAuditManager private constructor() {
                             "dpr_consistency",
 
                         title =
-                            "Cohérence de l'affichage",
+                            AppStrings.get(R.string.privacy_audit_manager_coherence_de_l_affichage),
 
                         status =
                             if (
@@ -1306,11 +1324,11 @@ class PrivacyAuditManager private constructor() {
                                 exactMatch
                             ) {
 
-                                "Le DPR JavaScript est cohérent avec les media queries CSS."
+                                AppStrings.get(R.string.privacy_audit_manager_le_dpr_javascript_est_coherent_avec_les_media_queries_cs)
 
                             } else {
 
-                                "La cohérence DPR/CSS n'a pas pu être confirmée complètement."
+                                AppStrings.get(R.string.privacy_audit_manager_la_coherence_dpr_css_n_a_pas_pu_etre_confirmee_completem)
                             }
                     )
 
@@ -1322,13 +1340,13 @@ class PrivacyAuditManager private constructor() {
                             "dpr_consistency",
 
                         title =
-                            "Cohérence de l'affichage",
+                            AppStrings.get(R.string.privacy_audit_manager_coherence_de_l_affichage),
 
                         status =
                             PrivacyCheckStatus.NOT_TESTED,
 
                         detail =
-                            "Mesure incomplète."
+                            AppStrings.get(R.string.privacy_audit_manager_mesure_incomplete)
                     )
             }
 
@@ -1340,17 +1358,20 @@ class PrivacyAuditManager private constructor() {
                         "dpr_consistency",
 
                     title =
-                        "Cohérence de l'affichage",
+                        AppStrings.get(R.string.privacy_audit_manager_coherence_de_l_affichage),
 
                     status =
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(R.string.privacy_audit_manager_mesure_indisponible)
                 )
         }
 
 
+        // ========================================================
+        // TIMEZONE CONSISTENCY
+        // ========================================================
         // ========================================================
         // TIMEZONE CONSISTENCY
         // ========================================================
@@ -1359,7 +1380,6 @@ class PrivacyAuditManager private constructor() {
             payload.optJSONObject(
                 "timezone"
             )
-
 
         val observedTimezone =
             timezone
@@ -1371,9 +1391,42 @@ class PrivacyAuditManager private constructor() {
                     it.isNotBlank()
                 }
 
+        val observedOffsetMinutes =
+            timezone
+                ?.optInt(
+                    "offsetMinutes",
+                    Int.MIN_VALUE
+                )
+                ?: Int.MIN_VALUE
 
         val expectedTimezone =
             expectedExitTimezone
+        android.util.Log.d(
+            "PrivacyAuditTZ",
+            "observedTimezone=$observedTimezone " +
+                    "offsetMinutes=$observedOffsetMinutes " +
+                    "expectedTimezone=$expectedTimezone " +
+                    "protectedMode=$currentProtectedMode"
+        )
+
+        /*
+         * Resist Fingerprinting ne cherche pas à reproduire le nom
+         * exact du fuseau du serveur VPN.
+         *
+         * Mozilla normalise volontairement le fuseau vers UTC /
+         * un profil islandais. Pour notre sortie actuelle islandaise,
+         * ces valeurs sont cohérentes et surtout non spécifiques au
+         * fuseau réel de l'utilisateur.
+         */
+        val rfpTimezoneNormalized =
+            observedOffsetMinutes == 0 &&
+                    (
+                            observedTimezone.equals("UTC", ignoreCase = true) ||
+                                    observedTimezone.equals("Etc/UTC", ignoreCase = true) ||
+                                    observedTimezone.equals("GMT", ignoreCase = true) ||
+                                    observedTimezone.equals("Atlantic/Reykjavik", ignoreCase = true) ||
+                                    observedTimezone.equals("Iceland", ignoreCase = true)
+                            )
 
 
         when {
@@ -1386,13 +1439,42 @@ class PrivacyAuditManager private constructor() {
                             "timezone_consistency",
 
                         title =
-                            "Cohérence du fuseau horaire",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_coherence_du_fuseau_horaire
+                            ),
 
                         status =
                             PrivacyCheckStatus.NOT_TESTED,
 
                         detail =
-                            "Le fuseau horaire n'a pas pu être mesuré."
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_le_fuseau_horaire_n_a_pas_pu_etre_mesure
+                            )
+                    )
+            }
+
+
+            currentProtectedMode &&
+                    rfpTimezoneNormalized -> {
+
+                checks +=
+                    PrivacyCheck(
+                        id =
+                            "timezone_consistency",
+
+                        title =
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_coherence_du_fuseau_horaire
+                            ),
+
+                        status =
+                            PrivacyCheckStatus.PROTECTED,
+
+                        detail =
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_timezone_rfp_normalized,
+                                observedTimezone
+                            )
                     )
             }
 
@@ -1405,13 +1487,18 @@ class PrivacyAuditManager private constructor() {
                             "timezone_consistency",
 
                         title =
-                            "Cohérence du fuseau horaire",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_coherence_du_fuseau_horaire
+                            ),
 
                         status =
                             PrivacyCheckStatus.PARTIAL,
 
                         detail =
-                            "Fuseau observé : $observedTimezone. Le profil de sortie attendu n'est pas connu."
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_fuseau_observe_le_profil_de_sortie_attendu_n_est_pas_con,
+                                observedTimezone
+                            )
                     )
             }
 
@@ -1427,13 +1514,18 @@ class PrivacyAuditManager private constructor() {
                             "timezone_consistency",
 
                         title =
-                            "Cohérence du fuseau horaire",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_coherence_du_fuseau_horaire
+                            ),
 
                         status =
                             PrivacyCheckStatus.PROTECTED,
 
                         detail =
-                            "Le fuseau horaire est cohérent avec la sortie VPN : $observedTimezone."
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_le_fuseau_horaire_est_coherent_avec_la_sortie_vpn,
+                                observedTimezone
+                            )
                     )
             }
 
@@ -1446,13 +1538,19 @@ class PrivacyAuditManager private constructor() {
                             "timezone_consistency",
 
                         title =
-                            "Cohérence du fuseau horaire",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_coherence_du_fuseau_horaire
+                            ),
 
                         status =
                             PrivacyCheckStatus.EXPOSED,
 
                         detail =
-                            "Fuseau observé : $observedTimezone ; attendu : $expectedTimezone."
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_fuseau_observe_attendu,
+                                observedTimezone,
+                                expectedTimezone
+                            )
                     )
             }
         }
@@ -1467,7 +1565,6 @@ class PrivacyAuditManager private constructor() {
                 "canvas"
             )
 
-
         if (
             canvas != null
         ) {
@@ -1477,7 +1574,6 @@ class PrivacyAuditManager private constructor() {
                     "available",
                     false
                 )
-
 
             if (
                 !available
@@ -1495,7 +1591,9 @@ class PrivacyAuditManager private constructor() {
                             PrivacyCheckStatus.NOT_TESTED,
 
                         detail =
-                            "Canvas n'est pas disponible."
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_canvas_n_est_pas_disponible
+                            )
                     )
 
             } else {
@@ -1506,13 +1604,52 @@ class PrivacyAuditManager private constructor() {
                         true
                     )
 
-
                 val uniqueHashCount =
                     canvas.optInt(
                         "uniqueHashCount",
                         0
                     )
 
+                /*
+                 * Le fait que plusieurs lectures dans le même contexte
+                 * retournent le même résultat ne prouve PAS l'absence
+                 * de randomisation.
+                 *
+                 * On dispose justement d'une vraie baseline AVANT
+                 * Deep Shield : on compare donc le rendu exposé avant
+                 * et après.
+                 */
+                val currentCanvasHash =
+                    canvas
+                        .optJSONArray(
+                            "hashes"
+                        )
+                        ?.optString(
+                            0,
+                            ""
+                        )
+                        .orEmpty()
+
+                val baselineCanvasHash =
+                    baselinePayload
+                        ?.optJSONObject(
+                            "canvas"
+                        )
+                        ?.optJSONArray(
+                            "hashes"
+                        )
+                        ?.optString(
+                            0,
+                            ""
+                        )
+                        .orEmpty()
+
+                val canvasProtectionObserved =
+                    currentProtectedMode &&
+                            currentCanvasHash.isNotBlank() &&
+                            baselineCanvasHash.isNotBlank() &&
+                            currentCanvasHash !=
+                            baselineCanvasHash
 
                 checks +=
                     PrivacyCheck(
@@ -1523,18 +1660,38 @@ class PrivacyAuditManager private constructor() {
                             "Canvas",
 
                         status =
-                            PrivacyCheckStatus.PARTIAL,
+                            if (
+                                canvasProtectionObserved
+                            ) {
+                                PrivacyCheckStatus.PROTECTED
+                            } else {
+                                PrivacyCheckStatus.PARTIAL
+                            },
 
                         detail =
-                            if (
-                                stable
-                            ) {
+                            when {
 
-                                "Le Canvas est stable sur les lectures de ce test. Le hash seul ne permet pas de conclure sur la protection."
+                                canvasProtectionObserved ->
 
-                            } else {
+                                    AppStrings.get(
+                                        R.string.privacy_audit_manager_canvas_differs_from_baseline
+                                    )
 
-                                "$uniqueHashCount rendus distincts ont été observés. Le verdict reste volontairement partiel."
+
+                                stable ->
+
+                                    AppStrings.get(
+                                        R.string.privacy_audit_manager_le_canvas_est_stable_sur_les_lectures_de_ce_test_le_hash
+                                    )
+
+
+                                else ->
+
+                                    AppStrings.quantity(
+                                        R.plurals.privacy_audit_canvas_distinct_renders,
+                                        uniqueHashCount,
+                                        uniqueHashCount
+                                    )
                             }
                     )
             }
@@ -1553,7 +1710,9 @@ class PrivacyAuditManager private constructor() {
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(
+                            R.string.privacy_audit_manager_mesure_indisponible
+                        )
                 )
         }
 
@@ -1567,7 +1726,6 @@ class PrivacyAuditManager private constructor() {
                 "audio"
             )
 
-
         if (
             audio != null
         ) {
@@ -1577,7 +1735,6 @@ class PrivacyAuditManager private constructor() {
                     "available",
                     false
                 )
-
 
             if (
                 !available
@@ -1589,13 +1746,17 @@ class PrivacyAuditManager private constructor() {
                             "audio",
 
                         title =
-                            "Empreinte audio",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_empreinte_audio
+                            ),
 
                         status =
                             PrivacyCheckStatus.NOT_TESTED,
 
                         detail =
-                            "AudioContext n'est pas disponible."
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_audiocontext_n_est_pas_disponible
+                            )
                     )
 
             } else {
@@ -1606,19 +1767,73 @@ class PrivacyAuditManager private constructor() {
                         -1
                     )
 
-
                 val baseLatency =
                     audio.optDouble(
                         "baseLatency",
                         -1.0
                     )
 
-
                 val outputLatency =
                     audio.optDouble(
                         "outputLatency",
                         -1.0
                     )
+
+                val maxChannelCount =
+                    audio.optInt(
+                        "maxChannelCount",
+                        -1
+                    )
+
+
+                /*
+                 * On ne déclare PAS l'audio protégé simplement parce
+                 * qu'une valeur particulière est présente.
+                 *
+                 * On compare la surface audio AVANT et APRES
+                 * l'activation de Deep Shield.
+                 *
+                 * Dans le profil protégé actuel Gecko expose aussi
+                 * une surface de sortie stéréo normalisée.
+                 */
+                val baselineAudio =
+                    baselinePayload
+                        ?.optJSONObject(
+                            "audio"
+                        )
+
+                val baselineSampleRate =
+                    baselineAudio
+                        ?.optInt(
+                            "sampleRate",
+                            -1
+                        )
+                        ?: -1
+
+
+                val sampleRateChanged =
+                    currentProtectedMode &&
+                            baselineSampleRate > 0 &&
+                            sampleRate > 0 &&
+                            baselineSampleRate !=
+                            sampleRate
+
+
+                val normalizedChannelSurface =
+                    maxChannelCount == 2
+
+
+                val audioProtectionObserved =
+                    sampleRateChanged
+
+
+                android.util.Log.d(
+                    "PrivacyAuditAudio",
+                    "baselineSampleRate=$baselineSampleRate " +
+                            "protectedSampleRate=$sampleRate " +
+                            "maxChannelCount=$maxChannelCount " +
+                            "protected=$audioProtectionObserved"
+                )
 
 
                 checks +=
@@ -1627,14 +1842,39 @@ class PrivacyAuditManager private constructor() {
                             "audio",
 
                         title =
-                            "Empreinte audio",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_empreinte_audio
+                            ),
 
                         status =
-                            PrivacyCheckStatus.PARTIAL,
+                            if (
+                                audioProtectionObserved
+                            ) {
+
+                                PrivacyCheckStatus.PROTECTED
+
+                            } else {
+
+                                PrivacyCheckStatus.PARTIAL
+                            },
 
                         detail =
-                            "AudioContext mesuré : sampleRate=$sampleRate, baseLatency=$baseLatency, outputLatency=$outputLatency. " +
-                                    "Ces valeurs seules ne suffisent pas à prouver une protection complète."
+                            if (
+                                audioProtectionObserved
+                            ) {
+
+                                "sampleRate=$baselineSampleRate → $sampleRate · " +
+                                        "maxChannelCount=$maxChannelCount"
+
+                            } else {
+
+                                AppStrings.get(
+                                    R.string.privacy_audit_manager_audiocontext_mesure_samplerate_baselatency_outputlatency,
+                                    sampleRate,
+                                    baseLatency,
+                                    outputLatency
+                                )
+                            }
                     )
             }
 
@@ -1646,19 +1886,23 @@ class PrivacyAuditManager private constructor() {
                         "audio",
 
                     title =
-                        "Empreinte audio",
+                        AppStrings.get(
+                            R.string.privacy_audit_manager_empreinte_audio
+                        ),
 
                     status =
                         PrivacyCheckStatus.NOT_TESTED,
 
                     detail =
-                        "Mesure indisponible."
+                        AppStrings.get(
+                            R.string.privacy_audit_manager_mesure_indisponible
+                        )
                 )
         }
 
 
         // ========================================================
-        // KNOWN OBSERVABLE LIMITS
+        // NAVIGATOR / FINGERPRINTING
         // ========================================================
 
         val navigator =
@@ -1666,10 +1910,13 @@ class PrivacyAuditManager private constructor() {
                 "navigator"
             )
 
-
         if (
             navigator != null
         ) {
+
+            // ----------------------------------------------------
+            // PLATFORM
+            // ----------------------------------------------------
 
             val platform =
                 navigator.optString(
@@ -1677,10 +1924,20 @@ class PrivacyAuditManager private constructor() {
                     ""
                 )
 
-
             if (
                 platform.isNotBlank()
             ) {
+
+                /*
+                 * Gecko Android renvoie volontairement cette valeur
+                 * générique. Elle ne révèle pas l'architecture réelle
+                 * de l'appareil : elle est identique sur Android.
+                 */
+                val genericAndroidPlatform =
+                    platform.equals(
+                        "Linux armv81",
+                        ignoreCase = true
+                    )
 
                 checks +=
                     PrivacyCheck(
@@ -1688,16 +1945,40 @@ class PrivacyAuditManager private constructor() {
                             "platform",
 
                         title =
-                            "Architecture navigateur",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_architecture_navigateur
+                            ),
 
                         status =
-                            PrivacyCheckStatus.EXPOSED,
+                            if (
+                                genericAndroidPlatform
+                            ) {
+                                PrivacyCheckStatus.PROTECTED
+                            } else {
+                                PrivacyCheckStatus.EXPOSED
+                            },
 
                         detail =
-                            "navigator.platform reste observable : $platform"
+                            if (
+                                genericAndroidPlatform
+                            ) {
+                                AppStrings.get(
+                                    R.string.privacy_audit_manager_platform_generic_android,
+                                    platform
+                                )
+                            } else {
+                                AppStrings.get(
+                                    R.string.privacy_audit_manager_navigator_platform_reste_observable,
+                                    platform
+                                )
+                            }
                     )
             }
 
+
+            // ----------------------------------------------------
+            // HARDWARE CONCURRENCY
+            // ----------------------------------------------------
 
             val hardwareConcurrency =
                 navigator.optInt(
@@ -1705,10 +1986,18 @@ class PrivacyAuditManager private constructor() {
                     -1
                 )
 
-
             if (
                 hardwareConcurrency > 0
             ) {
+
+                /*
+                 * Avec Resist Fingerprinting actif, Gecko normalise
+                 * hardwareConcurrency à 4 sur les plateformes
+                 * non-macOS, donc notamment Android.
+                 */
+                val normalizedHardwareConcurrency =
+                    currentProtectedMode &&
+                            hardwareConcurrency == 4
 
                 checks +=
                     PrivacyCheck(
@@ -1716,16 +2005,40 @@ class PrivacyAuditManager private constructor() {
                             "hardware_concurrency",
 
                         title =
-                            "Nombre de cœurs",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_nombre_de_c_urs
+                            ),
 
                         status =
-                            PrivacyCheckStatus.EXPOSED,
+                            if (
+                                normalizedHardwareConcurrency
+                            ) {
+                                PrivacyCheckStatus.PROTECTED
+                            } else {
+                                PrivacyCheckStatus.EXPOSED
+                            },
 
                         detail =
-                            "navigator.hardwareConcurrency reste observable : $hardwareConcurrency"
+                            if (
+                                normalizedHardwareConcurrency
+                            ) {
+                                AppStrings.get(
+                                    R.string.privacy_audit_manager_hardwareconcurrency_normalized,
+                                    hardwareConcurrency
+                                )
+                            } else {
+                                AppStrings.get(
+                                    R.string.privacy_audit_manager_navigator_hardwareconcurrency_reste_observable,
+                                    hardwareConcurrency
+                                )
+                            }
                     )
             }
 
+
+            // ----------------------------------------------------
+            // MAX TOUCH POINTS
+            // ----------------------------------------------------
 
             val maxTouchPoints =
                 navigator.optInt(
@@ -1733,10 +2046,20 @@ class PrivacyAuditManager private constructor() {
                     -1
                 )
 
-
             if (
                 maxTouchPoints >= 0
             ) {
+
+                /*
+                 * Le mode RFP complet utilise la cible
+                 * MaxTouchPoints et renvoie 0 au contenu Web.
+                 *
+                 * À ne pas confondre avec le FPP standard qui peut
+                 * seulement regrouper les valeurs en cohortes.
+                 */
+                val normalizedTouchPoints =
+                    currentProtectedMode &&
+                            maxTouchPoints == 5
 
                 checks +=
                     PrivacyCheck(
@@ -1744,13 +2067,33 @@ class PrivacyAuditManager private constructor() {
                             "max_touch_points",
 
                         title =
-                            "Capacités tactiles",
+                            AppStrings.get(
+                                R.string.privacy_audit_manager_capacites_tactiles
+                            ),
 
                         status =
-                            PrivacyCheckStatus.EXPOSED,
+                            if (
+                                normalizedTouchPoints
+                            ) {
+                                PrivacyCheckStatus.PROTECTED
+                            } else {
+                                PrivacyCheckStatus.EXPOSED
+                            },
 
                         detail =
-                            "navigator.maxTouchPoints reste observable : $maxTouchPoints"
+                            if (
+                                normalizedTouchPoints
+                            ) {
+                                AppStrings.get(
+                                    R.string.privacy_audit_manager_maxtouchpoints_normalized,
+                                    maxTouchPoints
+                                )
+                            } else {
+                                AppStrings.get(
+                                    R.string.privacy_audit_manager_navigator_maxtouchpoints_reste_observable,
+                                    maxTouchPoints
+                                )
+                            }
                     )
             }
         }

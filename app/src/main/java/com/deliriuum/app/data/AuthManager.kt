@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.util.Locale
+import com.deliriuum.app.R
+import com.deliriuum.app.i18n.AppStrings
 
 class AuthManager private constructor() {
 
@@ -226,7 +228,7 @@ class AuthManager private constructor() {
 
             errorMessage =
                 e.localizedMessage
-                    ?: "Impossible de créer le compte."
+                    ?: AppStrings.get(R.string.auth_manager_impossible_de_creer_le_compte)
 
 
         } finally {
@@ -335,7 +337,7 @@ class AuthManager private constructor() {
                     ) {
                         message
                     } else {
-                        "Connexion impossible."
+                        AppStrings.get(R.string.auth_manager_connexion_impossible)
                     }
             }
 
@@ -392,7 +394,7 @@ class AuthManager private constructor() {
 
             errorMessage =
                 e.localizedMessage
-                    ?: "Impossible de renvoyer l'email."
+                    ?: AppStrings.get(R.string.auth_manager_impossible_de_renvoyer_l_email)
 
 
         } finally {
@@ -558,7 +560,7 @@ class AuthManager private constructor() {
 
                 errorMessage =
                     e.localizedMessage
-                        ?: "Service temporairement indisponible."
+                        ?: AppStrings.get(R.string.auth_manager_service_temporairement_indisponible)
             }
 
 
@@ -580,7 +582,7 @@ class AuthManager private constructor() {
 
                 errorMessage =
                     e.localizedMessage
-                        ?: "Impossible d'actualiser le compte."
+                        ?: AppStrings.get(R.string.auth_manager_impossible_d_actualiser_le_compte)
             }
         }
     }

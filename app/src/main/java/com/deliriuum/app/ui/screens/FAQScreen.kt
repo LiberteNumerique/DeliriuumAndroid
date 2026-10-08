@@ -20,6 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
+import com.deliriuum.app.R
 
 /**
  * Frequently asked questions, mirroring the FAQ section added to
@@ -27,6 +29,8 @@ import androidx.compose.ui.unit.sp
  */
 @Composable
 fun FAQScreen(onDismiss: () -> Unit) {
+    val _i18nContext = LocalContext.current
+
     Box(modifier = Modifier.fillMaxSize()) {
         // --- Background, matching the rest of the app's dark + radial glow ---
         Box(modifier = Modifier.fillMaxSize().background(Color(0xFF050508)))
@@ -68,38 +72,38 @@ fun FAQScreen(onDismiss: () -> Unit) {
             Header()
 
             FAQItem(
-                question = "Deliriuum peut-il voir mes mots de passe des réseaux sociaux ?",
-                answer = "Non. Ton mot de passe est chiffré en HTTPS directement par ton appareil avant même de quitter ton téléphone, puis transite à travers notre tunnel WireGuard sans jamais être déchiffré en cours de route — impossible d'y accéder, même pour nous. Deliriuum applique une politique stricte de zéro log : aucune trace de ta navigation n'est conservée."
+                question = _i18nContext.getString(R.string.faq_deliriuum_peut_il_voir_mes_mots_de_passe_des_reseaux_soc),
+                answer = _i18nContext.getString(R.string.faq_non_ton_mot_de_passe_est_chiffre_en_https_directement_pa)
             )
 
             FAQItem(
-                question = "Pourquoi Deliriuum est-il gratuit ?",
-                answer = "Parce que ta vie privée ne devrait jamais avoir de prix. Le projet est financé uniquement par les dons de la communauté — jamais obligatoires, jamais bloquants. Pas d'abonnement, pas de limite de temps, pas de revente de données à des tiers."
+                question = _i18nContext.getString(R.string.faq_pourquoi_deliriuum_est_il_gratuit),
+                answer = _i18nContext.getString(R.string.faq_parce_que_ta_vie_privee_ne_devrait_jamais_avoir_de_prix)
             )
 
             FAQItem(
-                question = "Deliriuum garde-t-il un historique de ma navigation ?",
-                answer = "Non. Aucune trace des sites visités, des horaires de connexion ou des volumes de données n'est conservée après ta session."
+                question = _i18nContext.getString(R.string.faq_deliriuum_garde_t_il_un_historique_de_ma_navigation),
+                answer = _i18nContext.getString(R.string.faq_non_aucune_trace_des_sites_visites_des_horaires_de_conne)
             )
 
             FAQItem(
-                question = "Est-ce légal d'utiliser un VPN ?",
-                answer = "Oui, en France et dans l'Union Européenne, l'utilisation d'un VPN est parfaitement légale. Deliriuum ne facilite aucune activité illégale — l'app sert à protéger ta vie privée, pas à contourner la loi."
+                question = _i18nContext.getString(R.string.faq_est_ce_legal_d_utiliser_un_vpn),
+                answer = _i18nContext.getString(R.string.faq_oui_en_france_et_dans_l_union_europeenne_l_utilisation_d)
             )
 
             FAQItem(
-                question = "Que se passe-t-il si je désactive la protection ?",
-                answer = "Les réseaux sociaux deviennent inaccessibles depuis l'app tant que la protection n'est pas réactivée — pour éviter de naviguer sans protection sans t'en rendre compte."
+                question = _i18nContext.getString(R.string.faq_que_se_passe_t_il_si_je_desactive_la_protection),
+                answer = _i18nContext.getString(R.string.faq_les_reseaux_sociaux_deviennent_inaccessibles_depuis_l_ap)
             )
 
             FAQItem(
-                question = "Le code source est-il consultable ?",
-                answer = "Oui. Le code de l'application (iOS et Android) est open source, sous licence GPL-3.0. Tu peux le consulter, le vérifier, et même contribuer."
+                question = _i18nContext.getString(R.string.faq_le_code_source_est_il_consultable),
+                answer = _i18nContext.getString(R.string.faq_oui_le_code_de_l_application_ios_et_android_est_open_sou)
             )
 
             FAQItem(
-                question = "Comment supprimer mon compte ?",
-                answer = "Directement depuis l'app, dans Mon compte → Supprimer mon compte, avec confirmation par mot de passe. La suppression est immédiate et définitive — toutes tes données associées sont effacées."
+                question = _i18nContext.getString(R.string.faq_comment_supprimer_mon_compte),
+                answer = _i18nContext.getString(R.string.faq_directement_depuis_l_app_dans_mon_compte_supprimer_mon_c)
             )
         }
     }
@@ -107,12 +111,14 @@ fun FAQScreen(onDismiss: () -> Unit) {
 
 @Composable
 private fun Header() {
+    val _i18nContext = LocalContext.current
+
     Column(
         modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            "QUESTIONS FRÉQUENTES",
+            _i18nContext.getString(R.string.faq_questions_frequentes),
             color = Color.Cyan,
             fontSize = 12.sp,
             fontWeight = FontWeight.Black,
@@ -120,7 +126,7 @@ private fun Header() {
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            "Tu te poses des questions ?\nC'est normal.",
+            _i18nContext.getString(R.string.faq_tu_te_poses_des_questions_c_est_normal),
             color = Color.White,
             fontSize = 19.sp,
             fontWeight = FontWeight.Bold,

@@ -12,12 +12,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
+import com.deliriuum.app.R
 
 @Composable
 fun VpnConsentDialog(
     onAccept: () -> Unit,
     onDismiss: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     AlertDialog(
         /*
          * La popup ne peut pas être fermée en cliquant
@@ -30,24 +34,14 @@ fun VpnConsentDialog(
 
         title = {
             Text(
-                text = "Utilisation du service VPN"
+                text = _i18nContext.getString(R.string.vpn_consent_utilisation_du_service_vpn)
             )
         },
 
         text = {
             Text(
                 text =
-                    "Deliriuum utilise le service Android VpnService afin de créer " +
-                            "un tunnel chiffré entre votre appareil et notre infrastructure VPN.\n\n" +
-
-                            "• Objectif : protéger votre trafic internet et votre confidentialité.\n\n" +
-
-                            "• Données de navigation : Deliriuum n'enregistre ni votre historique " +
-                            "de navigation ni le contenu de vos communications et ne vend aucune " +
-                            "donnée de navigation à des tiers.\n\n" +
-
-                            "Android vous demandera ensuite une autorisation système avant " +
-                            "l'établissement du tunnel VPN."
+                    _i18nContext.getString(R.string.vpn_consent_deliriuum_utilise_le_service_android_vpnservice_afin_de)
             )
         },
 
@@ -73,7 +67,7 @@ fun VpnConsentDialog(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Accepter et continuer",
+                        text = _i18nContext.getString(R.string.vpn_consent_accepter_et_continuer),
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center
                     )
@@ -84,7 +78,7 @@ fun VpnConsentDialog(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Refuser et quitter",
+                        text = _i18nContext.getString(R.string.vpn_consent_refuser_et_quitter),
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center
                     )

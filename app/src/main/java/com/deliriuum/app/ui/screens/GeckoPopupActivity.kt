@@ -6,10 +6,21 @@ import androidx.activity.ComponentActivity
 import com.deliriuum.app.data.GeckoPopupHolder
 import org.mozilla.geckoview.GeckoSession
 import org.mozilla.geckoview.GeckoView
-
+import android.content.Context
+import com.deliriuum.app.i18n.AppStrings
 class GeckoPopupActivity : ComponentActivity() {
 
     private var popupSession: GeckoSession? = null
+
+    override fun attachBaseContext(
+        newBase: Context
+    ) {
+        super.attachBaseContext(
+            AppStrings.localizedContext(
+                newBase
+            )
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

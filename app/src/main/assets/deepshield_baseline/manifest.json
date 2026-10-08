@@ -1,29 +1,35 @@
 {
   "manifest_version": 2,
   "name": "Deliriuum Privacy Baseline",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Mesure de référence avant Deep Shield",
+
   "browser_specific_settings": {
     "gecko": {
       "id": "deepshield-baseline@deliriuum.com"
     },
     "gecko_android": {}
   },
+
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "https://example.com/*"
       ],
       "js": [
-        "probe.js"
+        "bridge.js"
       ],
-      "run_at": "document_idle",
+      "run_at": "document_start",
       "all_frames": false
     }
   ],
+
+  "web_accessible_resources": [
+    "probe.js"
+  ],
+
   "permissions": [
-    "<all_urls>",
+    "https://example.com/*",
     "nativeMessaging",
     "nativeMessagingFromContent",
     "geckoViewAddons"

@@ -32,9 +32,21 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.mozilla.geckoview.WebRequestError
 import java.util.UUID
+import com.deliriuum.app.R
+import com.deliriuum.app.i18n.AppStrings
 
 
 class GeckoBrowserActivity : ComponentActivity() {
+
+    override fun attachBaseContext(
+        newBase: Context
+    ) {
+        super.attachBaseContext(
+            AppStrings.localizedContext(
+                newBase
+            )
+        )
+    }
 
     override fun onCreate(
         savedInstanceState: Bundle?
@@ -62,6 +74,8 @@ private fun GeckoBrowserScreen(
     url: String,
     onClose: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     val context =
         LocalContext.current
 
@@ -215,7 +229,7 @@ private fun GeckoBrowserScreen(
                         Alignment.Center
                 ) {
                     Text(
-                        text = "Navigation suspendue",
+                        text = _i18nContext.getString(R.string.browser_navigation_suspendue),
                         color = Color.White.copy(alpha = 0.45f),
                         fontWeight = FontWeight.Bold
                     )
@@ -332,6 +346,8 @@ private fun BrowserTopBar(
     onAddToSpace: (BrowserShortcutSpace) -> Unit,
     onClose: () -> Unit
 ) {
+    val _i18nContext = LocalContext.current
+
     val accent =
         Color.Cyan
 
@@ -471,9 +487,9 @@ private fun BrowserTopBar(
                 Text(
                     text =
                         if (shortcutSaved) {
-                            "Ajouté"
+                            _i18nContext.getString(R.string.browser_ajoute)
                         } else {
-                            "Ajouter"
+                            _i18nContext.getString(R.string.browser_ajouter)
                         },
                     color =
                         when {
@@ -516,13 +532,13 @@ private fun BrowserTopBar(
                                                 .uppercase()
                                         ) {
                                             "SOCIAL" ->
-                                                "Réseaux sociaux"
+                                                _i18nContext.getString(R.string.shortcut_space_social)
 
                                             "VIDEO" ->
-                                                "Vidéo"
+                                                _i18nContext.getString(R.string.shortcut_space_video)
 
                                             else ->
-                                                "Espace personnalisé"
+                                                _i18nContext.getString(R.string.browser_espace_personnalise)
                                         },
                                     color =
                                         Color.White.copy(
@@ -545,7 +561,7 @@ private fun BrowserTopBar(
                         text = {
                             Text(
                                 text =
-                                    "Aucun espace disponible"
+                                    _i18nContext.getString(R.string.browser_aucun_espace_disponible)
                             )
                         },
                         enabled = false,
@@ -963,6 +979,8 @@ private fun LoadErrorScreen(
     onSearch: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val _i18nContext = LocalContext.current
+
 
     val host =
         runCatching { Uri.parse(url).host }
@@ -1056,7 +1074,7 @@ private fun LoadErrorScreen(
         ) {
 
             Text(
-                text = "Réessayer",
+                text = _i18nContext.getString(R.string.browser_reessayer),
                 color = Color.Black,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold
@@ -1084,7 +1102,7 @@ private fun LoadErrorScreen(
         ) {
 
             Text(
-                text = "Rechercher sur DuckDuckGo",
+                text = _i18nContext.getString(R.string.browser_rechercher_sur_duckduckgo),
                 color = Color.Cyan,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold
@@ -1108,38 +1126,76 @@ private fun messageFor(
     when (code) {
 
         WebRequestError.ERROR_UNKNOWN_HOST ->
-            "Site introuvable" to
-                    "L'adresse $host n'existe pas, ou comporte une faute de frappe."
+            AppStrings.get(
+                R.string.browser_site_introuvable
+            ) to
+                    AppStrings.get(
+                        R.string.browser_l_adresse_n_existe_pas_ou_comporte_une_faute_de_frappe,
+                        host
+                    )
 
         WebRequestError.ERROR_CONNECTION_REFUSED ->
-            "Connexion refusée" to
-                    "$host a refusé la connexion. Le site est peut-être hors service."
+            AppStrings.get(
+                R.string.browser_connexion_refusee
+            ) to
+                    AppStrings.get(
+                        R.string.browser_a_refuse_la_connexion_le_site_est_peut_etre_hors_service,
+                        host
+                    )
 
         WebRequestError.ERROR_NET_TIMEOUT ->
-            "Pas de réponse" to
-                    "$host met trop de temps à répondre. La connexion est peut-être lente."
+            AppStrings.get(
+                R.string.browser_pas_de_reponse
+            ) to
+                    AppStrings.get(
+                        R.string.browser_met_trop_de_temps_a_repondre_la_connexion_est_peut_etre,
+                        host
+                    )
 
         WebRequestError.ERROR_NET_INTERRUPT ->
-            "Connexion interrompue" to
-                    "Le chargement de $host a été interrompu avant la fin."
+            AppStrings.get(
+                R.string.browser_connexion_interrompue
+            ) to
+                    AppStrings.get(
+                        R.string.browser_le_chargement_de_a_ete_interrompu_avant_la_fin,
+                        host
+                    )
 
         WebRequestError.ERROR_OFFLINE ->
-            "Aucune connexion" to
-                    "Ton appareil semble hors ligne. Vérifie ton wifi ou tes données mobiles."
+            AppStrings.get(
+                R.string.browser_aucune_connexion
+            ) to
+                    AppStrings.get(
+                        R.string.browser_ton_appareil_semble_hors_ligne_verifie_ton_wifi_ou_tes_d
+                    )
 
         WebRequestError.ERROR_MALFORMED_URI,
         WebRequestError.ERROR_UNKNOWN_PROTOCOL ->
-            "Adresse incorrecte" to
-                    "Cette adresse n'est pas valide. Tu peux lancer une recherche à la place."
+            AppStrings.get(
+                R.string.browser_adresse_incorrecte
+            ) to
+                    AppStrings.get(
+                        R.string.browser_cette_adresse_n_est_pas_valide_tu_peux_lancer_une_recher
+                    )
 
         WebRequestError.ERROR_SECURITY_SSL,
         WebRequestError.ERROR_SECURITY_BAD_CERT ->
-            "Connexion non sécurisée" to
-                    "Le certificat de $host pose problème. Par précaution, la page n'a pas été affichée."
+            AppStrings.get(
+                R.string.browser_connexion_non_securisee
+            ) to
+                    AppStrings.get(
+                        R.string.browser_le_certificat_de_pose_probleme_par_precaution_la_page_n,
+                        host
+                    )
 
         else ->
-            "Page non affichée" to
-                    "$host n'a pas pu être chargé."
+            AppStrings.get(
+                R.string.browser_page_non_affichee
+            ) to
+                    AppStrings.get(
+                        R.string.browser_n_a_pas_pu_etre_charge,
+                        host
+                    )
     }
 
 

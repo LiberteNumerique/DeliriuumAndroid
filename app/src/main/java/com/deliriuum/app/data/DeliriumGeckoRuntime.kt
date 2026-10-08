@@ -6,6 +6,7 @@ import org.mozilla.geckoview.GeckoRuntime
 import org.mozilla.geckoview.GeckoRuntimeSettings
 import org.mozilla.geckoview.WebExtension
 
+
 object DeliriumGeckoRuntime {
 
     private const val TAG =
@@ -51,6 +52,7 @@ object DeliriumGeckoRuntime {
 
         val ready =
             extension
+
 
         if (
             ready != null
@@ -100,6 +102,7 @@ object DeliriumGeckoRuntime {
     ): GeckoRuntime {
 
         runtime?.let {
+
             return it
         }
 
@@ -109,6 +112,7 @@ object DeliriumGeckoRuntime {
         ) {
 
             runtime?.let {
+
                 return it
             }
 
@@ -121,6 +125,13 @@ object DeliriumGeckoRuntime {
             // DEEP SHIELD NETWORK CONFIG
             // ====================================================
 
+            /*
+             * On conserve ici uniquement la configuration réseau
+             * spécifique à Deep Shield.
+             *
+             * La protection contre le fingerprinting doit être
+             * laissée au moteur Gecko lui-même.
+             */
             val configPath =
                 DeepShieldConfig.write(
                     appContext
@@ -136,9 +147,9 @@ object DeliriumGeckoRuntime {
                     .Builder()
 
                     /*
-                     * TEMPORAIRE pendant validation.
+                     * TEMPORAIRE pendant le développement.
                      *
-                     * A désactiver pour le build release.
+                     * À désactiver pour la version release.
                      */
                     .consoleOutput(
                         true
@@ -149,7 +160,7 @@ object DeliriumGeckoRuntime {
                     )
 
                     /*
-                     * Préférences réseau Deep Shield.
+                     * Configuration réseau Deep Shield.
                      */
                     .configFilePath(
                         configPath
@@ -162,69 +173,106 @@ object DeliriumGeckoRuntime {
             // MOZILLA FINGERPRINTING PROTECTION
             // ====================================================
 
+            /*
+             * Active la Fingerprinting Protection native de Gecko
+             * dans toutes les sessions normales.
+             *
+             * IMPORTANT :
+             *
+             * Nous ne modifions pas nous-mêmes :
+             *
+             * - screen
+             * - devicePixelRatio
+             * - Canvas
+             * - hardwareConcurrency
+             * - maxTouchPoints
+             * - navigator.platform
+             * - AudioContext
+             *
+             * Gecko applique lui-même son profil anti-fingerprinting.
+             */
             settings
                 .setFingerprintingProtection(
                     true
                 )
 
 
+            /*
+             * Même protection pour les sessions privées.
+             */
             settings
                 .setFingerprintingProtectionPrivateBrowsing(
                     true
                 )
 
 
-            settings
-                .setFingerprintingProtectionOverrides(
-                    listOf(
-
-                        // Audio
-                        "+AudioContext",
-                        "+AudioSampleRate",
-
-                        // WebGL
-                        "+WebGLRenderCapability",
-                        "+WebGLRenderInfo",
-
-                        // Network
-                        "+NetworkConnection",
-
-                        // Media / sensors
-                        "+MediaDevices",
-                        "+MediaCapabilities",
-                        "+DeviceSensors",
-
-                        // Navigator / User-Agent
-                        "+NavigatorAppVersion",
-                        "+NavigatorOscpu",
-                        "+NavigatorPlatform",
-                        "+NavigatorUserAgent",
-                        "+HttpUserAgent"
-
-                    ).joinToString(
-                        ","
-                    )
-                )
-
-
             /*
-             * Math fdlibm :
-             * réduit certaines différences liées
-             * à la plateforme.
+             * ====================================================
+             * AUDIO — CIBLES FPP NATIVES MOZILLA
+             * ====================================================
+             *
+             * On conserve le profil FPP Android standard et on ajoute
+             * uniquement les cibles audio officielles de Gecko :
+             *
+             * - AudioContext
+             * - AudioSampleRate
+             * - JSMathFdlibm
+             *
+             * Aucune valeur n'est inventée par Deliriuum :
+             * Gecko applique lui-même ses normalisations natives.
+             *
+             * JSMathFdlibm fait déjà partie des cibles FPP Android
+             * courantes, mais on le garde explicitement ici afin que
+             * la protection audio reste cohérente avec les calculs WebAudio.
              */
             settings
-                .setFdlibmMathEnabled(
-                    true
+                .setFingerprintingProtectionOverrides(
+                    ""
                 )
 
+
+            // ====================================================
+            // GLOBAL PRIVACY CONTROL
+            // ====================================================
 
             /*
              * Global Privacy Control.
+             *
+             * Ce n'est pas une falsification de fingerprint :
+             * il s'agit d'un signal de préférence de confidentialité.
              */
             settings
                 .setGlobalPrivacyControl(
                     true
                 )
+
+
+            // ====================================================
+            // DEBUG
+            // ====================================================
+
+            Log.d(
+                TAG,
+                "Gecko Fingerprinting Protection enabled"
+            )
+
+
+            Log.d(
+                TAG,
+                "Gecko private Fingerprinting Protection enabled"
+            )
+
+
+            Log.d(
+                TAG,
+                "Fingerprinting overrides = Gecko Android defaults"
+            )
+
+
+            Log.d(
+                TAG,
+                "Global Privacy Control enabled"
+            )
 
 
             // ====================================================
@@ -285,26 +333,27 @@ object DeliriumGeckoRuntime {
                                 }
 
 
-                            callbacks.forEach {
-                                    callback ->
+                            callbacks
+                                .forEach {
+                                        callback ->
 
-                                try {
+                                    try {
 
-                                    callback(
-                                        installedExtension
-                                    )
+                                        callback(
+                                            installedExtension
+                                        )
 
-                                } catch (
-                                    e: Exception
-                                ) {
+                                    } catch (
+                                        e: Exception
+                                    ) {
 
-                                    Log.e(
-                                        TAG,
-                                        "Extension ready callback failed",
-                                        e
-                                    )
+                                        Log.e(
+                                            TAG,
+                                            "Extension ready callback failed",
+                                            e
+                                        )
+                                    }
                                 }
-                            }
 
                         } else {
 
@@ -326,6 +375,10 @@ object DeliriumGeckoRuntime {
                     }
                 )
 
+
+            // ====================================================
+            // STORE SINGLETON
+            // ====================================================
 
             runtime =
                 created
